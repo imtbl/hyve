@@ -1,0 +1,72 @@
+.file-search-preview {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+
+  .file-search-preview-image {
+    align-items: center;
+    background-color: $light;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: transform 200ms ease;
+    width: 100%;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .file-search-preview-link {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-indent: -999999px;
+    top: 0;
+    width: 100%;
+  }
+
+  .file-search-preview-gallery-button {
+    bottom: 0;
+    color: $white;
+    cursor: zoom-in;
+    height: 3rem;
+    position: absolute;
+    right: 0;
+    transition: transform 200ms ease;
+    width: 3rem;
+
+    @media (hover) {
+      &:hover {
+        transform: scale(1.2, 1.2);
+      }
+    }
+
+    svg {
+      filter: drop-shadow(0 0 1px $black);
+    }
+
+    img {
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  @media (hover) {
+    &:hover {
+      .file-search-preview-image {
+        transform: scale(1.1, 1.1);
+      }
+    }
+  }
+}

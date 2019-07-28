@@ -1,0 +1,11 @@
+.file-detail-navigation {
+  display: flex;
+
+  .file-detail-navigation-item {
+    margin-left: 1rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

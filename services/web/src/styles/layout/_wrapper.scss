@@ -1,0 +1,23 @@
+.wrapper {
+  .section {
+    + .section {
+      padding-top: 0;
+    }
+  }
+
+  + .wrapper {
+    .section {
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.has-scroll-to-top-bar {
+    .section {
+      &:last-of-type {
+        padding-bottom: 5.5rem;
+      }
+    }
+  }
+}

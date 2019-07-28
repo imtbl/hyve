@@ -1,0 +1,20 @@
+
+.columns {
+  &.has-reverse-column-order {
+    flex-direction: row-reverse;
+  }
+
+  .column {
+    &.is-one-eight-large-desktop {
+      @media screen and (min-width: 1680px) {
+        width: 12.5%;
+      }
+    }
+
+    &.is-one-tenth-huge-desktop {
+      @media screen and (min-width: 1921px) {
+        width: 10%;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.namespace-sorting {
+  &.panel {
+    background-color: $white;
+
+    .panel-heading {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .panel-block {
+      &.sortable {
+        cursor: move;
+
+        @media (hover) {
+          &:hover {
+            background-color: $light;
+          }
+        }
+      }
+    }
+
+    .namespace {
+      flex: 1;
+      margin-right: 0.75em;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .input {
+      flex: 1;
+      margin-right: 0.75em;
+    }
+  }
+}

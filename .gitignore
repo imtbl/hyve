@@ -1,0 +1,7 @@
+dist
+node_modules
+**/storage/*.db
+*.log
+.crontab
+.env
+docker-compose.yml

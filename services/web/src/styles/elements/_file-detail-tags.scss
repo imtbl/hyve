@@ -1,0 +1,10 @@
+.file-detail-tags {
+  li {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+
+    .file-amount {
+      color: $grey-light;
+    }
+  }
+}

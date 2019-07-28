@@ -1,0 +1,128 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const http = require('http')
+const cluster = require('cluster')
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+
+const config = require('../src/config')
+const app = require('../app')
+const db = require('../src/db')
+const logger = require('../src/util/logger')
+
+const port = parseInt(process.env.HYVE_PORT, 10) || 8000
+
+app.set('port', port)
+
+let shuttingDown = false
+
+const shutDown = signal => {
+  if (!cluster.isMaster) {
+    return
+  }
+
+  shuttingDown = true
+
+  logger.log('Shutting down hyve…')
+
+  let exitCode = 0
+
+  const promises = []
+  const workerIds = Object.keys(cluster.workers)
+
+  for (const id of workerIds) {
+    const worker = cluster.workers[id]
+
+    promises.push(new Promise(resolve => {
+      let resolved = false
+
+      worker.once('exit', () => {
+        if (resolved) {
+          return
+        }
+
+        resolved = true
+
+        resolve()
+      })
+
+      setTimeout(() => {
+        if (resolved) {
+          return
+        }
+
+        resolved = true
+
+        logger.log('Could not close worker in time, killing it.', 'error')
+
+        worker.kill(signal)
+
+        exitCode = 1
+
+        resolve()
+      }, 4000)
+    }))
+
+    worker.send('shutdown')
+    worker.disconnect()
+  }
+
+  Promise.all(promises).then(() => {
+    setTimeout(() => {
+      logger.log(
+        'Could not close master db connection in time, killing it.', 'error'
+      )
+
+      exitCode = 1
+
+      process.exit(exitCode)
+    }, 4000)
+
+    db.close()
+
+    process.exit(exitCode)
+  })
+}
+
+if (cluster.isMaster) {
+  logger.log('Starting hyve…')
+
+  const numberOfWorkers = config.numberOfWorkers > 1
+    ? config.numberOfWorkers
+    : 1
+
+  for (let i = 0; i < numberOfWorkers; i++) {
+    cluster.fork()
+  }
+
+  cluster.on('exit', worker => {
+    if (!shuttingDown) {
+      cluster.fork()
+    }
+  })
+
+  db.connect()
+  db.vacuumAuthenticationDb()
+  db.setAuthenticationDbCheckpointInterval()
+
+  logger.log('hyve is ready.')
+} else {
+  const server = http.createServer(app)
+
+  server.listen(port)
+
+  process.on('message', message => {
+    if (message === 'shutdown') {
+      app.shutDown(server)
+    }
+  })
+}
+
+process.on('SIGTERM', () => {
+  shutDown('SIGTERM')
+})
+
+process.on('SIGINT', () => {
+  shutDown('SIGINT')
+})
