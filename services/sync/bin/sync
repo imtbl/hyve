@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+
+const path = require('path')
+const cluster = require('cluster')
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
+
+const lock = require('../src/util/lock')
+
+if (lock.exists()) {
+  console.info('Another sync seems to be running already, aborting.')
+
+  process.exit(0)
+}
+
+const app = require('../app')
+
+const abort = () => {
+  if (!cluster.isMaster) {
+    return
+  }
+
+  let exitCode = 0
+
+  const promises = []
+  const workerIds = Object.keys(cluster.workers)
+
+  for (const workerId of workerIds) {
+    const worker = cluster.workers[workerId]
+
+    promises.push(new Promise(resolve => {
+      let resolved = false
+
+      worker.once('exit', () => {
+        if (resolved) {
+          return
+        }
+
+        resolved = true
+
+        resolve()
+      })
+
+      setTimeout(() => {
+        if (resolved) {
+          return
+        }
+
+        resolved = true
+
+        console.error('Could not close worker in time, killing it.')
+
+        process.kill(worker.process.pid, 'SIGKILL')
+
+        exitCode = 1
+
+        resolve()
+      }, 4000)
+    }))
+
+    worker.send('abort')
+    worker.disconnect()
+  }
+
+  Promise.all(promises).then(() => {
+    lock.remove()
+
+    process.exit(exitCode)
+  })
+}
+
+process.on('SIGTERM', abort)
+process.on('SIGINT', abort)
+
+if (cluster.isMaster) {
+  cluster.fork()
+
+  cluster.on('exit', (worker, code) => {
+    process.exit(code)
+  })
+} else {
+  process.on('message', message => {
+    if (message === 'abort') {
+      app.abort()
+    }
+  })
+
+  try {
+    lock.create()
+
+    app.runSync()
+
+    lock.remove()
+
+    process.exit(0)
+  } catch (err) {
+    console.error('Error while trying to sync.\n', err)
+
+    lock.remove()
+
+    process.exit(1)
+  }
+}

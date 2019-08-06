@@ -1,0 +1,42 @@
+.file-search-suggestions {
+  &.dropdown {
+    display: block !important;
+
+    .dropdown-menu {
+      max-width: calc(100vw - 3rem);
+
+      .dropdown-item {
+        display: flex;
+        min-height: 2.25rem;
+
+        &:focus {
+          background-color: $dropdown-item-hover-background-color;
+        }
+
+        .icon {
+          color: $dark;
+          min-width: 1.5rem;
+        }
+
+        .suggestion {
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &.constraint {
+            color: $dark;
+          }
+
+          .file-amount {
+            color: $grey-light;
+          }
+        }
+      }
+    }
+
+    &.has-restricted-width {
+      .dropdown-menu {
+        max-width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "hyve",
+  "version": "1.0.0",
+  "description": "Expose and consume your hydrus server media via HTTP API",
+  "keywords": [
+    "hydrus",
+    "hydrus network",
+    "hydrusnetwork",
+    "booru",
+    "api",
+    "vue",
+    "vuejs",
+    "bulma",
+    "webpack"
+  ],
+  "author": "Michael Serajnik <ms@mserajnik.at>",
+  "license": "MIT",
+  "private": true,
+  "repository": "https://mserajnik@github.com/mserajnik/hyve.git",
+  "bugs": {
+    "url": "https://github.com/mserajnik/hyve/issues"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "test": "lerna run test"
+  },
+  "engines": {
+    "node": ">=10.0.0 <13.0.0"
+  },
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  }
+}

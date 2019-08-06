@@ -1,0 +1,31 @@
+h2 {
+  &.has-paragraph-size {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1em;
+    margin-top: 0 !important;
+  }
+}
+
+a {
+  outline: none;
+}
+
+.is-normal-case {
+  text-transform: none !important;
+}
+
+svg[class*=' icon'],
+svg[class^=icon] {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  line-height: 1;
+  position: relative;
+  stroke: currentColor;
+  stroke-width: 0;
+  top: -0.05em;
+  vertical-align: middle;
+  width: 1em;
+}

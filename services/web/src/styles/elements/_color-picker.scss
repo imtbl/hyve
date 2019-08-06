@@ -1,0 +1,31 @@
+.vue-colorpicker {
+  border-color: $grey-lighter !important;
+}
+
+.vc-chrome {
+  .vc-chrome-sliders {
+    position: relative;
+
+    .vc-chrome-hue-wrap {
+      margin-bottom: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+    }
+
+    .vc-chrome-alpha-wrap {
+      display: none;
+    }
+  }
+
+  .vc-chrome-fields {
+    .vc-input__label {
+      display: none;
+    }
+  }
+
+  .vc-chrome-toggle-btn {
+    display: none;
+  }
+}

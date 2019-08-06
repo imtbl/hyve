@@ -1,0 +1,26 @@
+.field {
+  &.has-pointer {
+    input {
+      cursor: pointer;
+    }
+  }
+}
+
+.is-checkradio {
+  &.is-aligned {
+    &[type='checkbox'],
+    &[type='radio'] {
+      + label {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+.switch {
+  &[type='checkbox'] {
+    + label {
+      display: inline-block;
+    }
+  }
+}

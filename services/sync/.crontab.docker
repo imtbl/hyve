@@ -1,0 +1,1 @@
+HYVE_DOCKER_CRON_SCHEDULE node /usr/src/app/services/sync/bin/sync

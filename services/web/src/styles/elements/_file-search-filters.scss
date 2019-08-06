@@ -1,0 +1,40 @@
+.file-search-filters {
+  &.tags {
+    .tag {
+      background-color: $primary;
+      color: $white;
+      overflow-x: hidden;
+      text-decoration: none;
+
+      &.constraint {
+        background-color: $dark;
+      }
+
+      span {
+        &:not(.delete) {
+          max-width: 100%;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      @media (hover) {
+        &:hover {
+          box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color;
+
+          .delete {
+            background-color: rgba($black, 0.3);
+          }
+        }
+      }
+
+      &:focus {
+        box-shadow: $input-focus-box-shadow-size $input-focus-box-shadow-color;
+
+        .delete {
+          background-color: rgba($black, 0.3);
+        }
+      }
+    }
+  }
+}

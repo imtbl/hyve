@@ -1,0 +1,18 @@
+.file-detail-image {
+  text-align: center;
+
+  .preview-img-item {
+    cursor: zoom-in;
+    display: block;
+  }
+
+  &.is-restricted-to-viewport {
+    .preview-img-item {
+      max-height: calc(100vh - 3.25rem - 6rem);
+
+      @media (max-width: 1087px) {
+        max-height: calc(100vh - 3.25rem - 6.875rem - 1.5rem);
+      }
+    }
+  }
+}

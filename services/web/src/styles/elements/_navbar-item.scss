@@ -1,0 +1,21 @@
+.navbar-item {
+  display: flex;
+
+  &.has-restricted-width {
+    span {
+      &:last-of-type {
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media (max-width: 1087px) {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+
+  .icon {
+    min-width: 1.5rem;
+  }
+}

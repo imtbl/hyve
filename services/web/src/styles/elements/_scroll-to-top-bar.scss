@@ -1,0 +1,14 @@
+.scroll-to-top-bar {
+  bottom: 0;
+  height: 2.5rem;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 20;
+
+  .button {
+    border-radius: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

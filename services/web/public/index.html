@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="<%= typeof VUE_APP_HYVE_USE_NORMAL_LETTER_CASE !== 'undefined' && VUE_APP_HYVE_USE_NORMAL_LETTER_CASE === 'true' ? VUE_APP_HYVE_DESCRIPTION : VUE_APP_HYVE_DESCRIPTION.toLowerCase() %>">
+    <meta name="robots" content="<%= VUE_APP_HYVE_ROBOTS %>">
+    <title><%= typeof VUE_APP_HYVE_USE_NORMAL_LETTER_CASE !== 'undefined' && VUE_APP_HYVE_USE_NORMAL_LETTER_CASE === 'true' ? VUE_APP_HYVE_TITLE : VUE_APP_HYVE_TITLE.toLowerCase() %></title>
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= BASE_URL %>apple-touch-icon.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-iphone5.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-iphone6.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" href="apple-splash-iphoneplus.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="apple-splash-iphonex.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-iphonexr.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="apple-splash-iphonexsmax.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-ipad.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-ipadpro1.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-ipadpro3.png">
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="apple-splash-ipadpro2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
+    <link rel="mask-icon" href="<%= BASE_URL %>safari-pinned-tab.svg" color="<%= typeof VUE_APP_HYVE_PRIMARY_COLOR !== 'undefined' ? VUE_APP_HYVE_PRIMARY_COLOR : '#3449bb' %>">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>favicon-16x16.png">
+    <link rel="manifest" href="<%= BASE_URL %>manifest.json">
+  </head>
+  <body class="has-navbar-fixed-top">
+    <noscript>
+      <strong>
+        We are sorry but <%= VUE_APP_HYVE_TITLE %> does not work properly without
+        JavaScript enabled. Please enable it to continue.
+      </strong>
+    </noscript>
+    <div id="app"></div>
+  </body>
+</html>
