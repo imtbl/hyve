@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fixed Docker Hub badge
+
 ## 1.0.0 - 2019-08-06
 
 ### Added

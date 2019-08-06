@@ -10,7 +10,7 @@
   </a>
   <a href="https://hub.docker.com/r/mserajnik/hyve/">
     <img
-      src="https://img.shields.io/docker/automated/mserajnik/hyve.svg"
+      src="https://img.shields.io/docker/cloud/automated/mserajnik/hyve.svg"
       alt="Docker Hub build">
   </a>
   <a href="https://snyk.io/test/github/mserajnik/hyve">
