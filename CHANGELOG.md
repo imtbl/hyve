@@ -12,6 +12,10 @@ and this project adheres to
 
 + The number of tags are now displayed on the file detail view
 
+### Changed
+
++ Updated dependencies
+
 ### Fixed
 
 + Fixed Docker Hub badge
