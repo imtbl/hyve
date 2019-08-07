@@ -11,6 +11,7 @@ and this project adheres to
 ### Fixed
 
 + Fixed Docker Hub badge
++ Fixed server not responding with code `404` when encountering a missing file
 
 ## 1.0.0 - 2019-08-06
 

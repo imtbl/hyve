@@ -14,10 +14,10 @@ module.exports = {
     return new Promise((resolve, reject) => {
       fs.access(filePath, err => {
         if (err) {
-          reject(err)
+          reject(false)
         }
 
-        resolve()
+        resolve(true)
       })
     })
   },
