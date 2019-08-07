@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ The number of tags are now displayed on the file detail view
+
 ### Fixed
 
 + Fixed Docker Hub badge

@@ -11,6 +11,9 @@
         <strong>Size:</strong>
         <span class="is-normal-case"> {{ file.size | formatFileSize }}</span>
       </li>
+      <li>
+        <strong>Number of tags:</strong> {{ tags.length | formatNumber }}
+      </li>
     </ul>
 
     <ul class="file-detail-tags has-margin-top" v-if="tags.length">
