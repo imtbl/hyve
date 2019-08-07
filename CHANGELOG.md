@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [1.1.0] - 2019-08-07
+
 ### Added
 
 + The number of tags are now displayed on the file detail view
@@ -28,4 +30,5 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/1.0.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/1.1.0...develop
+[1.1.0]: https://github.com/mserajnik/hyve/compare/1.0.0...1.1.0
