@@ -7,10 +7,11 @@
     <div class="navbar-brand">
 
       <router-link to="/" exact class="navbar-item has-text-weight-bold">
-        <svg v-if="showLogo"
-          class="icon"
+        <svg
+          class="icon icon--svg"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 31.09 32">
+          viewBox="0 0 31.09 32"
+          v-if="showLogo">
           <polygon points="22.45 0 15.69 13.39 15.41 13.39 8.64 0 0 0 11.7 21.31 19.39 21.31 31.09 0 22.45 0" />
           <rect class="cls-1" x="11.7" y="24.31" width="7.69" height="7.69" />
         </svg>
