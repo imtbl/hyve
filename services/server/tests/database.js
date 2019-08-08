@@ -2102,7 +2102,7 @@ test('Database: Get file by id', t => {
   )
 })
 
-test('Database: Get mime types', t => {
+test('Database: Get MIME types', t => {
   t.deepEqual(
     files.getMimeTypes(),
     [{ name: 'image/png' }]

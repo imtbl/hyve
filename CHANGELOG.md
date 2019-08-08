@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added the ability to connect to hydrus client instead of hydrus server
+
 ## [1.1.0] - 2019-08-07
 
 ### Added

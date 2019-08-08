@@ -1,7 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 
-const lockFilePath = path.resolve(__dirname, '../..', '.sync-lock')
+const config = require('../config')
+
+const lockFilePath = path.resolve(
+  path.dirname(config.contentDbPath), '.sync-lock'
+)
 
 module.exports = {
   exists () {

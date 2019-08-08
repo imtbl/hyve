@@ -38,7 +38,7 @@ module.exports = {
     profiler.log('Fill new mappings table: {dt}\n')
 
     this.fillNewMimeTypesTable()
-    profiler.log('Fill new mime types table: {dt}\n')
+    profiler.log('Fill new MIME types table: {dt}\n')
 
     this.updateTagCountsOnNewFilesTables()
     profiler.log('Update tag counts on new files table: {dt}\n')
@@ -427,8 +427,8 @@ module.exports = {
       db.hyve.pragma('wal_checkpoint(TRUNCATE)')
     } catch (err) {
       console.info(
-        'Could not clean up after succesful sync, will try again on the next' +
-          'run.'
+        'Could not clean up after succesful sync, will try again on the ' +
+          'next run.'
       )
     }
   }

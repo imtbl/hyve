@@ -1,5 +1,5 @@
 {
-  "name": "@hyve/sync",
+  "name": "@hyve/sync-server",
   "version": "1.1.0",
   "author": "Michael Serajnik <ms@mserajnik.at>",
   "license": "MIT",

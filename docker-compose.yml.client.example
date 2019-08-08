@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+
+  hyve-sync:
+    image: mserajnik/hyve:latest
+    command: sync-client
+    restart: always
+    volumes:
+      - data:/data
+    environment:
+      - HYVE_CONTENT_DB_PATH=/data/content.db
+      - HYVE_HYDRUS_CLIENT_DB_PATH=/data/client.db
+      - HYVE_HYDRUS_MASTER_DB_PATH=/data/client.master.db
+      - HYVE_HYDRUS_MAPPINGS_DB_PATH=/data/client.mappings.db
+      - HYVE_HYDRUS_CACHES_DB_PATH=/data/client.caches.db
+      - HYVE_HYDRUS_INCLUDE_INBOX=false
+      - HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27
+      - HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *
+
+  hyve-server:
+    image: mserajnik/hyve:latest
+    command: server
+    depends_on:
+      - hyve-sync
+    restart: always
+    ports:
+      - '8000:8000'
+    volumes:
+      - data:/data
+    environment:
+      - NODE_ENV=production
+      - HYVE_URL=http://localhost:8000
+      - HYVE_PORT=8000
+      - HYVE_API_BASE=/api
+      - HYVE_MEDIA_BASE=/media
+      - HYVE_CROSS_ORIGIN_ALLOWED=true
+      - HYVE_AUTHENTICATION_DB_PATH=/data/authentication.db
+      - HYVE_CONTENT_DB_PATH=/data/content.db
+      - HYVE_HYDRUS_FILES_PATH=/data/client_files
+      - HYVE_HYDRUS_FILES_MODE=client
+      - HYVE_NUMBER_OF_WORKERS=
+      - HYVE_DB_CHECKPOINT_INTERVAL=3600
+      - HYVE_REGISTRATION_ENABLED=true
+      - HYVE_AUTHENTICATION_REQUIRED=true
+      - HYVE_MIN_PASSWORD_LENGTH=16
+      - HYVE_FILES_PER_PAGE=42
+      - HYVE_TAGS_PER_PAGE=42
+      - HYVE_AUTOCOMPLETE_LIMIT=10
+      - HYVE_COUNTS_ENABLED=true
+      - HYVE_COUNTS_CACHING_ENABLED=true
+      - HYVE_ACCESS_LOGGING_ENABLED=false
+      - HYVE_ACCESS_LOGFILE_PATH_OVERRIDE=/data/hyve-logs/access.log
+
+  hyve-web:
+    image: mserajnik/hyve:latest
+    command: web
+    depends_on:
+      - hyve-server
+    restart: always
+    ports:
+      - '8080:8080'
+    environment:
+      - VUE_APP_HYVE_TITLE=hyve
+      - VUE_APP_HYVE_SUBTITLE=A Vue-based frontend for <a href="https://github.com/mserajnik/hyve" target="_blank" rel="noopener">hyve</a>
+      - VUE_APP_HYVE_DESCRIPTION=A Vue-based frontend for hyve
+      - VUE_APP_HYVE_ROBOTS=noindex, nofollow
+      - VUE_APP_HYVE_PRIMARY_COLOR=#3449bb
+      - VUE_APP_HYVE_USE_NORMAL_LETTER_CASE=false
+      - VUE_APP_HYVE_SHOW_LOGO=true
+      - VUE_APP_HYVE_API_URL=http://localhost:8000/api
+      - VUE_APP_HYVE_REGISTRATION_ENABLED=true
+      - VUE_APP_HYVE_AUTHENTICATION_REQUIRED=true
+      - VUE_APP_HYVE_MIN_PASSWORD_LENGTH=16
+      - VUE_APP_HYVE_COUNTS_ENABLED=true
+      - VUE_APP_HYVE_FALLBACK_FILES_SORTING_NAMESPACE=namespace
+      - VUE_APP_HYVE_DEFAULT_NAMESPACE_COLORS=character#00b401|creator#bb1800|meta#000000|person#008f00|series#bb2cb9|studio#941100
+      - VUE_APP_HYVE_FALLBACK_NAMESPACE_COLOR=#0088fb
+
+volumes:
+  data:
