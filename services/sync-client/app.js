@@ -189,9 +189,9 @@ module.exports = {
       FROM
         ${config.hydrusTableCurrentMappings}_${this.hydrusServices.tag}
       NATURAL JOIN
-        ${config.hydrusTableTags}
-      NATURAL JOIN
         ${config.hydrusTableNamespaces}
+      NATURAL JOIN
+        ${config.hydrusTableTags}
       NATURAL JOIN
         ${config.hydrusTableCurrentFiles}
       NATURAL JOIN
