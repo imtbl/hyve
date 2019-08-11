@@ -6,4 +6,5 @@
 **/*.log
 **/.crontab
 **/.env
+**/.sync-lock
 **/docker-compose.yml
