@@ -12,6 +12,10 @@ and this project adheres to
 
 + Added the ability to connect to hydrus client instead of hydrus server
 
+### Changed
+
++ Updated dependencies
+
 ## [1.1.0] - 2019-08-07
 
 ### Added
