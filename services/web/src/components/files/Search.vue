@@ -109,11 +109,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import config from '@/config'
 import api from '@/api'
-import queryHelper from '@/util/query-helper'
-import inputHelper from '@/util/input-helper'
-import tagsHelper from '@/util/tags-helper'
-import constraintsHelper from '@/util/constraints-helper'
-import visibilityHelper from '@/util/visibility-helper'
+import { ensureValidPage, generateFilesQuery } from '@/util/query'
+import {
+  isValidFileSearchInput,
+  convertToShortcutIfNecessary
+} from '@/util/input'
+import { getSortedTags, getTagColor } from '@/util/tags'
+import { isValidConstraint } from '@/util/constraints'
+import { isDesktopResolution } from '@/util/visibility'
 
 import SearchInput from '@/components/general/FileSearchInput'
 import Sorting from '@/components/files/Sorting'
@@ -155,7 +158,7 @@ export default {
       sortedActiveConstraints.sort((a, b) => a.name.localeCompare(b.name))
 
       return sortedActiveConstraints.concat(
-        tagsHelper.getSortedTags(this.activeTags.slice(), true)
+        getSortedTags(this.activeTags.slice(), true)
       )
     },
     placeholderText: function () {
@@ -175,7 +178,7 @@ export default {
   methods: {
     initialize: function () {
       if (!isEmpty(this.$route.query)) {
-        this.page = queryHelper.ensureValidPage(this.$route.query.page)
+        this.page = ensureValidPage(this.$route.query.page)
 
         if (this.$route.query.tags) {
           this.setFilters(this.$route.query.tags)
@@ -185,7 +188,7 @@ export default {
           const constraints = []
 
           for (const constraint of this.$route.query.constraints) {
-            if (constraintsHelper.isValidConstraint(constraint)) {
+            if (isValidConstraint(constraint)) {
               constraints.push(constraint)
             }
           }
@@ -250,7 +253,7 @@ export default {
       api.cancelPendingTagAutocompleteRequest()
 
       if (this.search.trim() !== '') {
-        if (!inputHelper.isValidFileSearchInput(this.search, true)) {
+        if (!isValidFileSearchInput(this.search, true)) {
           return
         }
       }
@@ -260,7 +263,7 @@ export default {
       this.loadFiles(false)
     },
     updateQueryAndGetStrings: function () {
-      const query = queryHelper.generateFilesQuery(
+      const query = generateFilesQuery(
         this.activeTags.map(
           tag => tag.exclude
             ? `-${tag.name}`
@@ -281,10 +284,18 @@ export default {
         delete sanitizedQuery.direction
       }
 
+      /*
+       * The error is not handled because the `this.$router.replace()` call is
+       * only used to replace the current URL, no navigation is expected.
+       * vue-router can not navigate to the same URL again and errors as of
+       * version 3.1.0.
+       *
+       * See https://github.com/vuejs/vue-router/issues/2872#issuecomment-519073998
+       */
       this.$router.replace({
         path: '/files',
         query: query
-      })
+      }).catch(err => {}) // eslint-disable-line handle-callback-err
 
       return {
         queryString: qs.stringify(query, { addQueryPrefix: true }),
@@ -294,7 +305,7 @@ export default {
       }
     },
     loadFiles: function (fetchNextPage) {
-      this.search = inputHelper.convertToShortcutIfNecessary(
+      this.search = convertToShortcutIfNecessary(
         this.search.trim().toLowerCase()
       )
 
@@ -305,9 +316,7 @@ export default {
             : this.search.startsWith('-')
               ? this.search.substr(1)
               : this.search,
-          constraintsHelper.isValidConstraint(this.search)
-            ? 'constraint'
-            : 'tag'
+          isValidConstraint(this.search) ? 'constraint' : 'tag'
         )
 
         this.addFilter(this.search)
@@ -328,7 +337,7 @@ export default {
       this.fetchFiles(queryStrings.sanitizedQueryString)
     },
     addFilter: function (filter) {
-      if (constraintsHelper.isValidConstraint(filter)) {
+      if (isValidConstraint(filter)) {
         this.activeConstraints.push({
           type: 'constraint',
           name: filter
@@ -347,7 +356,7 @@ export default {
         type: 'tag',
         name: filterName,
         exclude: filter.startsWith('-'),
-        color: tagsHelper.getColor(filterName, this.colors)
+        color: getTagColor(filterName, this.colors)
       })
     },
     setFilters: function (filters) {
@@ -394,9 +403,10 @@ export default {
     },
     finishInitialization: function () {
       /*
-       * workaround to delay sorting watchers to not reset page to 1 after
-       * loading the view
-       * see https://github.com/vuejs/vue/issues/2918#issuecomment-408669914
+       * Workaround to delay sorting watchers to not reset page to 1 after
+       * loading the view.
+       *
+       * See https://github.com/vuejs/vue/issues/2918#issuecomment-408669914
        */
       setTimeout(() => {
         this.isInitialized = true
@@ -423,7 +433,7 @@ export default {
       })
     },
     focusSearchInput: function () {
-      if (visibilityHelper.isDesktopResolution()) {
+      if (isDesktopResolution()) {
         this.$refs.searchInput.$refs.search.focus()
       }
     },

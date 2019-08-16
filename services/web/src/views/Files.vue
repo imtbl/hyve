@@ -75,8 +75,10 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Media from 'vue-media'
 
 import config from '@/config'
-import urlFormatter from '@/util/url-formatter'
-import visibilityHelper from '@/util/visibility-helper'
+import { prepareMediaUrl } from '@/util/url'
+import {
+  isPageScrolledPastElement, isBottomOfPageVisible
+} from '@/util/visibility'
 
 import Search from '@/components/files/Search'
 import ScrollToTopBar from '@/components/general/ScrollToTopBar'
@@ -99,7 +101,7 @@ export default {
       for (const file of this.files) {
         if (this.isImage(file.mime)) {
           galleryItems.push({
-            src: urlFormatter.prepareMediaUrl(file.mediaUrl),
+            src: prepareMediaUrl(file.mediaUrl),
             w: file.width,
             h: file.height
           })
@@ -126,9 +128,7 @@ export default {
       const preparedThumbnailUrls = []
 
       for (const file of this.files) {
-        preparedThumbnailUrls.push(
-          urlFormatter.prepareMediaUrl(file.thumbnailUrl)
-        )
+        preparedThumbnailUrls.push(prepareMediaUrl(file.thumbnailUrl))
       }
 
       return preparedThumbnailUrls
@@ -146,19 +146,15 @@ export default {
       )
     },
     prepareMediaUrl: function (url) {
-      return urlFormatter.prepareMediaUrl(url)
+      return prepareMediaUrl(url)
     }
   },
   mounted: function () {
-    this.showScrollToTopBar = visibilityHelper.isPageScrolledPastElement(
-      'results-separator'
-    )
+    this.showScrollToTopBar = isPageScrolledPastElement('results-separator')
 
     scrollListener = throttle(() => {
-      this.wantsAdditionalFiles = visibilityHelper.isBottomOfPageVisible(88)
-      this.showScrollToTopBar = visibilityHelper.isPageScrolledPastElement(
-        'results-separator'
-      )
+      this.wantsAdditionalFiles = isBottomOfPageVisible(88)
+      this.showScrollToTopBar = isPageScrolledPastElement('results-separator')
     }, 50)
 
     window.addEventListener(

@@ -2,7 +2,7 @@ const objectHash = require('object-hash')
 
 const db = require('../db')
 const config = require('../config')
-const queryHelper = require('../util/query-helper')
+const queryHelper = require('../util/query')
 
 module.exports = {
   get (page, sort = 'id', direction = null) {

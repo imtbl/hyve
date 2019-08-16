@@ -30,10 +30,10 @@ test.before(t => {
   migrations.run(process.env.HYVE_AUTHENTICATION_DB_PATH)
 
   db = require('../src/db')
-  users = require('../src/models/users')
-  tokens = require('../src/models/tokens')
-  tags = require('../src/models/tags')
-  files = require('../src/models/files')
+  users = require('../src/repositories/users')
+  tokens = require('../src/repositories/tokens')
+  tags = require('../src/repositories/tags')
+  files = require('../src/repositories/files')
 
   db.connect()
 })

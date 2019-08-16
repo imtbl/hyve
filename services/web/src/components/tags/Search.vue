@@ -82,7 +82,7 @@ import qs from 'qs'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import config from '@/config'
-import queryHelper from '@/util/query-helper'
+import { ensureValidPage, generateTagsQuery } from '@/util/query'
 
 import Sorting from '@/components/tags/Sorting'
 
@@ -128,7 +128,7 @@ export default {
           this.contains = this.$route.query.contains.trim().toLowerCase()
         }
 
-        this.page = queryHelper.ensureValidPage(this.$route.query.page)
+        this.page = ensureValidPage(this.$route.query.page)
 
         if (
           ['id', 'name', 'files', 'contains', 'random']
@@ -174,7 +174,7 @@ export default {
     updateQueryAndGetStrings: function () {
       this.contains = this.contains.trim().toLowerCase()
 
-      const query = queryHelper.generateTagsQuery(
+      const query = generateTagsQuery(
         this.contains,
         this.sorting,
         this.sortingDirection,
@@ -187,10 +187,18 @@ export default {
         delete sanitizedQuery.direction
       }
 
+      /*
+       * The error is not handled because the `this.$router.replace()` call is
+       * only used to replace the current URL, no navigation is expected.
+       * vue-router can not navigate to the same URL again and errors as of
+       * version 3.1.0.
+       *
+       * See https://github.com/vuejs/vue-router/issues/2872#issuecomment-519073998
+       */
       this.$router.replace({
         path: '/tags',
         query: query
-      })
+      }).catch(err => {}) // eslint-disable-line handle-callback-err
 
       return {
         queryString: qs.stringify(query, { addQueryPrefix: true }),
@@ -214,9 +222,10 @@ export default {
     },
     finishInitialization: function () {
       /*
-       * workaround to delay sorting watchers to not reset page to 1 after
-       * loading the view
-       * see https://github.com/vuejs/vue/issues/2918#issuecomment-408669914
+       * Workaround to delay sorting watchers to not reset page to 1 after
+       * loading the view.
+       *
+       * See https://github.com/vuejs/vue/issues/2918#issuecomment-408669914
        */
       setTimeout(() => {
         this.isInitialized = true

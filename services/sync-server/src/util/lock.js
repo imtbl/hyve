@@ -7,16 +7,23 @@ const lockFilePath = path.resolve(
   path.dirname(config.contentDbPath), '.sync-lock'
 )
 
-module.exports = {
-  exists () {
-    return fs.existsSync(lockFilePath)
-  },
-  create () {
-    fs.closeSync(fs.openSync(lockFilePath, 'w'))
-  },
-  remove () {
-    if (this.exists()) {
-      fs.unlinkSync(lockFilePath)
-    }
+function exists () {
+  return fs.existsSync(lockFilePath)
+}
+
+function create () {
+  fs.closeSync(fs.openSync(lockFilePath, 'w'))
+}
+
+function remove () {
+  if (exists()) {
+    fs.unlinkSync(lockFilePath)
   }
+}
+
+module.exports = {
+  path: lockFilePath,
+  exists,
+  create,
+  remove
 }

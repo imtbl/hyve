@@ -14,6 +14,7 @@ and this project adheres to
 
 ### Changed
 
++ Refactored code
 + Updated dependencies
 
 ## [1.1.0] - 2019-08-07

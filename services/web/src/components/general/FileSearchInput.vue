@@ -69,9 +69,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import api from '@/api'
 import errorHandler from '@/util/error-handler'
-import inputHelper from '@/util/input-helper'
-import tagsHelper from '@/util/tags-helper'
-import visibilityHelper from '@/util/visibility-helper'
+import { isValidFileSearchInput } from '@/util/input'
+import { getTagColor } from '@/util/tags'
+import { isDesktopResolution } from '@/util/visibility'
 
 export default {
   name: 'FileSearchInput',
@@ -133,7 +133,7 @@ export default {
 
         this.isSearching = true
 
-        if (!inputHelper.isValidFileSearchInput(this.localSearch)) {
+        if (!isValidFileSearchInput(this.localSearch)) {
           this.isSearching = false
           this.suggestions = []
 
@@ -165,9 +165,7 @@ export default {
 
           for (const suggestion of res.data.tags) {
             suggestion.type = 'tag'
-            suggestion.color = tagsHelper.getColor(
-              suggestion.name, this.colors
-            )
+            suggestion.color = getTagColor(suggestion.name, this.colors)
           }
 
           this.suggestions = this.getConstraintSuggestions(partialSearch)
@@ -287,8 +285,7 @@ export default {
 
       this.$nextTick(() => {
         if (
-          this.$refs.search &&
-          (type === 'constraint' || visibilityHelper.isDesktopResolution())
+          this.$refs.search && (type === 'constraint' || isDesktopResolution())
         ) {
           this.$refs.search.focus()
         }

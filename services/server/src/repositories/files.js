@@ -2,9 +2,9 @@ const objectHash = require('object-hash')
 
 const db = require('../db')
 const config = require('../config')
-const tagsModel = require('./tags')
-const queryHelper = require('../util/query-helper')
-const constraintsHelper = require('../util/constraints-helper')
+const tagsRepository = require('./tags')
+const queryHelper = require('../util/query')
+const constraintsHelper = require('../util/constraints')
 
 module.exports = {
   getById (id) {
@@ -828,7 +828,7 @@ module.exports = {
   generateNamespacesOrderBy (namespaces, direction) {
     namespaces = [...new Set(namespaces)]
 
-    const validNamespaces = tagsModel.getNamespaces().map(
+    const validNamespaces = tagsRepository.getNamespaces().map(
       namespace => namespace.name
     )
 

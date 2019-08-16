@@ -75,9 +75,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Media from 'vue-media'
 
 import config from '@/config'
-import queryHelper from '@/util/query-helper'
-import tagsHelper from '@/util/tags-helper'
-import visibilityHelper from '@/util/visibility-helper'
+import { generateDefaultFilesQuery } from '@/util/query'
+import { getTagColor } from '@/util/tags'
+import {
+  isPageScrolledPastElement, isBottomOfPageVisible
+} from '@/util/visibility'
 
 import Search from '@/components/tags/Search'
 import ScrollToTopBar from '@/components/general/ScrollToTopBar'
@@ -101,10 +103,8 @@ export default {
         tags.push({
           name: tag.name,
           path: '/files',
-          query: queryHelper.generateDefaultFilesQuery(tag.name),
-          color: tagsHelper.getColor(
-            tag.name, this.colors
-          ),
+          query: generateDefaultFilesQuery(tag.name),
+          color: getTagColor(tag.name, this.colors),
           fileCount: tag.fileCount
         })
       }
@@ -119,15 +119,11 @@ export default {
     })
   },
   mounted: function () {
-    this.showScrollToTopBar = visibilityHelper.isPageScrolledPastElement(
-      'results-separator'
-    )
+    this.showScrollToTopBar = isPageScrolledPastElement('results-separator')
 
     scrollListener = throttle(() => {
-      this.wantsAdditionalTags = visibilityHelper.isBottomOfPageVisible(88)
-      this.showScrollToTopBar = visibilityHelper.isPageScrolledPastElement(
-        'results-separator'
-      )
+      this.wantsAdditionalTags = isBottomOfPageVisible(88)
+      this.showScrollToTopBar = isPageScrolledPastElement('results-separator')
     }, 50)
 
     window.addEventListener(

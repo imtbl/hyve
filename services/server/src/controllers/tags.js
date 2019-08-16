@@ -1,4 +1,4 @@
-const tags = require('../models/tags')
+const tags = require('../repositories/tags')
 
 module.exports = {
   getTags (query) {

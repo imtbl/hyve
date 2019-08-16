@@ -33,7 +33,7 @@ import {
 import config from '@/config'
 import router from '@/router'
 import store from '@/store'
-import visibilityHelper from '@/util/visibility-helper'
+import { isDesktopResolution } from '@/util/visibility'
 
 import App from '@/App'
 
@@ -49,10 +49,7 @@ Vue.use(PhotoSwipe)
 Vue.directive('focus', {
   inserted: function (el) {
     Vue.nextTick(() => {
-      if (
-        !store.state.app.hasSavedScrollPosition &&
-        visibilityHelper.isDesktopResolution()
-      ) {
+      if (!store.state.app.hasSavedScrollPosition && isDesktopResolution()) {
         el.focus()
       }
     })
