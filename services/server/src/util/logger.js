@@ -2,14 +2,11 @@ module.exports = {
   log (message, type = 'info') {
     switch (type) {
       case 'error':
-        console.error(`${this.getTime()}:`, message)
+        console.error(`${new Date().toLocaleString()}:`, message)
 
         break
       default:
-        console.info(`${this.getTime()}:`, message)
+        console.info(`${new Date().toLocaleString()}:`, message)
     }
-  },
-  getTime () {
-    return new Date().toLocaleString()
   }
 }

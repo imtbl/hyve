@@ -7,7 +7,7 @@ const setup = require('./_setup')
 
 setup.setTestEnvironment()
 
-let app, db
+let sync, db
 
 test.before(t => {
   fse.copySync(
@@ -15,14 +15,14 @@ test.before(t => {
     path.resolve(__dirname, `storage/content.db`)
   )
 
-  app = require('../app')
+  sync = require('../src/sync')
   db = require('../src/db')
 
   db.connect()
 })
 
 test.serial('sync: run', t => {
-  app.runSync()
+  sync.run()
 
   db.connect()
 

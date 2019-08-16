@@ -3,7 +3,7 @@ const router = require('express').Router()
 const config = require('../config')
 const middleware = require('../middleware')
 const controllers = require('../controllers')
-const mediaHelper = require('../util/media-helper')
+const mediaHelper = require('../util/media')
 
 router.get('/original/:mediaHash',
   middleware.media.get.inputValidationConfig,

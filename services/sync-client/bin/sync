@@ -8,12 +8,15 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 const lock = require('../src/util/lock')
 
 if (lock.exists()) {
-  console.info('Another sync seems to be running already, aborting.')
+  console.info(
+    'Another sync seems to be running already, aborting. If you are certain ' +
+    `that this is not the case, delete ${lock.path} and try again.`
+  )
 
   process.exit(0)
 }
 
-const app = require('../app')
+const sync = require('../src/sync')
 
 const abort = () => {
   if (!cluster.isMaster) {
@@ -81,14 +84,14 @@ if (cluster.isMaster) {
 } else {
   process.on('message', message => {
     if (message === 'abort') {
-      app.abort()
+      sync.abort()
     }
   })
 
   try {
     lock.create()
 
-    app.runSync()
+    sync.run()
 
     lock.remove()
 

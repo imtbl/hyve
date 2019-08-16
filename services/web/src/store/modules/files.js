@@ -18,7 +18,7 @@ import {
 import config from '@/config'
 import api from '@/api'
 import errorHandler from '@/util/error-handler'
-import tagsHelper from '@/util/tags-helper'
+import { getSortedTags } from '@/util/tags'
 
 export default {
   namespaced: true,
@@ -340,7 +340,7 @@ export default {
         return []
       }
 
-      return tagsHelper.getSortedTags(state.detailItem.tags)
+      return getSortedTags(state.detailItem.tags)
     }
   }
 }
