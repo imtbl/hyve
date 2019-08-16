@@ -100,6 +100,7 @@ function createTables (initial = true) {
       id INTEGER NOT NULL PRIMARY KEY UNIQUE,
       tags_id INTEGER UNIQUE DEFAULT NULL,
       hash TEXT UNIQUE NOT NULL,
+      ipfs_hash TEXT UNIQUE DEFAULT NULL,
       mime INTEGER NOT NULL,
       size INTEGER NOT NULL,
       width INTEGER NOT NULL,

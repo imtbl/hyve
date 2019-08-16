@@ -168,8 +168,9 @@ export default {
             suggestion.color = getTagColor(suggestion.name, this.colors)
           }
 
-          this.suggestions = this.getConstraintSuggestions(partialSearch)
-            .concat(res.data.tags)
+          this.suggestions = this.getConstraintSuggestions(
+            partialSearch.toLowerCase()
+          ).concat(res.data.tags)
         })
         .catch(async err => {
           if (axios.isCancel(err)) {
@@ -211,6 +212,10 @@ export default {
         [
           ['hash'],
           ['hash=', 'hash!=']
+        ],
+        [
+          ['ipfs'],
+          ['ipfs=', 'ipfs!=']
         ],
         [
           ['size'],

@@ -114,6 +114,7 @@ function createTables (initial = true) {
       id INTEGER NOT NULL PRIMARY KEY UNIQUE,
       tags_id INTEGER UNIQUE DEFAULT NULL,
       hash TEXT UNIQUE NOT NULL,
+      ipfs_hash TEXT UNIQUE DEFAULT NULL,
       mime INTEGER NOT NULL,
       size INTEGER NOT NULL,
       width INTEGER NOT NULL,
@@ -185,7 +186,16 @@ function getServices () {
         ${config.hydrusTableServices}
       WHERE
         ${config.hydrusTableServices}.service_key = X'6C6F63616C2066696C6573'`
-    ).pluck().get()
+    ).pluck().get(),
+    ipfs: db.hyve.prepare(
+      `SELECT
+        ${config.hydrusTableServices}.service_id
+      FROM
+        ${config.hydrusTableServices}
+      WHERE
+        ${config.hydrusTableServices}.service_type = 13
+      LIMIT 1`
+    ).pluck().get() || null
   }
 }
 
@@ -267,6 +277,7 @@ function fillNewFilesTable () {
       id,
       tags_id,
       hash,
+      ipfs_hash,
       mime,
       size,
       width,
@@ -278,6 +289,7 @@ function fillNewFilesTable () {
         ${config.hydrusTableCurrentFiles}.hash_id,
         ${config.hydrusTableCurrentFiles}.hash_id,
         LOWER(HEX(${config.hydrusTableHashes}.hash)),
+        ${config.hydrusTableServiceFilenames}.filename,
         ${config.hydrusTableFilesInfo}.mime,
         ${config.hydrusTableFilesInfo}.size,
         ${config.hydrusTableFilesInfo}.width,
@@ -290,6 +302,12 @@ function fillNewFilesTable () {
         ${config.hydrusTableHashes}
       NATURAL JOIN
         ${config.hydrusTableFilesInfo}
+      LEFT JOIN
+        ${config.hydrusTableServiceFilenames}
+        ON
+          ${config.hydrusTableServiceFilenames}.hash_id = ${config.hydrusTableCurrentFiles}.hash_id
+        AND
+          ${config.hydrusTableServiceFilenames}.service_id = ${hydrusServices.ipfs}
       WHERE
         ${config.hydrusTableCurrentFiles}.service_id = ${hydrusServices.file}
       AND

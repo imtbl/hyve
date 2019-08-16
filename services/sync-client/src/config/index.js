@@ -24,11 +24,12 @@ module.exports = {
   hydrusTableCurrentFiles: 'hydrus_client_db.current_files',
   hydrusTableFileInbox: 'hydrus_client_db.file_inbox',
   hydrusTableFilesInfo: 'hydrus_client_db.files_info',
+  hydrusTableServiceFilenames: 'hydrus_client_db.service_filenames',
   hydrusTableTags: 'hydrus_master_db.tags',
-  hydrusTableLocalTagsCache: 'hydrus_caches_db.local_tags_cache',
   hydrusTableNamespaces: 'hydrus_master_db.namespaces',
   hydrusTableHashes: 'hydrus_master_db.hashes',
   hydrusTableCurrentMappings: 'hydrus_mappings_db.current_mappings',
+  hydrusTableLocalTagsCache: 'hydrus_caches_db.local_tags_cache',
   includeInbox: process.env.HYVE_HYDRUS_INCLUDE_INBOX === 'true',
   supportedMimeTypes: process.env.HYVE_HYDRUS_SUPPORTED_MIME_TYPES
     .split(',')

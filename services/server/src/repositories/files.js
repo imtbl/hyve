@@ -12,6 +12,7 @@ module.exports = {
       `SELECT
         id,
         hash,
+        ipfs_hash AS ipfsHash,
         mime,
         size,
         width,
@@ -38,6 +39,7 @@ module.exports = {
       `SELECT
         id,
         hash,
+        ipfs_hash AS ipfsHash,
         mime,
         size,
         width,
@@ -139,6 +141,7 @@ module.exports = {
       `SELECT
         files.id,
         files.hash,
+        files.ipfs_hash AS ipfsHash,
         files.mime,
         files.size,
         files.width,
@@ -233,6 +236,7 @@ module.exports = {
       `SELECT
         files.id,
         files.hash,
+        files.ipfs_hash AS ipfsHash,
         files.mime,
         files.size,
         files.width,
@@ -324,6 +328,7 @@ module.exports = {
       `SELECT
         files.id,
         files.hash,
+        files.ipfs_hash AS ipfsHash,
         files.mime,
         files.size,
         files.width,
@@ -398,6 +403,7 @@ module.exports = {
       `SELECT
         id,
         hash,
+        files.ipfs_hash AS ipfsHash,
         mime,
         size,
         width,
@@ -517,6 +523,7 @@ module.exports = {
       `SELECT
         files.id,
         files.hash,
+        files.ipfs_hash AS ipfsHash,
         files.mime,
         files.size,
         files.width,
@@ -625,6 +632,7 @@ module.exports = {
       `SELECT
         files.id,
         files.hash,
+        files.ipfs_hash AS ipfsHash,
         files.mime,
         files.size,
         files.width,
@@ -732,6 +740,7 @@ module.exports = {
       `SELECT
         files.id,
         files.hash,
+        files.ipfs_hash AS ipfsHash,
         files.mime,
         files.size,
         files.width,
@@ -938,6 +947,7 @@ module.exports = {
     const orConditions = {
       id: { clauses: [], params: [] },
       hash: { clauses: [], params: [] },
+      ipfs: { clauses: [], params: [] },
       size: { clauses: [], params: [] },
       width: { clauses: [], params: [] },
       height: { clauses: [], params: [] },
@@ -947,6 +957,7 @@ module.exports = {
     const andConditions = {
       id: { clauses: [], params: [] },
       hash: { clauses: [], params: [] },
+      ipfs: { clauses: [], params: [] },
       size: { clauses: [], params: [] },
       width: { clauses: [], params: [] },
       height: { clauses: [], params: [] },
@@ -957,8 +968,13 @@ module.exports = {
     for (let constraint of constraints) {
       constraint = constraintsHelper.getConstraintParts(constraint)
 
-      const field = constraint.field === 'tags'
-        ? 'tag_count'
+      const fieldMappings = {
+        ipfs: 'ipfs_hash',
+        tags: 'tag_count'
+      }
+
+      const field = fieldMappings[constraint.field]
+        ? fieldMappings[constraint.field]
         : constraint.field
 
       switch (constraint.field) {
@@ -1078,6 +1094,7 @@ module.exports = {
 
           break
         case 'hash':
+        case 'ipfs':
           switch (constraint.comparator) {
             case '=':
               orConditions[constraint.field].clauses.push(
@@ -1116,7 +1133,9 @@ module.exports = {
       }
     }
 
-    const keys = ['id', 'hash', 'size', 'width', 'height', 'mime', 'tags']
+    const keys = [
+      'id', 'hash', 'ipfs', 'size', 'width', 'height', 'mime', 'tags'
+    ]
 
     for (const key of keys) {
       if (Object.prototype.hasOwnProperty.call(orConditions, key)) {

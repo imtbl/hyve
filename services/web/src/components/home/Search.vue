@@ -45,10 +45,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import config from '@/config'
 import api from '@/api'
 import { generateDefaultFilesQuery } from '@/util/query'
-import {
-  isValidFileSearchInput,
-  convertToShortcutIfNecessary
-} from '@/util/input'
+import { isValidFileSearchInput, transformFileSearchInput } from '@/util/input'
 
 import SearchInput from '@/components/general/FileSearchInput'
 
@@ -73,9 +70,7 @@ export default {
 
       this.$router.push({
         path: '/files',
-        query: generateDefaultFilesQuery(
-          convertToShortcutIfNecessary(this.search.trim().toLowerCase())
-        )
+        query: generateDefaultFilesQuery(transformFileSearchInput(this.search))
       })
     }
   },

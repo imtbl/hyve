@@ -110,10 +110,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import config from '@/config'
 import api from '@/api'
 import { ensureValidPage, generateFilesQuery } from '@/util/query'
-import {
-  isValidFileSearchInput,
-  convertToShortcutIfNecessary
-} from '@/util/input'
+import { isValidFileSearchInput, transformFileSearchInput } from '@/util/input'
 import { getSortedTags, getTagColor } from '@/util/tags'
 import { isValidConstraint } from '@/util/constraints'
 import { isDesktopResolution } from '@/util/visibility'
@@ -305,9 +302,7 @@ export default {
       }
     },
     loadFiles: function (fetchNextPage) {
-      this.search = convertToShortcutIfNecessary(
-        this.search.trim().toLowerCase()
-      )
+      this.search = transformFileSearchInput(this.search)
 
       if (this.search !== '') {
         this.removeFilter(

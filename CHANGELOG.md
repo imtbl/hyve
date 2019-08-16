@@ -11,6 +11,7 @@ and this project adheres to
 ### Added
 
 + Added the ability to connect to hydrus client instead of hydrus server
++ Added support for IPFS hashes
 
 ### Changed
 

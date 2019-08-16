@@ -27,6 +27,8 @@ export default {
   useNormalLetterCase:
     process.env.VUE_APP_HYVE_USE_NORMAL_LETTER_CASE === 'true',
   showLogo: process.env.VUE_APP_HYVE_SHOW_LOGO === 'true',
+  ipfsGatewayBaseUrl:
+    process.env.VUE_APP_IPFS_GATEWAY_BASE_URL || 'https://ipfs.io/ipfs/',
   apiUrl: process.env.VUE_APP_HYVE_API_URL,
   isRegistrationEnabled:
     process.env.VUE_APP_HYVE_REGISTRATION_ENABLED === 'true',

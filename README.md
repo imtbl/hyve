@@ -398,6 +398,9 @@ to work correctly.
   disables these case transformations.
 + `VUE_APP_HYVE_SHOW_LOGO`: setting this to false disables the display of the
   hyve logo in the navigation bar.
++ `VUE_APP_IPFS_GATEWAY_BASE_URL=https://ipfs.io/ipfs`: the URL to the IPFS
+  gateway you want to use for IPFS links (only available when connected to
+  hydrus client). __No trailing slashes.__
 + `VUE_APP_HYVE_API_URL=http://localhost:8000/api`: the URL to your hyve HTTP
   API. __No trailing slashes.__
 + `VUE_APP_HYVE_REGISTRATION_ENABLED=true`: setting this to `false` disables the

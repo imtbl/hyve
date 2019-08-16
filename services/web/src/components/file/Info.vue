@@ -37,12 +37,23 @@
           Download
         </a>
       </p>
+      <p v-if="file.ipfsHash">
+        <a
+          class="button is-primary"
+          :href="file.ipfsHash | buildIpfsUrl"
+          target="_blank"
+          rel="noopener">
+          IPFS
+        </a>
+      </p>
     </div>
 
   </div>
 </template>
 
 <script>
+import config from '@/config'
+
 export default {
   name: 'Info',
   props: {
@@ -77,6 +88,13 @@ export default {
       return parseFloat(
         (bytes / Math.pow(1024, i)).toFixed(2)
       ).toLocaleString() + ` ${sizes[i]}`
+    },
+    buildIpfsUrl: function (ipfsHash) {
+      if (!ipfsHash) {
+        return ''
+      }
+
+      return `${config.ipfsGatewayBaseUrl}/${ipfsHash}`
     }
   }
 }

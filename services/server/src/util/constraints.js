@@ -3,7 +3,7 @@ const normalDistribution = require('distributions').Normal(0, 1)
 const config = require('../config')
 
 const validConstraintExpression =
-  /^(id|hash|size|width|height|mime|tags)(=|!=|~=|>|<|><)(([0-9]+(\.?[0-9]+)?(k|m|g)|(0|[1-9]+[0-9]*))(,?[0-9]+(\.?[0-9]+)?(k|m|g)|,?(0|[1-9]+[0-9]*))?|[a-f0-9]{64}|\w+\/[-+.\w]+)$/
+  /^(id|hash|ipfs|size|width|height|mime|tags)(=|!=|~=|>|<|><)(([0-9]+(\.?[0-9]+)?(k|m|g)|(0|[1-9]+[0-9]*))(,?[0-9]+(\.?[0-9]+)?(k|m|g)|,?(0|[1-9]+[0-9]*))?|[a-f0-9]{64}|[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+|\w+\/[-+.\w]+)$/
 
 function isValidNumberValue (value) {
   return /^(0|[1-9]+[0-9]*)$/.exec(value)
@@ -15,6 +15,12 @@ function isValidSizeValue (value) {
 
 function isValidHashValue (value) {
   return /^[a-f0-9]{64}$/.exec(value)
+}
+
+function isValidIpfsValue (value) {
+  return /^[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]+$/.exec(
+    value
+  )
 }
 
 function isValidMimeValue (value) {
@@ -94,6 +100,16 @@ function isValidConstraint (constraint) {
       }
 
       if (!isValidHashValue(constraint.value)) {
+        return false
+      }
+
+      break
+    case 'ipfs':
+      if (!['=', '!='].includes(constraint.comparator)) {
+        return false
+      }
+
+      if (!isValidIpfsValue(constraint.value)) {
         return false
       }
 
