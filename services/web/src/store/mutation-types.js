@@ -45,6 +45,7 @@ export const SET_TOTAL_TAG_COUNT = 'setTotalTagCount'
 export const UNSET_TOTAL_TAG_COUNT = 'unsetTotalTagCount'
 export const SET_LAST_TAGS_PAGE_REACHED = 'setLastTagsPageReached'
 export const UNSET_LAST_TAGS_PAGE_REACHED = 'unsetLastTagsPageReached'
+export const SET_MOST_USED_TAGS = 'setMostUsedTags'
 export const SET_NAMESPACES = 'setNamespaces'
 
 // Files

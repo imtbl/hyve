@@ -37,6 +37,7 @@ module.exports = {
   minPasswordLength: process.env.HYVE_MIN_PASSWORD_LENGTH || 16,
   filesPerPage: process.env.HYVE_FILES_PER_PAGE || 42,
   tagsPerPage: process.env.HYVE_TAGS_PER_PAGE || 42,
+  mostUsedTagsLimit: process.env.HYVE_MOST_USED_TAGS_LIMIT || 20,
   autocompleteLimit: process.env.HYVE_AUTOCOMPLETE_LIMIT || 10,
   countsAreEnabled: process.env.HYVE_COUNTS_ENABLED === 'true',
   countsCachingIsEnabled: process.env.HYVE_COUNTS_CACHING_ENABLED === 'true',

@@ -355,6 +355,8 @@ to work correctly.
   value and use `1024` as the minimum length instead.
 + `HYVE_FILES_PER_PAGE=42`: the results per page when listing files.
 + `HYVE_TAGS_PER_PAGE=42`: the results per page when listing tags.
++ `HYVE_MOST_USED_TAGS_LIMIT=20`: the maximum amount of tags returned when
+  listing the most used tags.
 + `HYVE_AUTOCOMPLETE_LIMIT=10`: the maximum amount of tag completion results.
 + `HYVE_COUNTS_ENABLED=true`: enables the output of total counts when listing
   files and tags for the cost of response times (especially with larger
@@ -396,8 +398,10 @@ to work correctly.
   uses lowercase text throughout most of the application (like hydrus client)
   for aesthestic reasons. If you do not want that, setting this to `false`
   disables these case transformations.
-+ `VUE_APP_HYVE_SHOW_LOGO`: setting this to false disables the display of the
++ `VUE_APP_HYVE_SHOW_LOGO`: setting this to `false` disables the display of the
   hyve logo in the navigation bar.
++ `VUE_APP_HYVE_SHOW_TAG_CLOUD=false`: setting this to `true` enables the
+  display of a tag cloud with the most used tags on the frontpage.
 + `VUE_APP_IPFS_GATEWAY_BASE_URL=https://ipfs.io/ipfs`: the URL to the IPFS
   gateway you want to use for IPFS links (only available when connected to
   hydrus client). __No trailing slashes.__

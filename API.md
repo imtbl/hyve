@@ -21,6 +21,7 @@
   + [MIME types](#mime-types)
   + [Tags](#tags)
     + [Listing tags](#listing-tags)
+    + [Listing the most used tags](#listing-the-most-used-tags)
     + [Autocompleting tags](#autocompleting-tags)
   + [Files](#files)
     + [Listing files](#listing-files)
@@ -429,9 +430,9 @@ __Possible errors:__
 
 ### Tags
 
-Requires authentication by default. Responds with a list of tags.
-
 #### Listing tags
+
+Requires authentication by default. Responds with a list of tags.
 
 __Route:__ `GET /<HYVE_API_BASE>/tags?page=<page>&contains=<text>&sort=<method>&direction=<sort direction>`
 
@@ -477,6 +478,33 @@ __Possible errors:__
 + `InvalidContainsParameterError`
 + `InvalidSortParameterError`
 + `InvalidDirectionParameterError`
++ `ShuttingDownError`
++ `InternalServerError`
+
+#### Listing the most used tags
+
+Requires authentication by default. Responds with a list of the most used tags.
+
+__Route:__ `GET /<HYVE_API_BASE>/most-used-tags`
+
+__Output on success:__
+
+```json5
+{
+  "tags": [
+    {
+      "name": <name of the tag>,
+      "fileCount": <amount of files having the tag>
+    }
+    // […]
+  ]
+}
+```
+
+__Possible errors:__
+
++ `MissingTokenError`
++ `InvalidTokenError`
 + `ShuttingDownError`
 + `InternalServerError`
 

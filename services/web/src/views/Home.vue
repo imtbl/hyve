@@ -10,7 +10,23 @@
           class="subtitle has-text-centered"
           v-if="subtitle"
           v-html="subtitle"></h2>
-        <search v-if="isAuthorized  || !isAuthenticationRequired" />
+        <search v-if="isAuthorized || !isAuthenticationRequired" />
+      </div>
+    </section>
+
+    <section
+      class="section"
+      v-if="
+        showTagCloud &&
+        (isAuthorized || !isAuthenticationRequired) &&
+        mostUsedTags.length
+      ">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8-tablet is-6-desktop has-text-centered">
+            <tag-cloud />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -49,6 +65,7 @@ import { mapState } from 'vuex'
 import config from '@/config'
 
 import Search from '@/components/home/Search'
+import TagCloud from '@/components/home/TagCloud'
 
 export default {
   name: 'Home',
@@ -66,16 +83,19 @@ export default {
     return {
       version: config.version,
       title: config.title,
-      subtitle: config.subtitle
+      subtitle: config.subtitle,
+      showTagCloud: config.showTagCloud
     }
   },
   computed: {
     ...mapState({
-      api: state => state.api
+      api: state => state.api,
+      mostUsedTags: state => state.tags.mostUsed
     })
   },
   components: {
-    Search
+    Search,
+    TagCloud
   }
 }
 </script>

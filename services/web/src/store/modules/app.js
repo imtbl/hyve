@@ -35,10 +35,14 @@ export default {
       await context.dispatch('api/fetchStatus', false, { root: true })
 
       if (!context.rootState.error.isFatal) {
-        await context.dispatch('api/fetchInfo', false, { root: true })
-        await context.dispatch('auth/fetchUser', false, { root: true })
-        await context.dispatch('tags/fetchNamespaces', false, { root: true })
-        await context.dispatch('files/fetchMimeTypes', false, { root: true })
+        await Promise.all([
+          context.dispatch('api/fetchInfo', false, { root: true }),
+          context.dispatch('auth/fetchUser', false, { root: true }),
+          context.dispatch('tags/fetchMostUsed', false, { root: true }),
+          context.dispatch('tags/fetchNamespaces', false, { root: true }),
+          context.dispatch('files/fetchMimeTypes', false, { root: true })
+        ])
+
         context.dispatch('settings/load', false, { root: true })
       }
 

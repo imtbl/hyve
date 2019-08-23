@@ -145,6 +145,25 @@ module.exports = {
         ${config.autocompleteLimit}`
     ).all(`%${partialTag}%`, `${partialTag}`)
   },
+  getMostUsed () {
+    const data = {}
+
+    const orderBy = this.generateOrderBy('files', 'desc')
+
+    data.tags = db.content.prepare(
+      `SELECT
+        name,
+        file_count AS fileCount
+      FROM
+        tags
+      ORDER BY
+        ${orderBy.method}
+      LIMIT
+        ${config.mostUsedTagsLimit}`
+    ).all(...orderBy.params)
+
+    return data
+  },
   getNamespaces () {
     return db.content.prepare(
       'SELECT name FROM namespaces ORDER BY name'

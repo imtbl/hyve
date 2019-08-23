@@ -21,6 +21,9 @@ module.exports = {
   completeTag (partialTag) {
     return tags.complete(partialTag)
   },
+  getMostUsedTags () {
+    return tags.getMostUsed()
+  },
   getNamespaces () {
     return tags.getNamespaces()
   },
