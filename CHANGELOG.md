@@ -19,6 +19,11 @@ and this project adheres to
 + Refactored code
 + Updated dependencies
 
+### Fixed
+
++ Switched to using `Number.MAX_SAFE_INTEGER` instead of an arbitrary large
+  number
+
 ## [1.1.0] - 2019-08-07
 
 ### Added

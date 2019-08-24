@@ -2,9 +2,10 @@ import { isValidConstraint } from '@/util/constraints'
 import store from '@/store'
 
 export function ensureValidPage (page) {
-  const validPage = page && !isNaN(page) && page > 1 && page <= 999999999
-    ? parseInt(page, 10)
-    : 1
+  const validPage =
+    page && !isNaN(page) && page > 1 && page <= Number.MAX_SAFE_INTEGER
+      ? parseInt(page, 10)
+      : 1
 
   return validPage > 0 ? validPage : 1
 }
