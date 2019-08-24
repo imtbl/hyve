@@ -23,6 +23,7 @@ and this project adheres to
 
 + Switched to using `Number.MAX_SAFE_INTEGER` instead of an arbitrary large
   number
++ Error titles are now displayed in normal letter case regardless of setting
 
 ## [1.1.0] - 2019-08-07
 
