@@ -31,8 +31,28 @@ hyve is an application that allows you to serve [hydrus][hydrus] media over an
 HTTP API. It can connect to either hydrus client or server. A web-based,
 [booru][booru]-like client that consumes the API is also included.
 
-hyve does not allow you to modify or manage your hydrus media in any way, it
-simply provides a way to view them.
+As a rough overview, hyve currently has the following features:
+
++ The ability to connect to either hydrus client or hydrus server
++ A straight-forward HTTP API, including:
+  + Comprehensive options to search and sort your files and tags
+  + Optional authentication and simple user management, allowing you to run
+    hyve in either a public or private manner
++ A modern web client that makes use of the API's full feature set and comes
+  with:
+  + An easy to use interface that is optimized for both desktop and mobile
+    devices
+  + Direct support for common image and video formats on the web; non-supported
+    files can be downloaded and viewed locally
+  + Built-in user registration, login and and actions like changing username or
+    password or deleting the user altogether
+  + The ability to save options like tag colors and default sorting methods on
+    a per-client basis, allowing you to have different settings in each browser
+  + Basic web app features that allow you to add the client to the home screen
+    of your smart device and use it just like a native app
+
+__hyve does not allow you to modify or manage your hydrus media in any way,__
+__it simply provides a different way to view them.__
 
 ## Table of contents
 
