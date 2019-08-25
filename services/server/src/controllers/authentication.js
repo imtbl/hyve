@@ -1,5 +1,5 @@
-const users = require('../models/users')
-const tokens = require('../models/tokens')
+const users = require('../repositories/users')
+const tokens = require('../repositories/tokens')
 
 module.exports = {
   getUserById (userId) {

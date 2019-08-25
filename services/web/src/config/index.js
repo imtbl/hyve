@@ -21,12 +21,15 @@ const generateNamespaceColors = environmentVariable => {
 }
 
 export default {
-  version: '1.1.0',
+  version: '2.0.0',
   title: process.env.VUE_APP_HYVE_TITLE,
   subtitle: process.env.VUE_APP_HYVE_SUBTITLE,
   useNormalLetterCase:
     process.env.VUE_APP_HYVE_USE_NORMAL_LETTER_CASE === 'true',
   showLogo: process.env.VUE_APP_HYVE_SHOW_LOGO === 'true',
+  showTagCloud: process.env.VUE_APP_HYVE_SHOW_TAG_CLOUD === 'true',
+  ipfsGatewayBaseUrl:
+    process.env.VUE_APP_IPFS_GATEWAY_BASE_URL || 'https://ipfs.io/ipfs/',
   apiUrl: process.env.VUE_APP_HYVE_API_URL,
   isRegistrationEnabled:
     process.env.VUE_APP_HYVE_REGISTRATION_ENABLED === 'true',

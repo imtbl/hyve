@@ -1,0 +1,10 @@
+.tag-cloud {
+  overflow: hidden;
+
+  ul {
+    li {
+      display: inline-block;
+      line-height: 2em;
+    }
+  }
+}

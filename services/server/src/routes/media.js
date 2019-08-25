@@ -3,7 +3,7 @@ const router = require('express').Router()
 const config = require('../config')
 const middleware = require('../middleware')
 const controllers = require('../controllers')
-const mediaHelper = require('../util/media-helper')
+const mediaHelper = require('../util/media')
 
 router.get('/original/:mediaHash',
   middleware.media.get.inputValidationConfig,
@@ -31,9 +31,18 @@ router.get('/original/:mediaHash',
       })
     }
 
-    const fileData = await mediaHelper.getFileData(
-      'original', req.params.mediaHash
-    )
+    let fileData
+
+    try {
+      fileData = await mediaHelper.getFileData(
+        'original', req.params.mediaHash
+      )
+    } catch (err) {
+      return next({
+        customStatus: 404,
+        customName: 'NotFoundError'
+      })
+    }
 
     res.sendFile(fileData.path, {
       headers: {
@@ -69,9 +78,18 @@ router.get('/thumbnails/:mediaHash',
       })
     }
 
-    const fileData = await mediaHelper.getFileData(
-      'thumbnail', req.params.mediaHash
-    )
+    let fileData
+
+    try {
+      fileData = await mediaHelper.getFileData(
+        'thumbnail', req.params.mediaHash
+      )
+    } catch (err) {
+      return next({
+        customStatus: 404,
+        customName: 'NotFoundError'
+      })
+    }
 
     res.sendFile(fileData.path, {
       headers: {

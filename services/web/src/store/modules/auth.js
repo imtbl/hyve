@@ -403,10 +403,14 @@ export default {
             }
           )
 
-          await context.dispatch('api/fetchInfo', false, { root: true })
-          await context.dispatch('fetchUser')
-          await context.dispatch('tags/fetchNamespaces', false, { root: true })
-          await context.dispatch('files/fetchMimeTypes', false, { root: true })
+          await Promise.all([
+            context.dispatch('api/fetchInfo', false, { root: true }),
+            context.dispatch('fetchUser'),
+            context.dispatch('tags/fetchMostUsed', false, { root: true }),
+            context.dispatch('tags/fetchNamespaces', false, { root: true }),
+            context.dispatch('files/fetchMimeTypes', false, { root: true })
+          ])
+
           context.dispatch('settings/load', false, { root: true })
 
           router.push('/')

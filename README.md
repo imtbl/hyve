@@ -25,14 +25,34 @@
   </a>
 </h1>
 
-> Expose and consume your hydrus server media via HTTP API
+> Expose and consume your hydrus media via HTTP API
 
-hyve is an application that allows you to serve [hydrus server][hydrus-server]
-media over an HTTP API. A web-based, [booru][booru]-like client that consumes
-the API is also included.
+hyve is an application that allows you to serve [hydrus][hydrus] media over an
+HTTP API. It can connect to either hydrus client or server. A web-based,
+[booru][booru]-like client that consumes the API is also included.
 
-hyve does not allow you to modify or manage your hydrus server media in any
-way, it simply provides a way to view them.
+As a rough overview, hyve currently has the following features:
+
++ The ability to connect to either hydrus client or hydrus server
++ A straight-forward HTTP API, including:
+  + Comprehensive options to search and sort your files and tags
+  + Optional authentication and simple user management, allowing you to run
+    hyve in either a public or private manner
++ A modern web client that makes use of the API's full feature set and comes
+  with:
+  + An easy to use interface that is optimized for both desktop and mobile
+    devices
+  + Direct support for common image and video formats on the web; non-supported
+    files can be downloaded and viewed locally
+  + Built-in user registration, login and and actions like changing username or
+    password or deleting the user altogether
+  + The ability to save options like tag colors and default sorting methods on
+    a per-client basis, allowing you to have different settings in each browser
+  + Basic web app features that allow you to add the client to the home screen
+    of your smart device and use it just like a native app
+
+__hyve does not allow you to modify or manage your hydrus media in any way,__
+__it simply provides a different way to view them.__
 
 ## Table of contents
 
@@ -43,15 +63,18 @@ way, it simply provides a way to view them.
   + [Updating](#updating)
     + [Updating with Docker](#updating-with-docker)
     + [Updating without Docker](#updating-without-docker)
+    + [Upgrading from `1.x.x` to `2.x.x`](#upgrading-from-1xx-to-2xx)
 + [Usage](#usage)
   + [Running with Docker](#running-with-docker)
   + [Running without Docker](#running-without-docker)
   + [Configuration](#configuration)
-    + [Sync configuration](#sync-configuration)
+    + [Client sync configuration](#client-sync-configuration)
+    + [Server sync configuration](#server-sync-configuration)
     + [Server configuration](#server-configuration)
     + [Web configuration](#web-configuration)
   + [HTTP API](#http-api)
-+ [Screenshots](#Screenshots)
++ [Screenshots](#screenshots)
++ [FAQ](#faq)
 + [Donate](#donate)
 + [Maintainer](#maintainer)
 + [Contribute](#contribute)
@@ -94,7 +117,8 @@ user@local:hyve$ yarn && yarn bootstrap
 
 ### Dependencies
 
-+ [hydrus server][hydrus-server]
++ [hydrus][hydrus] (either the client or the server, depending on what you want
+  to connect to)
 + [Docker][docker] (when running with Docker)
 + [Node.js][node-js] (when running without Docker)
 + [Yarn][yarn] (when running without Docker)
@@ -113,7 +137,7 @@ therefore always safe to simply install.
 When necessary, this section will be expanded with upgrade guides for new major
 versions.
 
-### Updating with Docker
+#### Updating with Docker
 
 Simply pull the latest Docker image to update:
 
@@ -121,7 +145,7 @@ Simply pull the latest Docker image to update:
 user@local:~$ docker pull mserajnik/hyve
 ```
 
-### Updating without Docker
+#### Updating without Docker
 
 If you have installed via cloning the repository, you can update via Git:
 
@@ -132,20 +156,35 @@ user@local:hyve$ cd services/server
 user@local:hyve/services/server$ yarn migrate
 ```
 
+#### Upgrading from `1.x.x` to `2.x.x`
+
+`2.0.0` has introduced the ability to (optionally) connect to hydrus client
+instead of hydrus server.
+
+Aside from renaming `services/sync` to `services/sync-server` (which you might
+need to adjust in any start scripts you might have set up when running without
+Docker), a few environment variables have been added, so you can simply compare
+with your current configuration and make additions/adjustments where necessary.
+
 ## Usage
 
 hyve consists of three different services:
 
-+ __Sync:__ used to create a modified copy of the hydrus server databases that
-  is optimized for hyve's purposes and allows for searching and sorting options
++ __Sync:__ used to create a modified copy of the hydrus databases that is
+  optimized for hyve's purposes and allows for searching and sorting options
   that would otherwise not be possible
+  + There are two variants, one for hydrus client and one for hydrus server
 + __Server:__ the server component of hyve that provides the HTTP API
 + __Web:__ the web-based client that connects to the HTTP API
 
 In general, you will probably want to run all three services, unless you plan
 to use a different client to connect to the HTTP API.
 
-You will also need to set up and run hydrus server, which is described
+Depending on on your choice on you want what to connect to, you will also need
+to run either hydrus client or server. If you are considering using hyve, you
+are probably already familiar with the client. In that case, you can just
+continue using it as you normally would. If you want to set up a server (to
+connect hyve to that instead), you can find a guide for doing so
 [here][hydrus-server-help].
 
 If you plan to expose the HTTP API outside your local network, it is _heavily_
@@ -154,15 +193,20 @@ proxy (I recommend [nginx][nginx]).
 
 ### Running with Docker
 
-To make running with Docker as easy as possible, a
+To make running with Docker as easy as possible, a working
 [Docker Compose][docker-compose] example setup is provided. This setup also
 includes a [dockerized hydrus server][hydrus-server-docker] and stores the data
 inside a named volume (which you might want to adjust if you are a more
 experienced Docker user).
 
-Simply duplicate `docker-compose.yml.example` as `docker-compose.yml`, adjust
-the variables in the `environment` section as described [here](#configuration)
-and start the containers:
+Running hyve with hydrus server might be preferable if you want to manage your
+media with a local hydrus client and are fine with pushing any files you want
+to use with hyve to hydrus server.
+
+To get started with the example setup, simply duplicate
+`docker-compose.yml.server.example` as `docker-compose.yml`, adjust the
+variables in the `environment` section as described [here](#configuration) and
+start the containers:
 
 ```zsh
 user@local:hyve$ docker-compose up -d
@@ -172,11 +216,23 @@ Afterwards, proceed with the hydrus server setup, upload your files and tags to
 it and wait for the first sync to run. The HTTP API and the web client will be
 available under the configured URLs.
 
+If you want to connect to hydrus client instead, you can have a look at
+[this][hydrus-docker] for a dockerized version of hydrus client that you should
+be able to run in combination with hyve. I have included a Docker Compose
+example setup only containg the hyve services
+(`docker-compose.yml.client.example`) that you will need to expand accordingly
+to make it work.
+
+Of course, running hydrus client outside of Docker and using a bind mount to
+make the databases and media accessible to a dockerized instance of hyve does
+also work.
+
 ### Running without Docker
 
 To run without Docker, you will first need to duplicate the `.env.example` in
-each service directory (`services/sync`, `services/server` and `services/web`)
-as `.env` and adjust the variables as described [here](#configuration).
+each service directory (`services/sync-client` or `services/sync-server`,
+`services/server` and `services/web`) as `.env` and adjust the variables as
+described [here](#configuration).
 
 You will also need to create the content and authentication database files at
 your desired location:
@@ -193,15 +249,21 @@ user@local:hyve$ cd services/server
 user@local:hyve/services/server$ yarn migrate
 ```
 
-After that, you can run a sync once you have set up hydrus server and put files
-and tags on it:
+After that, you can run a sync once you have files in your hydrus client:
 
 ```zsh
-user@local:hyve$ cd services/sync
-user@local:hyve/services/sync$ yarn sync
+user@local:hyve$ cd services/sync-client
+user@local:hyve/services/sync-client$ yarn sync
 ```
 
-Then, start the server:
+Or, if you have set up hydrus server and pushed files to it:
+
+```zsh
+user@local:hyve$ cd services/sync-server
+user@local:hyve/services/sync-server$ yarn sync
+```
+
+Then, start the hyve server:
 
 ```zsh
 user@local:hyve$ cd services/server
@@ -228,7 +290,28 @@ services needs to be configured separately. Please keep in mind that some
 options might not work together or might have to match across services for them
 to work correctly.
 
-### Sync configuration
+#### Client sync configuration
+
++ `HYVE_CONTENT_DB_PATH=`: sets the path to hyve's content database.
+  __Absolute path required.__
++ `HYVE_HYDRUS_CLIENT_DB_PATH=`: sets the path to the hydrus client main
+  database (called `client.db`). __Absolute path required.__
++ `HYVE_HYDRUS_MASTER_DB_PATH=`: sets the path to the hydrus client master
+  database (called `client.master.db`). __Absolute path required.__
++ `HYVE_HYDRUS_MAPPINGS_DB_PATH=`: sets the path to the hydrus client mappings
+  database (called `client.mappings.db`). __Absolute path required.__
++ `HYVE_HYDRUS_CACHES_DB_PATH=`: sets the path to the hydrus client caches
+  database (called `client.caches.db`). __Absolute path required.__
++ `HYVE_HYDRUS_INCLUDE_INBOX=false`: setting this to `true` includes files that
+  are in the inbox in the sync.
++ `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27`: the IDs
+  of the MIME types hyve should sync from hydrus server. See
+  [here][supported-mime-types-client] for the complete list of MIME types you
+  can choose from.
++ `HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *`: the cron schedule for running the sync
+  inside Docker. Irrelevant if the sync service is run outside of Docker.
+
+#### Server sync configuration
 
 + `HYVE_CONTENT_DB_PATH=`: sets the path to hyve's content database.
   __Absolute path required.__
@@ -248,12 +331,12 @@ to work correctly.
   repositories increases `n`.
 + `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27`: the IDs
   of the MIME types hyve should sync from hydrus server. See
-  [here][supported-mime-types] for the complete list of MIME types you can
-  choose from.
+  [here][supported-mime-types-server] for the complete list of MIME types you
+  can choose from.
 + `HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *`: the cron schedule for running the sync
   inside Docker. Irrelevant if the sync service is run outside of Docker.
 
-### Server configuration
+#### Server configuration
 
 + `NODE_ENV=development`: defines the environment hyve is running in.
   It currently does not affect anything besides the access logging but it
@@ -276,8 +359,13 @@ to work correctly.
 + `HYVE_CONTENT_DB_PATH=./storage/content.db`: the content database path
   (absolute or relative). The database must exist and the file must be
   read-/writable by hyve.
-+ `HYVE_HYDRUS_FILES_PATH=`: sets the path to the hydrus server files directory
-  (called `server_files`). __Absolute path required.__
++ `HYVE_HYDRUS_FILES_PATH=`: sets the path to the hydrus client or server files
+  directory (called `client_files` or `server_files`). __Absolute path__
+  __required.__
++ `HYVE_HYDRUS_FILES_MODE=`: lets hyve know the media directory structure and
+  file naming. Must be `client` when connecting hyve to hydrus client and
+  `server` when connecting to hydrus server. If left empty it will default to
+  `server`.
 + `HYVE_NUMBER_OF_WORKERS=`: sets the number of workers. By default, one worker
   per logical CPU core is used. You might want to decrease or increase that
   number, depending on your needs/hardware. In general, the more workers are
@@ -299,6 +387,8 @@ to work correctly.
   value and use `1024` as the minimum length instead.
 + `HYVE_FILES_PER_PAGE=42`: the results per page when listing files.
 + `HYVE_TAGS_PER_PAGE=42`: the results per page when listing tags.
++ `HYVE_MOST_USED_TAGS_LIMIT=20`: the maximum amount of tags returned when
+  listing the most used tags.
 + `HYVE_AUTOCOMPLETE_LIMIT=10`: the maximum amount of tag completion results.
 + `HYVE_COUNTS_ENABLED=true`: enables the output of total counts when listing
   files and tags for the cost of response times (especially with larger
@@ -319,7 +409,7 @@ to work correctly.
   `NODE_ENV=development`, hyve logs to the console instead. __Absolute path__
   __required.__
 
-### Web configuration
+#### Web configuration
 
 + `VUE_APP_HYVE_TITLE=hyve`: sets the title of your installation. It is used
   throughout the whole web client, making it possible to add some personal
@@ -340,8 +430,13 @@ to work correctly.
   uses lowercase text throughout most of the application (like hydrus client)
   for aesthestic reasons. If you do not want that, setting this to `false`
   disables these case transformations.
-+ `VUE_APP_HYVE_SHOW_LOGO`: setting this to false disables the display of the
++ `VUE_APP_HYVE_SHOW_LOGO`: setting this to `false` disables the display of the
   hyve logo in the navigation bar.
++ `VUE_APP_HYVE_SHOW_TAG_CLOUD=false`: setting this to `true` enables the
+  display of a tag cloud with the most used tags on the frontpage.
++ `VUE_APP_IPFS_GATEWAY_BASE_URL=https://ipfs.io/ipfs`: the URL to the IPFS
+  gateway you want to use for IPFS links (only available when connected to
+  hydrus client). __No trailing slashes.__
 + `VUE_APP_HYVE_API_URL=http://localhost:8000/api`: the URL to your hyve HTTP
   API. __No trailing slashes.__
 + `VUE_APP_HYVE_REGISTRATION_ENABLED=true`: setting this to `false` disables the
@@ -394,6 +489,59 @@ Here are some screenshots of the web client:
 
 ![Changing user data][screenshot-user]
 
+## FAQ
+
+> I am encountering a _unique constraint_ error when syncing. Why does this
+> happen?
+
+This issue can occur when hydrus client or server is running maintenance tasks
+while hyve runs a sync. In that case, it can usually easily be fixed by waiting
+a few minutes and trying again. If the error persists, it might indicate issues
+with your hydrus databases. If you can rule out that this is the case, please
+[open an issue][issues].
+
+> Does hyve make changes to my hydrus client/server databases?
+
+No, hyve never makes any changes to the hydrus client/server databases, it only
+reads from them.
+
+> Why does hyve create a copy of the hydrus client/server databases instead of
+> simply connecting to it or using the client API?
+
+Some features like searching by multiple namespaces or constraints would simply
+not be possible (with decent performance) without using a copy of the databases
+that is optimized for hyve's purposes.
+
+The database structure of hydrus is not built in a way that allows to deliver
+paginated results that are also sorted by various criteria, which makes it not
+suitable for an HTTP API that is meant to be accessed outside of a LAN. hydrus
+itself does most of the sorting in code _after_ fetching the results, which is
+really not an option when using pagination.
+
+The client API has not been considered since it is still very limited and does
+only feature a fraction of what hyve's API can do. It is also not available for
+hydrus server, which disqualifies it regardless.
+
+> Does hyve also make a copy of my media?
+
+No, only a copy of the hydrus databases is made. hyve directly accesses the
+hydrus media files.
+
+> Why can I not upload files to hyve and sync them back to hydrus
+> client/server?
+
+hyve is only intended as a way to access your media files outside the
+constraints of hydrus client/server. It is not meant to be yet another
+booru-like software that allows you to upload and manage media. If you are
+interested in something like that, I recommend you to check out popular booru
+softwares like [danbooru][danbooru] or [szurubooru][szurubooru] instead.
+
+> hydrus client/server supports _x_. Will you add this feature to hyve as well?
+
+Maybe. If you want to see a specific feature that you think would be a good fit
+for hyve, please [open an issue][issues]. In general, I prefer to add features
+that are not specific to either hydrus client or hydrus server.
+
 ## Donate
 
 If you like hyve and want to buy me a coffee, feel free to donate via PayPal:
@@ -422,7 +570,7 @@ You are welcome to help out!
 [MIT](LICENSE.md) © Michael Serajnik
 
 [booru]: https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards
-[hydrus-server]: http://hydrusnetwork.github.io/hydrus
+[hydrus]: http://hydrusnetwork.github.io/hydrus
 [docker]: https://www.docker.com/
 [docker-hub]: https://hub.docker.com/r/mserajnik/hyve/
 [node-js]: https://nodejs.org/en/
@@ -432,8 +580,12 @@ You are welcome to help out!
 [nginx]: https://www.nginx.com/
 [docker-compose]: https://docs.docker.com/compose/
 [hydrus-server-docker]: https://github.com/mserajnik/hydrus-server-docker
-[supported-mime-types]: https://github.com/mserajnik/hyve/blob/master/services/sync/src/config/index.js#L5-L17
+[hydrus-docker]: https://github.com/Suika/hydrus-docker
+[supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L5-L17
+[supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L17
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
+[danbooru]: https://github.com/r888888888/danbooru
+[szurubooru]: https://github.com/rr-/szurubooru
 
 [screenshot-frontpage]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-frontpage.png
 [screenshot-search]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-search.png

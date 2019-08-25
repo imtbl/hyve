@@ -21,6 +21,7 @@
   + [MIME types](#mime-types)
   + [Tags](#tags)
     + [Listing tags](#listing-tags)
+    + [Listing the most used tags](#listing-the-most-used-tags)
     + [Autocompleting tags](#autocompleting-tags)
   + [Files](#files)
     + [Listing files](#listing-files)
@@ -41,10 +42,10 @@ unless stated otherwise.
 
 ## Authentication
 
-By default, all the routes except the base route (`/api`), the ones for
-registering new users and creating tokens and the ones returning the actual
+By default, all the routes except the base route (`/<HYVE_API_BASE>`), the ones
+for registering new users and creating tokens and the ones returning the actual
 media files are protected with a token-based authentication. In order to access
-these routes, a valid token must be provided via an
+these routes, a valid token must be provided via
 `Authorization: Bearer <token>` header.
 
 When updating or deleting users and tokens, the provided authentication token
@@ -261,7 +262,7 @@ __Output on success:__
     {
         "token": <token>,
         "mediaToken": <media token>,
-        "ip": <IP the client creating the token>,
+        "ip": <IP address of the client creating the token (truncated to 16 bits for privacy reasons)>,
         "userAgent": <user agent of the client creating the token>,
         "createdAt": <ISO-8601 date representation of when the token was created>,
         "expiresAt": <ISO-8601 date representation of when the token will expire>
@@ -301,7 +302,7 @@ __Output on success:__
 {
   "token": <token>,
   "mediaToken": <media token>,
-  "ip": <IP of the client creating the token>,
+  "ip": <IP address of the client creating the token (truncated to 16 bits for privacy reasons)>,
   "userAgent": <user agent of the client creating the token>,
   "createdAt": <ISO-8601 date representation of when the token was created>,
   "expiresAt": <ISO-8601 date representation of when the token will expire>
@@ -429,9 +430,9 @@ __Possible errors:__
 
 ### Tags
 
-Requires authentication by default. Responds with a list of tags.
-
 #### Listing tags
+
+Requires authentication by default. Responds with a list of tags.
 
 __Route:__ `GET /<HYVE_API_BASE>/tags?page=<page>&contains=<text>&sort=<method>&direction=<sort direction>`
 
@@ -477,6 +478,33 @@ __Possible errors:__
 + `InvalidContainsParameterError`
 + `InvalidSortParameterError`
 + `InvalidDirectionParameterError`
++ `ShuttingDownError`
++ `InternalServerError`
+
+#### Listing the most used tags
+
+Requires authentication by default. Responds with a list of the most used tags.
+
+__Route:__ `GET /<HYVE_API_BASE>/most-used-tags`
+
+__Output on success:__
+
+```json5
+{
+  "tags": [
+    {
+      "name": <name of the tag>,
+      "fileCount": <amount of files having the tag>
+    }
+    // […]
+  ]
+}
+```
+
+__Possible errors:__
+
++ `MissingTokenError`
++ `InvalidTokenError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -562,12 +590,12 @@ Where `field` has to be one of the following:
 
 + `id`: the file ID
 + `hash`: the SHA-256 hash of the file
++ `ipfs`: the Base58 IPFS hash of the file
 + `size`: the file size in number of bytes
 + `width`: the width of the file
 + `height`: the height of the file
 + `mime`: the MIME type of the file
-+ `tags`: gets mapped to `tag_count` (the number of tags assigned to the file)
-  internally, it's abbreviated for simplicity's sake
++ `tags`: the number of tags assigned to the file
 
 `comparator` can be one of:
 
@@ -576,14 +604,14 @@ Where `field` has to be one of the following:
 + `!=`: compares if the content of the field does not equal the given value
   (supported by all fields)
 + `~=`: compares if the content of the field approximately equals the given
-  value (not supported by `hash` and `mime`)
+  value (not supported by `hash`, `ipfs` and `mime`)
 + `>`: compares if the content of the field is greater than the given value
-  (not supported by `hash` and `mime`)
+  (not supported by `hash`, `ipfs` and `mime`)
 + `<`: compares if the content of the field is smaller than the given value
-  (not supported by `hash` and `mime`)
+  (not supported by `hash`, `ipfs` and `mime`)
 + `><`: compares if the content of the field is between the two given values
   (the values are split by `,` and their order does not matter) (not supported
-  by `hash` and `mime`)
+  by `hash`, `ipfs` and `mime`)
 
 And `value` can be:
 
@@ -600,6 +628,7 @@ And `value` can be:
   using the `><` comparator (the same rules as the ones for the single file
   size apply)
 + _a SHA-256 digest_: can be used for comparing with `hash`
++ _a Base58 IPFS hash_: can be used for comparing with `ipfs`
 + _a MIME type in the common `<type>/<subtype>` syntax_: can be used for
   comparing with `mime`
 
@@ -662,6 +691,7 @@ __Output on success:__
     {
       "id": <file ID>,
       "hash": <file hash (SHA-256)>,
+      "ipfsHash": <IPFS hash (if available)>,
       "mime": <MIME type>,
       "size": <file size in bytes>,
       "width": <width in pixel>,
@@ -709,6 +739,7 @@ __Output on success:__
 {
   "id": <file ID>,
   "hash": <file hash (SHA-256)>,
+  "ipfsHash": <IPFS hash (if available)>,
   "mime": <MIME type>,
   "size": <file size in bytes>,
   "width": <width in pixel>,

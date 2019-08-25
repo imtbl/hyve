@@ -1,4 +1,4 @@
-const files = require('../models/files')
+const files = require('../repositories/files')
 
 module.exports = {
   getFileById (id) {

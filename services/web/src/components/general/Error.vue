@@ -8,7 +8,7 @@
         <article class="message is-danger">
 
           <div class="message-header">
-            <p>{{ error.name }}</p>
+            <p class="is-normal-case">{{ error.name }}</p>
           </div>
 
           <div class="message-body">

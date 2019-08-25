@@ -108,6 +108,7 @@
                 <ul>
                   <li><code>id</code>: the file ID</li>
                   <li><code>hash</code>: the SHA-256 hash of the file</li>
+                  <li><code>ipfs</code>: the Base58 IPFS hash of the file</li>
                   <li><code>size</code>: the file size in number of bytes</li>
                   <li><code>width</code>: the width of the file</li>
                   <li><code>height</code>: the height of the file</li>
@@ -134,27 +135,28 @@
                   <li>
                     <code>~=</code>:
                     compares if the content of the field approximately equals
-                    the given value (not supported by <code>hash</code> and
-                    <code>mime</code>)
+                    the given value (not supported by <code>hash</code>,
+                    <code>ipfs</code> and <code>mime</code>)
                   </li>
                   <li>
                     <code>&gt;</code>:
                     compares if the content of the field is greater than the
-                    given value (not supported by <code>hash</code> and
-                    <code>mime</code>)
+                    given value (not supported by <code>hash</code>,
+                    <code>ipfs</code> and <code>mime</code>)
                   </li>
                   <li>
                     <code>&lt;</code>:
                     compares if the content of the field is smaller than the
-                    given value (not supported by <code>hash</code> and
-                    <code>mime</code>)
+                    given value (not supported by <code>hash</code>,
+                    <code>ipfs</code> and <code>mime</code>)
                   </li>
                   <li>
                     <code>&gt;&lt;</code>:
                     compares if the content of the field is between the two
                     given values (the values are split by <code>,</code> and
                     their order does not matter) (not supported by
-                    <code>hash</code> and <code>mime</code>)</li>
+                    <code>hash</code>, <code>ipfs</code> and <code>mime</code>)
+                  </li>
                 </ul>
 
                 <p>And <code>value</code> can be:</p>
@@ -196,6 +198,10 @@
                   <li>
                     <em>a SHA-256 digest:</em>
                     can be used for comparing with <code>hash</code>
+                  </li>
+                  <li>
+                    <em>a Base58 IPFS hash:</em>
+                    can be used for comparing with <code>ipfs</code>
                   </li>
                   <li>
                     <em>a MIME type in the common

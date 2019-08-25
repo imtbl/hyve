@@ -83,6 +83,17 @@ export default {
       headers: headers
     })
   },
+  fetchMostUsedTags (token) {
+    const headers = {}
+
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`
+    }
+
+    return axios.get(`${config.apiUrl}/most-used-tags`, {
+      headers: headers
+    })
+  },
   autocompleteTag (body, token) {
     source = axios.CancelToken.source()
 

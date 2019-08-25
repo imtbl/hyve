@@ -5,7 +5,7 @@ const {
   sanitizeQuery
 } = require('express-validator')
 
-const constraintsHelper = require('../util/constraints-helper')
+const constraintsHelper = require('../util/constraints')
 
 module.exports = {
   get: {

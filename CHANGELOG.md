@@ -8,6 +8,29 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-08-25
+
+### Added
+
++ Added the ability to connect to hydrus client instead of hydrus server
++ Added support for IPFS hashes
++ Added the ability to display a tag cloud on the frontpage
++ Added FAQ section to the readme
+
+### Changed
+
++ Refactored code
++ IP addresses stored with tokens are now truncated to 16 bits for privacy
+  reasons
++ Added features overview
++ Updated dependencies
+
+### Fixed
+
++ Switched to using `Number.MAX_SAFE_INTEGER` instead of an arbitrary large
+  number
++ Error titles are now displayed in normal letter case regardless of setting
+
 ## [1.1.0] - 2019-08-07
 
 ### Added
@@ -30,5 +53,6 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/1.1.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.0.0...develop
+[2.0.0]: https://github.com/mserajnik/hyve/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/mserajnik/hyve/compare/1.0.0...1.1.0

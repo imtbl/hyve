@@ -85,9 +85,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Media from 'vue-media'
 
 import config from '@/config'
-import queryHelper from '@/util/query-helper'
-import tagsHelper from '@/util/tags-helper'
-import urlFormatter from '@/util/url-formatter'
+import { generateDefaultFilesQuery } from '@/util/query'
+import { getTagColor } from '@/util/tags'
+import { prepareMediaUrl } from '@/util/url'
 
 import Info from '@/components/file/Info'
 import Controls from '@/components/file/Controls'
@@ -126,8 +126,8 @@ export default {
         tags.push({
           name: tag.name,
           path: '/files',
-          query: queryHelper.generateDefaultFilesQuery(tag.name),
-          color: tagsHelper.getColor(tag.name, this.colors),
+          query: generateDefaultFilesQuery(tag.name),
+          color: getTagColor(tag.name, this.colors),
           fileCount: tag.fileCount
         })
       }
@@ -135,10 +135,10 @@ export default {
       return tags
     },
     preparedMediaUrl: function () {
-      return urlFormatter.prepareMediaUrl(this.file.mediaUrl)
+      return prepareMediaUrl(this.file.mediaUrl)
     },
     preparedThumbnailUrl: function () {
-      return urlFormatter.prepareMediaUrl(this.file.thumbnailUrl)
+      return prepareMediaUrl(this.file.thumbnailUrl)
     },
     ...mapState({
       file: state => state.files.detailItem,

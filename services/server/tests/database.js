@@ -30,10 +30,10 @@ test.before(t => {
   migrations.run(process.env.HYVE_AUTHENTICATION_DB_PATH)
 
   db = require('../src/db')
-  users = require('../src/models/users')
-  tokens = require('../src/models/tokens')
-  tags = require('../src/models/tags')
-  files = require('../src/models/files')
+  users = require('../src/repositories/users')
+  tokens = require('../src/repositories/tokens')
+  tags = require('../src/repositories/tags')
+  files = require('../src/repositories/files')
 
   db.connect()
 })
@@ -301,6 +301,7 @@ test('Database: Get files', t => {
           id: 5,
           hash:
             'd2f5788f623cde1f0fb3dc801396fee235c67ed11d9452bfd765f1331587401d',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6672,
           width: 500,
@@ -315,6 +316,7 @@ test('Database: Get files', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -329,6 +331,7 @@ test('Database: Get files', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -343,6 +346,7 @@ test('Database: Get files', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -367,6 +371,7 @@ test('Database: Get files sorted ascending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -381,6 +386,7 @@ test('Database: Get files sorted ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -395,6 +401,7 @@ test('Database: Get files sorted ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -409,6 +416,7 @@ test('Database: Get files sorted ascending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -433,6 +441,7 @@ test('Database: Get files sorted by size', t => {
           id: 5,
           hash:
             'd2f5788f623cde1f0fb3dc801396fee235c67ed11d9452bfd765f1331587401d',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6672,
           width: 500,
@@ -447,6 +456,7 @@ test('Database: Get files sorted by size', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -461,6 +471,7 @@ test('Database: Get files sorted by size', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -475,6 +486,7 @@ test('Database: Get files sorted by size', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -499,6 +511,7 @@ test('Database: Get files sorted by size ascending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -513,6 +526,7 @@ test('Database: Get files sorted by size ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -527,6 +541,7 @@ test('Database: Get files sorted by size ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -541,6 +556,7 @@ test('Database: Get files sorted by size ascending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -565,6 +581,7 @@ test('Database: Get files sorted by width', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -579,6 +596,7 @@ test('Database: Get files sorted by width', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -593,6 +611,7 @@ test('Database: Get files sorted by width', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -607,6 +626,7 @@ test('Database: Get files sorted by width', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -631,6 +651,7 @@ test('Database: Get files sorted by width descending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -645,6 +666,7 @@ test('Database: Get files sorted by width descending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -659,6 +681,7 @@ test('Database: Get files sorted by width descending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -673,6 +696,7 @@ test('Database: Get files sorted by width descending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -697,6 +721,7 @@ test('Database: Get files sorted by height', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -711,6 +736,7 @@ test('Database: Get files sorted by height', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -725,6 +751,7 @@ test('Database: Get files sorted by height', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -739,6 +766,7 @@ test('Database: Get files sorted by height', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -763,6 +791,7 @@ test('Database: Get files sorted by height ascending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -777,6 +806,7 @@ test('Database: Get files sorted by height ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -791,6 +821,7 @@ test('Database: Get files sorted by height ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -805,6 +836,7 @@ test('Database: Get files sorted by height ascending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -829,6 +861,7 @@ test('Database: Get files sorted by mime', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -843,6 +876,7 @@ test('Database: Get files sorted by mime', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -857,6 +891,7 @@ test('Database: Get files sorted by mime', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -871,6 +906,7 @@ test('Database: Get files sorted by mime', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -895,6 +931,7 @@ test('Database: Get files sorted by mime descending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -909,6 +946,7 @@ test('Database: Get files sorted by mime descending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -923,6 +961,7 @@ test('Database: Get files sorted by mime descending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -937,6 +976,7 @@ test('Database: Get files sorted by mime descending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -961,6 +1001,7 @@ test('Database: Get files sorted by tag count', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -975,6 +1016,7 @@ test('Database: Get files sorted by tag count', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -989,6 +1031,7 @@ test('Database: Get files sorted by tag count', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1003,6 +1046,7 @@ test('Database: Get files sorted by tag count', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -1027,6 +1071,7 @@ test('Database: Get files sorted by tag count ascending', t => {
           id: 5,
           hash:
             'd2f5788f623cde1f0fb3dc801396fee235c67ed11d9452bfd765f1331587401d',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6672,
           width: 500,
@@ -1041,6 +1086,7 @@ test('Database: Get files sorted by tag count ascending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -1055,6 +1101,7 @@ test('Database: Get files sorted by tag count ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1069,6 +1116,7 @@ test('Database: Get files sorted by tag count ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1093,6 +1141,7 @@ test('Database: Get files sorted by namespace', t => {
           id: 5,
           hash:
             'd2f5788f623cde1f0fb3dc801396fee235c67ed11d9452bfd765f1331587401d',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6672,
           width: 500,
@@ -1107,6 +1156,7 @@ test('Database: Get files sorted by namespace', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -1121,6 +1171,7 @@ test('Database: Get files sorted by namespace', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1135,6 +1186,7 @@ test('Database: Get files sorted by namespace', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1159,6 +1211,7 @@ test('Database: Get files sorted by namespace descending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1173,6 +1226,7 @@ test('Database: Get files sorted by namespace descending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1187,6 +1241,7 @@ test('Database: Get files sorted by namespace descending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1201,6 +1256,7 @@ test('Database: Get files sorted by namespace descending', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -1225,6 +1281,7 @@ test('Database: Get files sorted by invalid namespace', t => {
           id: 5,
           hash:
             'd2f5788f623cde1f0fb3dc801396fee235c67ed11d9452bfd765f1331587401d',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6672,
           width: 500,
@@ -1239,6 +1296,7 @@ test('Database: Get files sorted by invalid namespace', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -1253,6 +1311,7 @@ test('Database: Get files sorted by invalid namespace', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1267,6 +1326,7 @@ test('Database: Get files sorted by invalid namespace', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1290,6 +1350,7 @@ test('Database: Get files by tags', t => {
         id: 1,
         hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
         mime: 'image/png',
         size: 5012,
         width: 500,
@@ -1313,6 +1374,7 @@ test('Database: Get files by excluded tags', t => {
           id: 5,
           hash:
             'd2f5788f623cde1f0fb3dc801396fee235c67ed11d9452bfd765f1331587401d',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6672,
           width: 500,
@@ -1327,6 +1389,7 @@ test('Database: Get files by excluded tags', t => {
           id: 4,
           hash:
             '6c358705afeeeb6b75ba725cba10145ae366b6c36fe79aa99c983d354926af39',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6665,
           width: 500,
@@ -1341,6 +1404,7 @@ test('Database: Get files by excluded tags', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1364,6 +1428,7 @@ test('Database: Get files by tags and excluded tags', t => {
         id: 3,
         hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
         mime: 'image/png',
         size: 6117,
         width: 500,
@@ -1386,6 +1451,7 @@ test('Database: Get files by tags sorted ascending', t => {
         id: 1,
         hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
         mime: 'image/png',
         size: 5012,
         width: 500,
@@ -1409,6 +1475,7 @@ test('Database: Get files by tags sorted by size', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1423,6 +1490,7 @@ test('Database: Get files by tags sorted by size', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1437,6 +1505,7 @@ test('Database: Get files by tags sorted by size', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1461,6 +1530,7 @@ test('Database: Get files by tags sorted by size ascending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1475,6 +1545,7 @@ test('Database: Get files by tags sorted by size ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1489,6 +1560,7 @@ test('Database: Get files by tags sorted by size ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1513,6 +1585,7 @@ test('Database: Get files by tags sorted by width', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1527,6 +1600,7 @@ test('Database: Get files by tags sorted by width', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1541,6 +1615,7 @@ test('Database: Get files by tags sorted by width', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1565,6 +1640,7 @@ test('Database: Get files by tags sorted by width ascending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1579,6 +1655,7 @@ test('Database: Get files by tags sorted by width ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1593,6 +1670,7 @@ test('Database: Get files by tags sorted by width ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1617,6 +1695,7 @@ test('Database: Get files by tags sorted by height', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1631,6 +1710,7 @@ test('Database: Get files by tags sorted by height', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1645,6 +1725,7 @@ test('Database: Get files by tags sorted by height', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1669,6 +1750,7 @@ test('Database: Get files by tags sorted by height descending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1683,6 +1765,7 @@ test('Database: Get files by tags sorted by height descending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1697,6 +1780,7 @@ test('Database: Get files by tags sorted by height descending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1721,6 +1805,7 @@ test('Database: Get files by tags sorted by mime', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1735,6 +1820,7 @@ test('Database: Get files by tags sorted by mime', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1749,6 +1835,7 @@ test('Database: Get files by tags sorted by mime', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1773,6 +1860,7 @@ test('Database: Get files by tags sorted by mime descending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1787,6 +1875,7 @@ test('Database: Get files by tags sorted by mime descending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1801,6 +1890,7 @@ test('Database: Get files by tags sorted by mime descending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1825,6 +1915,7 @@ test('Database: Get files by tags sorted by tag count', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1839,6 +1930,7 @@ test('Database: Get files by tags sorted by tag count', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1853,6 +1945,7 @@ test('Database: Get files by tags sorted by tag count', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1877,6 +1970,7 @@ test('Database: Get files by tags sorted by tag count ascending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1891,6 +1985,7 @@ test('Database: Get files by tags sorted by tag count ascending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1905,6 +2000,7 @@ test('Database: Get files by tags sorted by tag count ascending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1931,6 +2027,7 @@ test('Database: Get files by tags sorted by namespace', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -1945,6 +2042,7 @@ test('Database: Get files by tags sorted by namespace', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -1959,6 +2057,7 @@ test('Database: Get files by tags sorted by namespace', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1985,6 +2084,7 @@ test('Database: Get files by tags sorted by namespace descending', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -1999,6 +2099,7 @@ test('Database: Get files by tags sorted by namespace descending', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -2013,6 +2114,7 @@ test('Database: Get files by tags sorted by namespace descending', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -2039,6 +2141,7 @@ test('Database: Get files by tags sorted by invalid namespace', t => {
           id: 3,
           hash:
             '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+          ipfsHash: null,
           mime: 'image/png',
           size: 6117,
           width: 500,
@@ -2053,6 +2156,7 @@ test('Database: Get files by tags sorted by invalid namespace', t => {
           id: 2,
           hash:
             '5ef2eac48dd171cf98793df1e123238a61fb8ed766e862042b25467066fabe55',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5779,
           width: 500,
@@ -2067,6 +2171,7 @@ test('Database: Get files by tags sorted by invalid namespace', t => {
           id: 1,
           hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
           mime: 'image/png',
           size: 5012,
           width: 500,
@@ -2089,6 +2194,7 @@ test('Database: Get file by id', t => {
       id: 1,
       hash:
             '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+          ipfsHash: null,
       mime: 'image/png',
       size: 5012,
       width: 500,
@@ -2102,7 +2208,7 @@ test('Database: Get file by id', t => {
   )
 })
 
-test('Database: Get mime types', t => {
+test('Database: Get MIME types', t => {
   t.deepEqual(
     files.getMimeTypes(),
     [{ name: 'image/png' }]

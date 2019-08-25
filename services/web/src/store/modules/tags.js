@@ -10,6 +10,7 @@ import {
   UNSET_TOTAL_TAG_COUNT,
   SET_LAST_TAGS_PAGE_REACHED,
   UNSET_LAST_TAGS_PAGE_REACHED,
+  SET_MOST_USED_TAGS,
   SET_NAMESPACES
 } from '@/store/mutation-types'
 import config from '@/config'
@@ -24,6 +25,7 @@ export default {
     lastQuery: null,
     totalCount: null,
     hasReachedLastPage: false,
+    mostUsed: [],
     namespaces: []
   },
   mutations: {
@@ -59,6 +61,9 @@ export default {
     },
     [UNSET_LAST_TAGS_PAGE_REACHED] (state) {
       state.hasReachedLastPage = false
+    },
+    [SET_MOST_USED_TAGS] (state, payload) {
+      state.mostUsed = payload
     },
     [SET_NAMESPACES] (state, payload) {
       state.namespaces = payload
@@ -231,6 +236,29 @@ export default {
           namespaces.unshift({ name: 'unnamespaced' })
 
           context.commit(SET_NAMESPACES, namespaces)
+        })
+        .catch(async err => {
+          await errorHandler.handle(
+            err.response,
+            [
+              { name: 'MissingTokenError', isFatal: false, isLocal: false },
+              { name: 'InvalidTokenError', isFatal: false, isLocal: false },
+              { name: 'ShuttingDownError', isFatal: true, isLocal: false },
+              { name: 'InternalServerError', isFatal: true, isLocal: false }
+            ]
+          )
+        })
+    },
+    fetchMostUsed (context) {
+      context.dispatch('error/flush', false, { root: true })
+
+      if (!context.rootState.auth.token && config.isAuthenticationRequired) {
+        return
+      }
+
+      return api.fetchMostUsedTags(context.rootState.auth.token)
+        .then(res => {
+          context.commit(SET_MOST_USED_TAGS, res.data.tags)
         })
         .catch(async err => {
           await errorHandler.handle(
