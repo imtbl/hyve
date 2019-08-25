@@ -73,6 +73,7 @@ __it simply provides a different way to view them.__
     + [Web configuration](#web-configuration)
   + [HTTP API](#http-api)
 + [Screenshots](#screenshots)
++ [FAQ](#faq)
 + [Donate](#donate)
 + [Maintainer](#maintainer)
 + [Contribute](#contribute)
@@ -477,6 +478,59 @@ Here are some screenshots of the web client:
 
 ![Changing user data][screenshot-user]
 
+## FAQ
+
+> I am encountering a _unique constraint_ error when syncing. Why does this
+> happen?
+
+This issue can occur when hydrus client or server is running maintenance tasks
+while hyve runs a sync. In that case, it can usually easily be fixed by waiting
+a few minutes and trying again. If the error persists, it might indicate issues
+with your hydrus databases. If you can rule out that this is the case, please
+[open an issue][issues].
+
+> Does hyve make changes to my hydrus client/server databases?
+
+No, hyve never makes any changes to the hydrus client/server databases, it only
+reads from them.
+
+> Why does hyve create a copy of the hydrus client/server databases instead of
+> simply connecting to it or using the client API?
+
+Some features like searching by multiple namespaces or constraints would simply
+not be possible (with decent performance) without using a copy of the databases
+that is optimized for hyve's purposes.
+
+The database structure of hydrus is not built in a way that allows to deliver
+paginated results that are also sorted by various criteria, which makes it not
+suitable for an HTTP API that is meant to be accessed outside of a LAN. hydrus
+itself does most of the sorting in code _after_ fetching the results, which is
+really not an option when using pagination.
+
+The client API has not been considered since it is still very limited and does
+only feature a fraction of what hyve's API can do. It is also not available for
+hydrus server, which disqualifies it regardless.
+
+> Does hyve also make a copy of my media?
+
+No, only a copy of the hydrus databases is made. hyve directly accesses the
+hydrus media files.
+
+> Why can I not upload files to hyve and sync them back to hydrus
+> client/server?
+
+hyve is only intended as a way to access your media files outside the
+constraints of hydrus client/server. It is not meant to be yet another
+booru-like software that allows you to upload and manage media. If you are
+interested in something like that, I recommend you to check out popular booru
+softwares like [danbooru][danbooru] or [szurubooru][szurubooru] instead.
+
+> hydrus client/server supports _x_. Will you add this feature to hyve as well?
+
+Maybe. If you want to see a specific feature that you think would be a good fit
+for hyve, please [open an issue][issues]. In general, I prefer to add features
+that are not specific to either hydrus client or hydrus server.
+
 ## Donate
 
 If you like hyve and want to buy me a coffee, feel free to donate via PayPal:
@@ -519,6 +573,8 @@ You are welcome to help out!
 [supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L5-L17
 [supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L17
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
+[danbooru]: https://github.com/r888888888/danbooru
+[szurubooru]: https://github.com/rr-/szurubooru
 
 [screenshot-frontpage]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-frontpage.png
 [screenshot-search]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-search.png

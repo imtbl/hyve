@@ -13,6 +13,7 @@ and this project adheres to
 + Added the ability to connect to hydrus client instead of hydrus server
 + Added support for IPFS hashes
 + Added the ability to display a tag cloud on the frontpage
++ Added FAQ section to the readme
 
 ### Changed
 
