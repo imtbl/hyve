@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-08-25
+
 ### Added
 
 + Added the ability to connect to hydrus client instead of hydrus server
@@ -51,5 +53,6 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/1.1.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.0.0...develop
+[2.0.0]: https://github.com/mserajnik/hyve/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/mserajnik/hyve/compare/1.0.0...1.1.0
