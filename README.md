@@ -63,6 +63,7 @@ __it simply provides a different way to view them.__
   + [Updating](#updating)
     + [Updating with Docker](#updating-with-docker)
     + [Updating without Docker](#updating-without-docker)
+    + [Upgrading from `1.x.x` to `2.x.x`](#upgrading-from-1xx-to-2xx)
 + [Usage](#usage)
   + [Running with Docker](#running-with-docker)
   + [Running without Docker](#running-without-docker)
@@ -154,6 +155,16 @@ user@local:hyve$ yarn && yarn bootstrap
 user@local:hyve$ cd services/server
 user@local:hyve/services/server$ yarn migrate
 ```
+
+#### Upgrading from `1.x.x` to `2.x.x`
+
+`2.0.0` has introduced the ability to (optionally) connect to hydrus client
+instead of hydrus server.
+
+Aside from renaming `services/sync` to `services/sync-server` (which you might
+need to adjust in any start scripts you might have set up when running without
+Docker), a few environment variables have been added, so you can simply compare
+with your current configuration and make additions/adjustments where necessary.
 
 ## Usage
 
