@@ -262,7 +262,7 @@ __Output on success:__
     {
         "token": <token>,
         "mediaToken": <media token>,
-        "ip": <IP the client creating the token>,
+        "ip": <IP address of the client creating the token (truncated to 16 bits for privacy reasons)>,
         "userAgent": <user agent of the client creating the token>,
         "createdAt": <ISO-8601 date representation of when the token was created>,
         "expiresAt": <ISO-8601 date representation of when the token will expire>
@@ -302,7 +302,7 @@ __Output on success:__
 {
   "token": <token>,
   "mediaToken": <media token>,
-  "ip": <IP of the client creating the token>,
+  "ip": <IP address of the client creating the token (truncated to 16 bits for privacy reasons)>,
   "userAgent": <user agent of the client creating the token>,
   "createdAt": <ISO-8601 date representation of when the token was created>,
   "expiresAt": <ISO-8601 date representation of when the token will expire>

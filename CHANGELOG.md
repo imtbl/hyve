@@ -17,6 +17,8 @@ and this project adheres to
 ### Changed
 
 + Refactored code
++ IP addresses stored with tokens are now truncated to 16 bits for privacy
+  reasons
 + Updated dependencies
 
 ### Fixed

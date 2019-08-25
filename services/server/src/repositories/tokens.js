@@ -1,4 +1,5 @@
 const crypto = require('crypto')
+const anonymize = require('ip-anonymize')
 
 const db = require('../db')
 
@@ -91,7 +92,7 @@ module.exports = {
       userId,
       hash,
       mediaHash,
-      ip,
+      anonymize(ip, 16, 16),
       userAgent,
       Math.floor(Date.now() / 1000),
       long
