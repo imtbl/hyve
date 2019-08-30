@@ -72,9 +72,15 @@ async function getFileData (type, hash) {
     )
   }
 
+  const fileInfo = fileType(
+    await readChunk(filePath, 0, fileType.minimumBytes)
+  )
+
   return {
     path: filePath,
-    mimeType: fileType(await readChunk(filePath, 0, 4100)).mime
+    mimeType: fileInfo && fileInfo.mime
+      ? fileInfo.mime
+      : 'application/octet-stream'
   }
 }
 

@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added fallback to `application/octet-stream` for unknown MIME types
+
 ## [2.0.0] - 2019-08-25
 
 ### Added
