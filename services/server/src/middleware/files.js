@@ -17,8 +17,7 @@ module.exports = {
       sanitizeQuery('tags'),
       check('tags')
         .optional()
-        .isArray().withMessage('InvalidTagsParameterError')
-        .isLength({ min: 1 }).withMessage('InvalidTagsParameterError')
+        .isArray({ min: 1 }).withMessage('InvalidTagsParameterError')
         .custom(tags => {
           for (const tag of tags) {
             if (['*', '**', '-', '-*', '-**'].includes(tag)) {
@@ -31,8 +30,7 @@ module.exports = {
       sanitizeQuery('constraints'),
       check('constraints')
         .optional()
-        .isArray().withMessage('InvalidConstraintsParameterError')
-        .isLength({ min: 1 }).withMessage('InvalidConstraintsParameterError')
+        .isArray({ min: 1 }).withMessage('InvalidConstraintsParameterError')
         .custom(constraints => {
           for (const constraint of constraints) {
             if (!constraintsHelper.isValidConstraint(constraint)) {
@@ -66,8 +64,7 @@ module.exports = {
       sanitizeQuery('namespaces'),
       check('namespaces')
         .optional()
-        .isArray().withMessage('InvalidNamespacesParameterError')
-        .isLength({ min: 1 }).withMessage('InvalidNamespacesParameterError')
+        .isArray({ min: 1 }).withMessage('InvalidNamespacesParameterError')
     ],
     validateInput: (req, res, next) => {
       const err = validationResult(req)

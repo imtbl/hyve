@@ -1,8 +1,10 @@
-dist
-node_modules
-**/storage/*.db
-*.log
 .crontab
 .env
 .sync-lock
+*.db-shm
+*.db-wal
+*.log
+**/storage/*.db
+dist
 docker-compose.yml
+node_modules

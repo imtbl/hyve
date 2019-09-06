@@ -34,7 +34,7 @@ HTTP API. It can connect to either hydrus client or server. A web-based,
 As a rough overview, hyve currently has the following features:
 
 + The ability to connect to either hydrus client or hydrus server
-+ A straight-forward HTTP API, including:
++ A straightforward HTTP API, including:
   + Comprehensive options to search and sort your files and tags
   + Optional authentication and simple user management, allowing you to run
     hyve in either a public or private manner
