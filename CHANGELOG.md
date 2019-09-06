@@ -15,6 +15,7 @@ and this project adheres to
 ### Changed
 
 + Updated `*ignore` files
++ Updated dependencies
 
 ### Fixed
 
