@@ -53,7 +53,7 @@ function run () {
   cleanUp()
   profiler.log('Clean up: {dt}\n')
 
-  profiler.log(`Total: {t}\n\n`)
+  profiler.log('Total: {t}\n\n')
 
   console.info(getTotals())
 
@@ -173,6 +173,14 @@ function getNamespaces () {
         ${config.hydrusTableRepositoryHashIdMapTags}
       NATURAL JOIN
         ${config.hydrusTableFilesInfo}
+      INNER JOIN
+        ${config.hydrusTableRepositoryHashIdMapFiles}
+        ON ${config.hydrusTableRepositoryHashIdMapFiles}.master_hash_id =
+          ${config.hydrusTableFilesInfo}.master_hash_id
+      INNER JOIN
+        ${config.hydrusTableCurrentFiles}
+        ON ${config.hydrusTableCurrentFiles}.service_hash_id =
+          ${config.hydrusTableRepositoryHashIdMapFiles}.service_hash_id
       WHERE
         ${config.hydrusTableTags}.tag LIKE '%_:_%'
       AND
@@ -213,6 +221,14 @@ function fillNewTagsTable () {
         ${config.hydrusTableRepositoryHashIdMapTags}
       NATURAL JOIN
         ${config.hydrusTableFilesInfo}
+      INNER JOIN
+        ${config.hydrusTableRepositoryHashIdMapFiles}
+        ON ${config.hydrusTableRepositoryHashIdMapFiles}.master_hash_id =
+          ${config.hydrusTableFilesInfo}.master_hash_id
+      INNER JOIN
+        ${config.hydrusTableCurrentFiles}
+        ON ${config.hydrusTableCurrentFiles}.service_hash_id =
+          ${config.hydrusTableRepositoryHashIdMapFiles}.service_hash_id
       WHERE
         ${config.hydrusTableFilesInfo}.mime IN (
           ${config.supportedMimeTypes}

@@ -15,6 +15,8 @@ and this project adheres to
 ### Fixed
 
 + Fixed typo in readme
++ Excluded tags and namespaces for deleted files when connected to hydrus
+  server
 
 ## [2.0.0] - 2019-08-25
 
