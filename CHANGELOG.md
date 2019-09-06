@@ -12,6 +12,10 @@ and this project adheres to
 
 + Added fallback to `application/octet-stream` for unknown MIME types
 
+### Changed
+
++ Updated `*ignore` files
+
 ### Fixed
 
 + Fixed typo in readme

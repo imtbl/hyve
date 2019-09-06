@@ -1,10 +1,10 @@
+**/.crontab
+**/.env
 **/.git
+**/.sync-lock
+**/*.log
 **/dist
+**/docker-compose.yml
 **/media
 **/node_modules
 **/storage/*.db
-**/*.log
-**/.crontab
-**/.env
-**/.sync-lock
-**/docker-compose.yml
