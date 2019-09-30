@@ -14,6 +14,10 @@ and this project adheres to
   during a sync (in which case it very likely occurs due to the database tables
   being in the process of getting replaced)
 
+### Changed
+
++ Updated dependencies
+
 ## [2.1.0] - 2019-09-07
 
 ### Added
