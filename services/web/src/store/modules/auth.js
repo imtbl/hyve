@@ -120,6 +120,7 @@ export default {
             [
               { name: 'MissingTokenError', isFatal: false, isLocal: false },
               { name: 'InvalidTokenError', isFatal: false, isLocal: false },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -174,21 +175,10 @@ export default {
                 isFatal: false,
                 isLocal: true
               },
-              {
-                name: 'UsernameExistsError',
-                isFatal: false,
-                isLocal: true
-              },
-              {
-                name: 'ShuttingDownError',
-                isFatal: true,
-                isLocal: false
-              },
-              {
-                name: 'InternalServerError',
-                isFatal: true,
-                isLocal: false
-              }
+              { name: 'UsernameExistsError', isFatal: false, isLocal: true },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
+              { name: 'ShuttingDownError', isFatal: true, isLocal: false },
+              { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
           )
 
@@ -230,6 +220,7 @@ export default {
                 isLocal: true
               },
               { name: 'InvalidUserError', isFatal: false, isLocal: true },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -294,6 +285,7 @@ export default {
               },
               { name: 'InvalidUserError', isFatal: false, isLocal: true },
               { name: 'UsernameExistsError', isFatal: false, isLocal: true },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -358,6 +350,7 @@ export default {
               },
               { name: 'InvalidUserError', isFatal: false, isLocal: true },
               { name: 'UsernameExistsError', isFatal: false, isLocal: true },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -441,6 +434,7 @@ export default {
               },
               { name: 'InvalidLongFieldError', isFatal: false, isLocal: true },
               { name: 'InvalidUserError', isFatal: false, isLocal: true },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]

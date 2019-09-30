@@ -192,6 +192,7 @@ export default {
                 isFatal: false,
                 isLocal: false
               },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]

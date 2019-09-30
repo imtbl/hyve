@@ -8,6 +8,12 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added a special error message for when an unhandled server error occurs
+  during a sync (in which case it very likely occurs due to the database tables
+  being in the process of getting replaced)
+
 ## [2.1.0] - 2019-09-07
 
 ### Added

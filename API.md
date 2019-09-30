@@ -102,6 +102,7 @@ __Output on success:__
 
 __Possible errors:__
 
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -129,6 +130,7 @@ __Possible errors:__
 
 + `MissingTokenError`
 + `InvalidTokenError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -166,6 +168,7 @@ __Possible errors:__
 + `MissingPasswordFieldError`
 + `InvalidPasswordFieldError`
 + `UsernameExistsError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -210,6 +213,7 @@ __Possible errors:__
 + `InvalidCurrentPasswordFieldError`
 + `InvalidUserError`
 + `UsernameExistsError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -242,6 +246,7 @@ __Possible errors:__
 + `MissingPasswordFieldError`
 + `InvalidPasswordFieldError`
 + `InvalidUserError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -276,6 +281,7 @@ __Possible errors:__
 
 + `MissingTokenError`
 + `InvalidTokenError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -317,6 +323,7 @@ __Possible errors:__
 + `InvalidPasswordFieldError`
 + `InvalidLongFieldError`
 + `InvalidUserError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -348,6 +355,7 @@ __Possible errors:__
 + `MissingTokenError`
 + `InvalidTokenError`
 + `InvalidAllFieldError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -371,6 +379,7 @@ __Possible errors:__
 
 + `MissingTokenError`
 + `InvalidTokenError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -398,6 +407,7 @@ __Possible errors:__
 
 + `MissingTokenError`
 + `InvalidTokenError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -425,6 +435,7 @@ __Possible errors:__
 
 + `MissingTokenError`
 + `InvalidTokenError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -478,6 +489,7 @@ __Possible errors:__
 + `InvalidContainsParameterError`
 + `InvalidSortParameterError`
 + `InvalidDirectionParameterError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -505,6 +517,7 @@ __Possible errors:__
 
 + `MissingTokenError`
 + `InvalidTokenError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -543,6 +556,7 @@ __Possible errors:__
 + `InvalidTokenError`
 + `MissingPartialTagFieldError`
 + `InvalidPartialTagFieldError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -718,6 +732,7 @@ __Possible errors:__
 + `InvalidDirectionParameterError`
 + `MissingNamespacesParameterError`
 + `InvalidNamespacesParameterError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -764,6 +779,7 @@ __Possible errors:__
 + `MissingIdParameterError`
 + `InvalidIdParameterError`
 + `NotFoundError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -789,6 +805,7 @@ __Possible errors:__
 + `MissingMediaHashParameterError`
 + `InvalidMediaHashParameterError`
 + `NotFoundError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`
 
@@ -813,5 +830,6 @@ __Possible errors:__
 + `MissingMediaHashParameterError`
 + `InvalidMediaHashParameterError`
 + `NotFoundError`
++ `SyncInProgressError`
 + `ShuttingDownError`
 + `InternalServerError`

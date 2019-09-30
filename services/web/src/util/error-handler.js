@@ -35,6 +35,9 @@ const messages = {
   missingIdParameterError: 'No <code>id</code> parameter provided.',
   invalidIdParameterError: 'Invalid <code>id</code> parameter provided.',
   notFoundError: 'The file you are looking for does not exist.',
+  syncInProgressError: 'A sync is currently in progress, making the API ' +
+    'unavailable. Please try again shortly. If this error persists, please ' +
+    'check your server.',
   shuttingDownError: 'hyve is shutting down. This might be due to a ' +
     'reboot. Please check your server.',
   internalServerError: 'hyve has encountered an internal error. Please ' +
@@ -69,6 +72,7 @@ const mappings = {
   'MissingIdParameterError': messages.missingIdParameterError,
   'InvalidIdParameterError': messages.invalidIdParameterError,
   'NotFoundError': messages.notFoundError,
+  'SyncInProgressError': messages.syncInProgressError,
   'ShuttingDownError': messages.shuttingDownError,
   'InternalServerError': messages.internalServerError
 }
@@ -77,6 +81,7 @@ export default {
   async handle (
     serverResponse,
     errorsToHandle = [
+      { name: 'SyncInProgressError', isFatal: true, isLocal: false },
       { name: 'ShuttingDownError', isFatal: true, isLocal: false },
       { name: 'InternalServerError', isFatal: true, isLocal: false }
     ]
