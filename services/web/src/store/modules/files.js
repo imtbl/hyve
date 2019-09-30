@@ -161,6 +161,7 @@ export default {
                 isFatal: false,
                 isLocal: false
               },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -249,6 +250,7 @@ export default {
                 isFatal: false,
                 isLocal: false
               },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -297,6 +299,7 @@ export default {
                 isLocal: false
               },
               { name: 'NotFoundError', isFatal: false, isLocal: false },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]
@@ -326,6 +329,7 @@ export default {
             [
               { name: 'MissingTokenError', isFatal: false, isLocal: false },
               { name: 'InvalidTokenError', isFatal: false, isLocal: false },
+              { name: 'SyncInProgressError', isFatal: true, isLocal: false },
               { name: 'ShuttingDownError', isFatal: true, isLocal: false },
               { name: 'InternalServerError', isFatal: true, isLocal: false }
             ]

@@ -8,6 +8,18 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.2.0] - 2019-09-30
+
+### Added
+
++ Added a special error message for when an unhandled server error occurs
+  during a sync (in which case it very likely occurs due to the database tables
+  being in the process of getting replaced)
+
+### Changed
+
++ Updated dependencies
+
 ## [2.1.0] - 2019-09-07
 
 ### Added
@@ -70,7 +82,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.1.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.2.0...develop
+[2.2.0]: https://github.com/mserajnik/hyve/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/mserajnik/hyve/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/mserajnik/hyve/compare/1.1.0...2.0.0
 [1.1.0]: https://github.com/mserajnik/hyve/compare/1.0.0...1.1.0

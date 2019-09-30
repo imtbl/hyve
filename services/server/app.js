@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const express = require('express')
 const accessLogger = require('morgan')
 
@@ -94,8 +95,17 @@ if (config.crossOriginIsAllowed) {
 require('./src/routes')(app)
 
 app.use((err, req, res, next) => {
-  res.status(err.customStatus || 500).json({
-    error: err.customName || 'InternalServerError'
+  const syncIsRunning = fs.existsSync(
+    path.resolve(path.dirname(config.contentDbPath), '.sync-lock')
+  )
+
+  const fallbackErrorStatus = syncIsRunning ? 503 : 500
+  const fallbackErrorName = syncIsRunning
+    ? 'SyncInProgressError'
+    : 'InternalServerError'
+
+  res.status(err.customStatus || fallbackErrorStatus).json({
+    error: err.customName || fallbackErrorName
   })
 })
 
