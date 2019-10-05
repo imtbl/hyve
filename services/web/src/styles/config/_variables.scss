@@ -1,3 +1,17 @@
 $info: $primary;
 $link: $primary;
 $plyr-color-main: $primary;
+
+$dark-theme-white: invert($white);
+$dark-theme-white-bis: invert($white-bis);
+$dark-theme-white-ter: invert($white-ter);
+
+$dark-theme-black: invert($black);
+$dark-theme-black-bis: invert($black-bis);
+$dark-theme-black-ter: invert($black-ter);
+
+$dark-theme-grey-lighter: invert($grey-lighter);
+$dark-theme-grey-light: invert($grey-light);
+$dark-theme-grey: invert($grey);
+$dark-theme-grey-dark: invert($grey-dark);
+$dark-theme-grey-darker: invert($grey-darker);

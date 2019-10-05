@@ -66,6 +66,7 @@ export const SET_LAST_DETAIL_ID = 'setLastFileDetailId'
 export const SET_MIME_TYPES = 'setMimeTypes'
 
 // Settings
+export const SET_THEME = 'setTheme'
 export const SET_RESTRICT_IMAGE_SIZE = 'setRestrictImageSize'
 export const SET_COLORS = 'setColors'
 export const SET_FILES_SORTING = 'setFilesSorting'

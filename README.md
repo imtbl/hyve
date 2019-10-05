@@ -219,7 +219,7 @@ available under the configured URLs.
 If you want to connect to hydrus client instead, you can have a look at
 [this][hydrus-docker] for a dockerized version of hydrus client that you should
 be able to run in combination with hyve. I have included a Docker Compose
-example setup only containg the hyve services
+example setup only containing the hyve services
 (`docker-compose.yml.client.example`) that you will need to expand accordingly
 to make it work.
 
@@ -424,8 +424,11 @@ to work correctly.
 + `VUE_APP_HYVE_ROBOTS=noindex, nofollow`: sets the content of
   `<meta name="robots">`.
 + `VUE_APP_HYVE_PRIMARY_COLOR='#3449bb'`: sets the primary color used
-  throughout the hyve web client. Make sure to use a color that contrasts well
-  with white.
+  throughout the hyve web client when using the light theme. Make sure to use
+  a color that contrasts well with white.
++ `VUE_APP_HYVE_PRIMARY_COLOR_DARK='#500ea5'`: sets the primary color used
+  throughout the hyve web client when using the dark theme. Make sure to use a
+  color that contrasts well with black.
 + `VUE_APP_HYVE_USE_NORMAL_LETTER_CASE=false`: by default, the hyve web client
   uses lowercase text throughout most of the application (like hydrus client)
   for aesthestic reasons. If you do not want that, setting this to `false`

@@ -12,6 +12,7 @@
 @import 'config/typography';
 @import 'config/misc';
 
+@import 'layout/body';
 @import 'layout/wrapper';
 @import 'layout/columns';
 @import 'layout/helpers';
@@ -35,3 +36,5 @@
 @import 'elements/tag-cloud';
 @import 'elements/namespace-sorting';
 @import 'elements/color-picker';
+
+@import 'themes/dark';

@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added dark theme and theme selection
+
 ## [2.2.1] - 2019-10-05
 
 ### Fixed

@@ -27,6 +27,12 @@
                 <form @submit.prevent="saveSettings">
 
                   <h2 class="has-paragraph-size has-text-primary">
+                    Theme
+                  </h2>
+
+                  <theme :theme.sync="theme" />
+
+                  <h2 class="has-paragraph-size has-text-primary">
                     Image size
                   </h2>
 
@@ -101,6 +107,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import config from '@/config'
 
+import Theme from '@/components/settings/Theme'
 import ImageSize from '@/components/settings/ImageSize'
 import Colors from '@/components/settings/Colors'
 import FilesSorting from '@/components/settings/FilesSorting'
@@ -110,6 +117,7 @@ export default {
   name: 'Settings',
   data: function () {
     return {
+      theme: this.$store.state.settings.theme,
       restrictImageSize: this.$store.state.settings.restrictImageSize,
       colors: Object.assign([], this.$store.getters['settings/currentColors']),
       filesSorting: this.$store.state.settings.filesSorting,
@@ -131,6 +139,7 @@ export default {
       }
 
       this.storeSettings({
+        theme: this.theme,
         restrictImageSize: this.restrictImageSize,
         colors: config.defaultNamespaceColors.filter(
           defaultColor => !this.colors.find(
@@ -156,6 +165,7 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+    Theme,
     ImageSize,
     Colors,
     FilesSorting,
