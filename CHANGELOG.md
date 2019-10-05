@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.2.1] - 2019-10-05
+
 ### Fixed
 
 + Fixed media files being accessible when providing an invalid token
@@ -86,7 +88,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.2.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.2.1...develop
+[2.2.1]: https://github.com/mserajnik/hyve/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/mserajnik/hyve/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/mserajnik/hyve/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/mserajnik/hyve/compare/1.1.0...2.0.0
