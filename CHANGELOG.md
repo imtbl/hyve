@@ -16,6 +16,7 @@ and this project adheres to
 
 + The Plyr icon sprite is now served locally
 + Hid gallery button if file is not an image
++ Made viewport restriction setting apply to videos as well
 + Refactored code
 
 ## [2.2.1] - 2019-10-05

@@ -33,10 +33,10 @@
                   <theme :theme.sync="theme" />
 
                   <h2 class="has-paragraph-size has-text-primary">
-                    Image size
+                    Media size
                   </h2>
 
-                  <image-size :restrictImageSize.sync="restrictImageSize" />
+                  <media-size :restrictMediaSize.sync="restrictMediaSize" />
 
                   <h2 class="has-paragraph-size has-text-primary">
                     Tag colors
@@ -108,7 +108,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import config from '@/config'
 
 import Theme from '@/components/settings/Theme'
-import ImageSize from '@/components/settings/ImageSize'
+import MediaSize from '@/components/settings/MediaSize'
 import Colors from '@/components/settings/Colors'
 import FilesSorting from '@/components/settings/FilesSorting'
 import TagsSorting from '@/components/settings/TagsSorting'
@@ -118,7 +118,7 @@ export default {
   data: function () {
     return {
       theme: this.$store.state.settings.theme,
-      restrictImageSize: this.$store.state.settings.restrictImageSize,
+      restrictMediaSize: this.$store.state.settings.restrictMediaSize,
       colors: Object.assign([], this.$store.getters['settings/currentColors']),
       filesSorting: this.$store.state.settings.filesSorting,
       filesSortingDirection: this.$store.state.settings.filesSortingDirection,
@@ -140,7 +140,7 @@ export default {
 
       this.storeSettings({
         theme: this.theme,
-        restrictImageSize: this.restrictImageSize,
+        restrictMediaSize: this.restrictMediaSize,
         colors: config.defaultNamespaceColors.filter(
           defaultColor => !this.colors.find(
             color => defaultColor.name === color.name
@@ -166,7 +166,7 @@ export default {
   components: {
     FontAwesomeIcon,
     Theme,
-    ImageSize,
+    MediaSize,
     Colors,
     FilesSorting,
     TagsSorting

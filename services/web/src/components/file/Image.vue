@@ -1,7 +1,7 @@
 <template>
   <div
     class="file-detail-image"
-    :class="{ 'is-restricted-to-viewport': restrictImageSize }">
+    :class="{ 'is-restricted-to-viewport': restrictMediaSize }">
     <img
       class="preview-img-item"
       :src="url"
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     ...mapState({
-      restrictImageSize: state => state.settings.restrictImageSize
+      restrictMediaSize: state => state.settings.restrictMediaSize
     })
   }
 }

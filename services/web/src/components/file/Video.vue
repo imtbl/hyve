@@ -1,13 +1,20 @@
 <template>
-  <div class="file-video">
-    <video :poster="posterUrl" id="video-player" playsinline controls loop>
+  <div class="file-detail-video">
+    <video
+      :poster="posterUrl"
+      id="video-player"
+      :class="{ 'is-restricted-to-viewport': restrictMediaSize }">
+      playsinline
+      controls
+      loop>
       <source :src="url" :type="mime">
     </video>
   </div>
 </template>
 
 <script>
-import Plyr from 'plyr/'
+import { mapState } from 'vuex'
+import Plyr from 'plyr'
 
 export default {
   name: 'FileVideo',
@@ -29,6 +36,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  computed: {
+    ...mapState({
+      restrictMediaSize: state => state.settings.restrictMediaSize
+    })
   },
   mounted: function () {
     this.player = new Plyr('#video-player', {

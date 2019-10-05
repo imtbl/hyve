@@ -1,0 +1,11 @@
+.file-detail-video {
+  video {
+    &.is-restricted-to-viewport {
+      max-height: calc(100vh - 3.25rem - 6rem);
+
+      @media (max-width: 1087px) {
+        max-height: calc(100vh - 3.25rem - 6.875rem - 1.5rem);
+      }
+    }
+  }
+}
