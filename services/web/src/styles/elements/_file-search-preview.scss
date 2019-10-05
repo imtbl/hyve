@@ -42,6 +42,10 @@
     transition: transform 200ms ease;
     width: 3rem;
 
+    &.is-invisible {
+      pointer-events: none;
+    }
+
     @media (hover) {
       &:hover {
         transform: scale(1.2, 1.2);
