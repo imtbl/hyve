@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fixed media files being accessible when providing an invalid token
+
 ## [2.2.0] - 2019-09-30
 
 ### Added
