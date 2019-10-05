@@ -12,6 +12,10 @@ and this project adheres to
 
 + Added dark theme and theme selection
 
+### Changed
+
++ Refactored code
+
 ## [2.2.1] - 2019-10-05
 
 ### Fixed
