@@ -86,6 +86,6 @@ module.exports = {
     return users.getById(token.userId).id
   },
   isValidMediaToken (hash) {
-    return tokens.getValidByMediaHash(hash) !== null
+    return typeof tokens.getValidByMediaHash(hash) !== 'undefined'
   }
 }
