@@ -31,7 +31,9 @@ export default {
     }
   },
   mounted: function () {
-    this.player = new Plyr('#video-player')
+    this.player = new Plyr('#video-player', {
+      iconUrl: 'plyr.svg'
+    })
   }
 }
 </script>

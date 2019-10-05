@@ -14,6 +14,7 @@ and this project adheres to
 
 ### Changed
 
++ The Plyr icon sprite is now served locally
 + Refactored code
 
 ## [2.2.1] - 2019-10-05
