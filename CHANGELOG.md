@@ -8,6 +8,20 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.3.0] - 2019-10-08
+
+### Added
+
++ Added dark theme and theme selection
+
+### Changed
+
++ The Plyr icon sprite is now served locally
++ Hid gallery button if file is not an image
++ Made viewport restriction setting apply to videos as well
++ Refactored code
++ Updated dependencies
+
 ## [2.2.1] - 2019-10-05
 
 ### Fixed
@@ -88,7 +102,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.2.1...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.3.0...develop
+[2.3.0]: https://github.com/mserajnik/hyve/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/mserajnik/hyve/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/mserajnik/hyve/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/mserajnik/hyve/compare/2.0.0...2.1.0

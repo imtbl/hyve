@@ -1,0 +1,500 @@
+body {
+  &.dark {
+    background-color: $black;
+    color: $dark-theme-grey-dark;
+
+    a {
+      color: $dark-theme-primary;
+
+      &:hover {
+        color: $dark-theme-grey-darker;
+      }
+
+      &.has-text-primary {
+        &:hover {
+          color: darken($dark-theme-primary, 10%) !important;
+        }
+      }
+    }
+
+    strong {
+      color: $dark-theme-grey-darker;
+    }
+
+    code {
+      background-color: $black-bis;
+    }
+
+    hr {
+      background-color: $black-ter;
+    }
+
+    .navbar {
+      &.is-primary {
+        background-color: $dark-theme-primary;
+
+        .navbar-menu {
+          @media screen and (max-width: 1023px) {
+            background-color: $black-bis;
+          }
+        }
+
+        .navbar-brand {
+          .navbar-item {
+            color: $white;
+
+            &:focus,
+            &:focus-within,
+            &:hover,
+            &.is-active {
+              background-color: darken($dark-theme-primary, 5%);
+            }
+          }
+        }
+
+        .navbar-menu {
+          .navbar-item {
+            color: $dark-theme-grey-dark;
+
+            &:focus,
+            &:focus-within,
+            &:hover,
+            &.is-active {
+              background-color: $black-ter;
+              color: $dark-theme-primary;
+
+              @media screen and (min-width: 1024px) {
+                background-color: darken($dark-theme-primary, 5%);
+                color: $white;
+              }
+            }
+
+            @media screen and (min-width: 1024px) {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+
+    .button {
+      &.is-primary {
+        background-color: $dark-theme-primary;
+
+        &:hover,
+        &.is-hovered {
+          background-color: darken($dark-theme-primary, 2.5%);
+        }
+
+        &:active,
+        &.is-active {
+          background-color: darken($dark-theme-primary, 5%);
+        }
+
+        &:focus,
+        &.is-focused {
+          &:not(:active) {
+            box-shadow: $button-focus-box-shadow-size rgba($dark-theme-primary, 0.25);
+          }
+        }
+      }
+
+      &.is-static {
+        background-color: $black-bis;
+        border-color: $dark-theme-grey-lighter;
+        color: $dark-theme-grey;
+      }
+    }
+
+    .textarea,
+    .input {
+      box-shadow: inset 0 1px 2px rgba($white, 0.1);
+
+      &::placeholder {
+        color: rgba($dark-theme-grey-darker, 0.3);
+      }
+    }
+
+    .select select,
+    .textarea,
+    .input {
+      background-color: $black;
+      border-color: $dark-theme-grey-lighter;
+      color: $dark-theme-grey-darker;
+
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active {
+        border-color: $dark-theme-primary;
+        box-shadow: $input-focus-box-shadow-size rgba($dark-theme-primary, 0.25);
+      }
+    }
+
+    .select {
+      &:not(.is-multiple) {
+        &:not(.is-loading) {
+          &::after {
+            border-color: $dark-theme-primary;
+          }
+
+          &:hover {
+            &::after {
+              border-color: $dark-theme-grey-darker;
+            }
+          }
+        }
+      }
+    }
+
+    .title,
+    .subtitle {
+      color: $dark-theme-grey-darker;
+    }
+
+    .table {
+      background-color: $black;
+      color: $dark-theme-grey-darker;
+
+      thead {
+        th,
+        td {
+          color: $dark-theme-grey-darker;
+        }
+      }
+
+      td,
+      th {
+        border-color: $dark-theme-grey-lighter;
+      }
+
+      &.is-hoverable {
+        tbody {
+          tr {
+            &:not(.is-selected) {
+              &:hover {
+                background-color: $black-bis;
+              }
+            }
+          }
+        }
+      }
+
+      &.is-striped {
+        tbody {
+          tr {
+            &:not(.is-selected) {
+              &:nth-child(even) {
+                background-color: $black-bis;
+              }
+            }
+          }
+        }
+
+        &.is-hoverable {
+          tbody {
+            tr {
+              &:not(.is-selected) {
+                &:hover:nth-child(even) {
+                  background-color: $black-bis;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      .table {
+        thead {
+          th,
+          td {
+            color: $dark-theme-grey-darker;
+          }
+        }
+
+        td,
+        th {
+          border-color: $dark-theme-grey-lighter;
+        }
+      }
+    }
+
+    .is-checkradio[type='radio'],
+    .is-checkradio[type='checkbox'] {
+      + label {
+        &::before {
+          border-color: $dark-theme-grey-lighter;
+        }
+
+        &::after {
+          background: $dark-theme-primary;
+        }
+      }
+
+      &:hover {
+        &:not([disabled]) {
+          + label {
+            &::before {
+              border-color: $dark-theme-primary !important;
+            }
+          }
+        }
+      }
+
+      &:focus {
+        + label {
+          &::before {
+            outline: 1px dotted $dark-theme-grey-light;
+          }
+        }
+      }
+    }
+
+    .switch[type='checkbox'] {
+      + label {
+        &::before {
+          background: $dark-theme-grey-lighter;
+        }
+
+        &::after {
+          background: $black-bis;
+        }
+      }
+
+      &:checked {
+        + label {
+          &::before {
+            background: $dark-theme-primary;
+          }
+        }
+      }
+    }
+
+    .has-text-primary {
+      color: $dark-theme-primary !important;
+    }
+
+    .has-background-grey-lighter {
+      background-color: $dark-theme-grey-lighter !important;
+    }
+
+    .frame {
+      background-color: $black-bis;
+    }
+
+    .dropdown-content {
+      background-color: $black-bis;
+
+      a,
+      button {
+        &.dropdown-item {
+          &:hover {
+            background-color: $black-ter;
+          }
+        }
+      }
+    }
+
+    .file-search-suggestions {
+      &.dropdown {
+        .dropdown-menu {
+          .dropdown-item {
+            .icon {
+              color: $dark-theme-grey-darker;
+            }
+
+            .suggestion {
+              &.constraint {
+                color: $dark-theme-grey-darker;
+              }
+            }
+
+            &:focus {
+              background-color: $black-ter;
+            }
+          }
+        }
+      }
+    }
+
+    .file-search-filters {
+      &.tags {
+        .tag {
+          @media (hover) {
+            &:hover {
+              box-shadow: $input-focus-box-shadow-size rgba($dark-theme-primary, 0.25);
+            }
+          }
+
+          &:focus {
+            box-shadow: $input-focus-box-shadow-size rgba($dark-theme-primary, 0.25);
+          }
+        }
+      }
+    }
+
+    .file-search-preview {
+      .file-search-preview-image {
+        background-color: $black-bis;
+      }
+    }
+
+    .quickview {
+      background-color: $black;
+
+      .quickview-header {
+        border-color: $dark-theme-grey-lighter;
+
+        .delete {
+          background-color: $dark-theme-grey-lighter;
+
+          &::before,
+          &::after {
+            background-color: $black-bis;
+          }
+
+          &:focus,
+          &:hover {
+            background-color: $dark-theme-grey-light;
+          }
+        }
+      }
+    }
+
+    .panel-heading,
+    .panel-tabs,
+    .panel-block {
+      border-color: $dark-theme-grey-lighter;
+
+      &:first-child {
+        border-top: 1px solid $dark-theme-grey-lighter;
+      }
+    }
+
+    .panel-heading {
+      background-color: $black-bis;
+      color: $dark-theme-grey-darker;
+    }
+
+    .panel-block {
+      color: $dark-theme-grey-darker;
+
+      .delete {
+        background-color: $dark-theme-grey-lighter;
+
+        &::before,
+        &::after {
+          background-color: $black-bis;
+        }
+
+        &:focus,
+        &:hover {
+          background-color: $dark-theme-grey-light;
+        }
+      }
+    }
+
+    .namespace-sorting {
+      &.panel {
+        background-color: $black;
+
+        .panel-block {
+          &.sortable {
+            @media (hover) {
+              &:hover {
+                background-color: $black-bis;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .message {
+      &.is-danger {
+        background-color: $black-bis;
+      }
+    }
+
+    .plyr__menu {
+      &__container {
+        .plyr__control[role='menuitemradio'] {
+          &[aria-checked='true'] {
+            &::before {
+              background: $dark-theme-primary;
+            }
+          }
+        }
+      }
+    }
+
+    .plyr__control {
+      &.plyr__tab-focus {
+        box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+      }
+    }
+
+    .plyr--audio .plyr__control {
+      &.plyr__tab-focus,
+      &:hover,
+      &[aria-expanded='true'] {
+        background: $dark-theme-primary;
+      }
+    }
+
+    .plyr--video .plyr__control {
+      &.plyr__tab-focus,
+      &:hover,
+      &[aria-expanded='true'] {
+        background: $dark-theme-primary;
+      }
+    }
+
+    .plyr__control--overlaid {
+      background: rgba($dark-theme-primary, 0.8);
+
+      &:hover,
+      &:focus {
+        background: $dark-theme-primary;
+      }
+    }
+
+    .plyr--full-ui input[type='range'] {
+      color: $dark-theme-primary;
+
+      &.plyr__tab-focus {
+        &::-webkit-slider-runnable-track {
+          box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+        }
+
+        &::-moz-range-track {
+          box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+        }
+
+        &::-ms-track {
+          box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+        }
+      }
+    }
+
+    .vue-colorpicker {
+      border-color: $dark-theme-grey-lighter !important;
+    }
+
+    .vc-chrome {
+      .vc-chrome-body {
+        background-color: $black;
+      }
+
+      .vc-chrome-fields {
+        .vc-input__input {
+          background-color: $black;
+          box-shadow: inset 0 0 0 1px $dark-theme-grey-lighter;
+          color: $dark-theme-grey-dark;
+        }
+      }
+    }
+  }
+}

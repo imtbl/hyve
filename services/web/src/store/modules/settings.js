@@ -1,5 +1,6 @@
 import {
-  SET_RESTRICT_IMAGE_SIZE,
+  SET_THEME,
+  SET_RESTRICT_MEDIA_SIZE,
   SET_COLORS,
   SET_FILES_SORTING,
   SET_FILES_SORTING_DIRECTION,
@@ -8,11 +9,13 @@ import {
   SET_TAGS_SORTING_DIRECTION
 } from '@/store/mutation-types'
 import config from '@/config'
+import { setTheme } from '@/util/theme'
 
 export default {
   namespaced: true,
   state: {
-    restrictImageSize: false,
+    theme: 'default',
+    restrictMediaSize: false,
     colors: [],
     filesSorting: 'id',
     filesSortingDirection: 'default',
@@ -21,8 +24,11 @@ export default {
     tagsSortingDirection: 'default'
   },
   mutations: {
-    [SET_RESTRICT_IMAGE_SIZE] (state, payload) {
-      state.restrictImageSize = payload
+    [SET_THEME] (state, payload) {
+      state.theme = payload
+    },
+    [SET_RESTRICT_MEDIA_SIZE] (state, payload) {
+      state.restrictMediaSize = payload
     },
     [SET_COLORS] (state, payload) {
       state.colors = payload
@@ -49,12 +55,11 @@ export default {
         ? `-${context.rootState.auth.user.id}`
         : ''
 
-      const storedRestrictImageSize = localStorage.getItem(
-        `hyve-restrict-image-size${userId}`
+      const storedTheme = localStorage.getItem(`hyve-theme${userId}`)
+      const storedRestrictMediaSize = localStorage.getItem(
+        `hyve-restrict-media-size${userId}`
       )
-      const storedColors = localStorage.getItem(
-        `hyve-colors${userId}`
-      )
+      const storedColors = localStorage.getItem(`hyve-colors${userId}`)
       const storedFilesSorting = localStorage.getItem(
         `hyve-files-sorting${userId}`
       )
@@ -74,8 +79,11 @@ export default {
       context.dispatch(
         'save',
         {
-          restrictImageSize: storedRestrictImageSize
-            ? JSON.parse(storedRestrictImageSize)
+          theme: storedTheme
+            ? JSON.parse(storedTheme)
+            : undefined,
+          restrictMediaSize: storedRestrictMediaSize
+            ? JSON.parse(storedRestrictMediaSize)
             : undefined,
           colors: storedColors ? JSON.parse(storedColors) : undefined,
           filesSorting: storedFilesSorting
@@ -102,7 +110,8 @@ export default {
         : ''
 
       const {
-        restrictImageSize = false,
+        theme = 'default',
+        restrictMediaSize = false,
         colors = config.defaultNamespaceColors,
         filesSorting = 'id',
         filesSortingDirection = 'default',
@@ -111,16 +120,22 @@ export default {
         tagsSortingDirection = 'default'
       } = payload
 
-      context.commit(SET_RESTRICT_IMAGE_SIZE, restrictImageSize)
+      context.commit(SET_THEME, theme)
+      localStorage.setItem(`hyve-theme${userId}`, JSON.stringify(theme))
+
+      setTheme(
+        theme === 'default'
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : theme === 'dark'
+      )
+
+      context.commit(SET_RESTRICT_MEDIA_SIZE, restrictMediaSize)
       localStorage.setItem(
-        `hyve-restrict-image-size${userId}`,
-        JSON.stringify(restrictImageSize)
+        `hyve-restrict-media-size${userId}`, JSON.stringify(restrictMediaSize)
       )
 
       context.commit(SET_COLORS, colors)
-      localStorage.setItem(
-        `hyve-colors${userId}`, JSON.stringify(colors)
-      )
+      localStorage.setItem(`hyve-colors${userId}`, JSON.stringify(colors))
 
       context.commit(SET_FILES_SORTING, filesSorting)
       localStorage.setItem(

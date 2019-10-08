@@ -22,56 +22,14 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field" v-for="option in sortingOptions" :key="option.id">
       <input
         type="radio"
         class="is-checkradio is-aligned"
-        id="sorting-tags-default"
-        value="id"
+        :id="`sorting-tags-${option.id}`"
+        :value="option.value"
         v-model="localSorting">
-      <label for="sorting-tags-default">Sort by ID</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-tags-name"
-        value="name"
-        v-model="localSorting">
-      <label for="sorting-tags-name">Sort by name</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-tags-files"
-        value="files"
-        v-model="localSorting">
-      <label for="sorting-tags-files">Sort by amount of files</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-tags-contains"
-        value="contains"
-        v-model="localSorting">
-      <label for="sorting-tags-contains">
-        Sort by given word (starting with)
-      </label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-tags-random"
-        value="random"
-        v-model="localSorting">
-      <label for="sorting-tags-random">Sort randomly</label>
+      <label :for="`sorting-tags-${option.id}`">{{ option.label }}</label>
     </div>
 
   </div>
@@ -96,6 +54,33 @@ export default {
   },
   data: function () {
     return {
+      sortingOptions: [
+        {
+          id: 'default',
+          value: 'id',
+          label: 'Sort by ID'
+        },
+        {
+          id: 'name',
+          value: 'name',
+          label: 'Sort by name'
+        },
+        {
+          id: 'files',
+          value: 'files',
+          label: 'Sort by amount of files'
+        },
+        {
+          id: 'contains',
+          value: 'contains',
+          label: 'Sort by given word (starting with)'
+        },
+        {
+          id: 'random',
+          value: 'random',
+          label: 'Sort randomly'
+        }
+      ],
       useNormalLetterCase: config.useNormalLetterCase
     }
   },

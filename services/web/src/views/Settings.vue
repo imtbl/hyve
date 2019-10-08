@@ -27,10 +27,16 @@
                 <form @submit.prevent="saveSettings">
 
                   <h2 class="has-paragraph-size has-text-primary">
-                    Image size
+                    Theme
                   </h2>
 
-                  <image-size :restrictImageSize.sync="restrictImageSize" />
+                  <theme :theme.sync="theme" />
+
+                  <h2 class="has-paragraph-size has-text-primary">
+                    Media size
+                  </h2>
+
+                  <media-size :restrictMediaSize.sync="restrictMediaSize" />
 
                   <h2 class="has-paragraph-size has-text-primary">
                     Tag colors
@@ -101,7 +107,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import config from '@/config'
 
-import ImageSize from '@/components/settings/ImageSize'
+import Theme from '@/components/settings/Theme'
+import MediaSize from '@/components/settings/MediaSize'
 import Colors from '@/components/settings/Colors'
 import FilesSorting from '@/components/settings/FilesSorting'
 import TagsSorting from '@/components/settings/TagsSorting'
@@ -110,7 +117,8 @@ export default {
   name: 'Settings',
   data: function () {
     return {
-      restrictImageSize: this.$store.state.settings.restrictImageSize,
+      theme: this.$store.state.settings.theme,
+      restrictMediaSize: this.$store.state.settings.restrictMediaSize,
       colors: Object.assign([], this.$store.getters['settings/currentColors']),
       filesSorting: this.$store.state.settings.filesSorting,
       filesSortingDirection: this.$store.state.settings.filesSortingDirection,
@@ -131,7 +139,8 @@ export default {
       }
 
       this.storeSettings({
-        restrictImageSize: this.restrictImageSize,
+        theme: this.theme,
+        restrictMediaSize: this.restrictMediaSize,
         colors: config.defaultNamespaceColors.filter(
           defaultColor => !this.colors.find(
             color => defaultColor.name === color.name
@@ -156,7 +165,8 @@ export default {
   },
   components: {
     FontAwesomeIcon,
-    ImageSize,
+    Theme,
+    MediaSize,
     Colors,
     FilesSorting,
     TagsSorting
