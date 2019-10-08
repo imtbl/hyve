@@ -34,7 +34,9 @@
               class="file-search-preview-link">
               View file
             </router-link>
-            <div class="file-search-preview-gallery-button">
+            <div
+              class="file-search-preview-gallery-button"
+              :class="{ 'is-invisible': !isImage(file.mime) }">
               <span class="icon is-large">
                 <font-awesome-icon icon="images" class="fa-2x" />
               </span>

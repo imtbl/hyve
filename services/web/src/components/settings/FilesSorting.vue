@@ -22,84 +22,14 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field" v-for="option in sortingOptions" :key="option.id">
       <input
         type="radio"
         class="is-checkradio is-aligned"
-        id="sorting-files-default"
-        value="id"
+        :id="`sorting-files-${option.id}`"
+        :value="option.value"
         v-model="localSorting">
-      <label for="sorting-files-default">Sort by ID</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-size"
-        value="size"
-        v-model="localSorting">
-      <label for="sorting-files-size">Sort by file size</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-width"
-        value="width"
-        v-model="localSorting">
-      <label for="sorting-files-width">Sort by width</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-height"
-        value="height"
-        v-model="localSorting">
-      <label for="sorting-files-height">Sort by height</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-mime"
-        value="mime"
-        v-model="localSorting">
-      <label for="sorting-files-mime">Sort by MIME type</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-tags"
-        value="tags"
-        v-model="localSorting">
-      <label for="sorting-files-tags">Sort by amount of tags</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-random"
-        value="random"
-        v-model="localSorting">
-      <label for="sorting-files-random">Sort randomly</label>
-    </div>
-
-    <div class="field">
-      <input
-        type="radio"
-        class="is-checkradio is-aligned"
-        id="sorting-files-namespaces"
-        value="namespaces"
-        v-model="localSorting">
-      <label for="sorting-files-namespaces">Sort by namespaces</label>
+      <label :for="`sorting-files-${option.id}`">{{ option.label }}</label>
     </div>
 
     <div class="namespace-sorting panel" v-if="localSorting === 'namespaces'">
@@ -166,6 +96,48 @@ export default {
   },
   data: function () {
     return {
+      sortingOptions: [
+        {
+          id: 'default',
+          value: 'id',
+          label: 'Sort by ID'
+        },
+        {
+          id: 'size',
+          value: 'size',
+          label: 'Sort by file size'
+        },
+        {
+          id: 'width',
+          value: 'width',
+          label: 'Sort by width'
+        },
+        {
+          id: 'height',
+          value: 'height',
+          label: 'Sort by height'
+        },
+        {
+          id: 'mime',
+          value: 'mime',
+          label: 'Sort by MIME type'
+        },
+        {
+          id: 'tags',
+          value: 'tags',
+          label: 'Sort by amount of tags'
+        },
+        {
+          id: 'random',
+          value: 'random',
+          label: 'Sort randomly'
+        },
+        {
+          id: 'namespaces',
+          value: 'namespaces',
+          label: 'Sort by namespaces'
+        }
+      ],
       newNamespace: '',
       useNormalLetterCase: config.useNormalLetterCase
     }
