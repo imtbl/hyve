@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
++ Defined a new default `meta` namespace color that works on both light and
+  dark theme
+
 ## [2.3.0] - 2019-10-08
 
 ### Added
