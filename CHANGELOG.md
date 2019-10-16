@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.4.0] - 2019-10-16
+
 ### Changed
 
 + Defined a new default `meta` namespace color that works on both light and
@@ -108,7 +110,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.3.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.4.0...develop
+[2.4.0]: https://github.com/mserajnik/hyve/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/mserajnik/hyve/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/mserajnik/hyve/compare/2.2.0...2.2.1
 [2.2.0]: https://github.com/mserajnik/hyve/compare/2.1.0...2.2.0
