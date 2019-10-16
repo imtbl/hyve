@@ -12,6 +12,7 @@ and this project adheres to
 
 + Defined a new default `meta` namespace color that works on both light and
   dark theme
++ Updated dependencies
 
 ## [2.3.0] - 2019-10-08
 

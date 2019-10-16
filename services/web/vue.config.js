@@ -7,7 +7,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        data:
+        prependData:
           process.env.VUE_APP_HYVE_PRIMARY_COLOR &&
           process.env.VUE_APP_HYVE_PRIMARY_COLOR_DARK
             ? `$primary: ${process.env.VUE_APP_HYVE_PRIMARY_COLOR};` +

@@ -67,6 +67,7 @@
     </div>
 
     <div class="file-search-filters tags" v-if="activeFilters.length">
+      <!-- eslint-disable vue/use-v-on-exact -->
       <a
         class="tag is-medium"
         :class="{ 'constraint': filter.type === 'constraint' }"
@@ -95,6 +96,7 @@
         <span>{{ filter.name }}</span>
         <span type="button" class="delete is-small"></span>
       </a>
+      <!-- eslint-enable -->
     </div>
 
   </form>
