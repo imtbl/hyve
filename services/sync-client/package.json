@@ -1,6 +1,6 @@
 {
   "name": "@hyve/sync-client",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": "Michael Serajnik <ms@mserajnik.at>",
   "license": "MIT",
   "private": true,
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "better-sqlite3": "^5.4.3",
-    "dotenv": "^8.1.0"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "eslint": "^6.5.1",

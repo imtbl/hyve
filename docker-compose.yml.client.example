@@ -78,7 +78,7 @@ services:
       - VUE_APP_HYVE_MIN_PASSWORD_LENGTH=16
       - VUE_APP_HYVE_COUNTS_ENABLED=true
       - VUE_APP_HYVE_FALLBACK_FILES_SORTING_NAMESPACE=namespace
-      - VUE_APP_HYVE_DEFAULT_NAMESPACE_COLORS=character#00b401|creator#bb1800|meta#000000|person#008f00|series#bb2cb9|studio#941100
+      - VUE_APP_HYVE_DEFAULT_NAMESPACE_COLORS=character#00b401|creator#bb1800|meta#676767|person#008f00|series#bb2cb9|studio#941100
       - VUE_APP_HYVE_FALLBACK_NAMESPACE_COLOR=#0088fb
 
 volumes:

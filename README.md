@@ -461,7 +461,7 @@ to work correctly.
   sorting namespace that is needed to not break namespace sorting. Should be
   set to something sensible like `creator` or `series`, depending on your
   preferences.
-+ `VUE_APP_HYVE_DEFAULT_NAMESPACE_COLORS='character#00b401|creator#bb1800|meta#000000|person#008f00|series#bb2cb9|studio#941100'`:
++ `VUE_APP_HYVE_DEFAULT_NAMESPACE_COLORS='character#00b401|creator#bb1800|meta#676767|person#008f00|series#bb2cb9|studio#941100'`:
   sets default colors for the given namespaces. The user will not be able to
   change those colors in his settings until tags under the configured
   namespaces exist. Once such tags are added to hyve, the user will see the
