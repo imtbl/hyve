@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fixed a visual checkbox bug when using the dark theme
+
 ## [2.4.0] - 2019-10-16
 
 ### Changed
