@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added time zone configuration to Docker Compose example setups
+
 ### Fixed
 
 + Fixed a visual checkbox bug when using the dark theme

@@ -205,8 +205,15 @@ to use with hyve to hydrus server.
 
 To get started with the example setup, simply duplicate
 `docker-compose.yml.server.example` as `docker-compose.yml`, adjust the
-variables in the `environment` section as described [here](#configuration) and
-start the containers:
+variables in the `environment` section as described [here](#configuration).
+
+In addition to the environment variables configuring the settings for the
+respective service, also take note of the time zone set via `TZ` (for each
+service). This is particularly important for the sync cron job to run at the
+time you expect it to. The time zone has to be set in the
+[tz database format][tz-database-time-zones].
+
+Finally, start the containers:
 
 ```zsh
 user@local:hyve$ docker-compose up -d
@@ -584,6 +591,7 @@ You are welcome to help out!
 [docker-compose]: https://docs.docker.com/compose/
 [hydrus-server-docker]: https://github.com/mserajnik/hydrus-server-docker
 [hydrus-docker]: https://github.com/Suika/hydrus-docker
+[tz-database-time-zones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 [supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L5-L17
 [supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L17
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
