@@ -11,6 +11,8 @@ services:
       - '45872:45872'
     volumes:
       - data:/data
+    environment:
+      - TZ=Etc/UTC
 
   hyve-sync:
     image: mserajnik/hyve:latest
@@ -21,6 +23,7 @@ services:
     volumes:
       - data:/data
     environment:
+      - TZ=Etc/UTC
       - HYVE_CONTENT_DB_PATH=/data/content.db
       - HYVE_HYDRUS_SERVER_DB_PATH=/data/server.db
       - HYVE_HYDRUS_MASTER_DB_PATH=/data/server.master.db
@@ -41,6 +44,7 @@ services:
     volumes:
       - data:/data
     environment:
+      - TZ=Etc/UTC
       - NODE_ENV=production
       - HYVE_URL=http://localhost:8000
       - HYVE_PORT=8000
@@ -74,6 +78,7 @@ services:
     ports:
       - '8080:8080'
     environment:
+      - TZ=Etc/UTC
       - VUE_APP_HYVE_TITLE=hyve
       - VUE_APP_HYVE_SUBTITLE=A Vue-based frontend for <a href="https://github.com/mserajnik/hyve" target="_blank" rel="noopener">hyve</a>
       - VUE_APP_HYVE_DESCRIPTION=A Vue-based frontend for hyve

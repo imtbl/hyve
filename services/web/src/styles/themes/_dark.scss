@@ -221,15 +221,19 @@ body {
       }
     }
 
+    .is-checkradio[type='radio'] {
+      + label {
+        &::after {
+          background: $dark-theme-primary;
+        }
+      }
+    }
+
     .is-checkradio[type='radio'],
     .is-checkradio[type='checkbox'] {
       + label {
         &::before {
           border-color: $dark-theme-grey-lighter;
-        }
-
-        &::after {
-          background: $dark-theme-primary;
         }
       }
 

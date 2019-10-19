@@ -73,6 +73,7 @@ __it simply provides a different way to view them.__
     + [Server configuration](#server-configuration)
     + [Web configuration](#web-configuration)
   + [HTTP API](#http-api)
++ [Demo](#demo)
 + [Screenshots](#screenshots)
 + [FAQ](#faq)
 + [Donate](#donate)
@@ -205,8 +206,15 @@ to use with hyve to hydrus server.
 
 To get started with the example setup, simply duplicate
 `docker-compose.yml.server.example` as `docker-compose.yml`, adjust the
-variables in the `environment` section as described [here](#configuration) and
-start the containers:
+variables in the `environment` section as described [here](#configuration).
+
+In addition to the environment variables configuring the settings for the
+respective service, also take note of the time zone set via `TZ` (for each
+service). This is particularly important for the sync cron job to run at the
+time you expect it to. The time zone has to be set in the
+[tz database format][tz-database-time-zones].
+
+Finally, start the containers:
 
 ```zsh
 user@local:hyve$ docker-compose up -d
@@ -474,6 +482,18 @@ to work correctly.
 
 You can find the HTTP API documentation [here](API.md).
 
+## Demo
+
+A demo installation is located at [https://hyve.mser.at][hyve-demo].
+
+Registration is enabled (not necessary to access the media, only to check out
+the user settings), so feel free to create as many users as you would like.
+__Created users are deleted at 12am CEST every day.__
+
+If you are the creator of one or more of the media used in this demo
+installation and would like to have your content removed, please
+[open an issue][issues] and I will comply with your request at once.
+
 ## Screenshots
 
 Here are some screenshots of the web client:
@@ -491,6 +511,8 @@ Here are some screenshots of the web client:
 ![Configuring settings][screenshot-settings]
 
 ![Changing user data][screenshot-user]
+
+![Using the dark theme][screenshot-dark]
 
 ## FAQ
 
@@ -584,9 +606,11 @@ You are welcome to help out!
 [docker-compose]: https://docs.docker.com/compose/
 [hydrus-server-docker]: https://github.com/mserajnik/hydrus-server-docker
 [hydrus-docker]: https://github.com/Suika/hydrus-docker
+[tz-database-time-zones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 [supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L5-L17
 [supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L17
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
+[hyve-demo]: https://hyve.mser.at
 [danbooru]: https://github.com/r888888888/danbooru
 [szurubooru]: https://github.com/rr-/szurubooru
 
@@ -597,6 +621,7 @@ You are welcome to help out!
 [screenshot-tags]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-tags.png
 [screenshot-settings]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-settings.png
 [screenshot-user]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-user.png
+[screenshot-dark]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-dark.png
 
 [paypal]: https://www.paypal.me/mserajnik
 [paypal-image]: https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png

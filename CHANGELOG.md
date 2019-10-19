@@ -8,6 +8,22 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.5.0] - 2019-10-19
+
+### Added
+
++ Added time zone configuration to Docker Compose example setups
++ Added information about the demo installation
+
+### Changed
+
++ Updated screenshots
++ Updated dependencies
+
+### Fixed
+
++ Fixed a visual checkbox bug when using the dark theme
+
 ## [2.4.0] - 2019-10-16
 
 ### Changed
@@ -110,7 +126,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.4.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.5.0...develop
+[2.5.0]: https://github.com/mserajnik/hyve/compare/2.4.0...2.5.0
 [2.4.0]: https://github.com/mserajnik/hyve/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/mserajnik/hyve/compare/2.2.1...2.3.0
 [2.2.1]: https://github.com/mserajnik/hyve/compare/2.2.0...2.2.1
