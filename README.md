@@ -73,6 +73,7 @@ __it simply provides a different way to view them.__
     + [Server configuration](#server-configuration)
     + [Web configuration](#web-configuration)
   + [HTTP API](#http-api)
++ [Demo](#demo)
 + [Screenshots](#screenshots)
 + [FAQ](#faq)
 + [Donate](#donate)
@@ -481,6 +482,18 @@ to work correctly.
 
 You can find the HTTP API documentation [here](API.md).
 
+## Demo
+
+A demo installation is located at [https://hyve.mser.at][hyve-demo].
+
+Registration is enabled (not necessary to access the media, only to check out
+the user settings), so feel free to create as many users as you would like.
+__Created users are deleted at 12am CEST every day.__
+
+If you are the creator of one or more of the media used in this demo
+installation and would like to have your content removed, please
+[open an issue][issues] and I will comply with your request at once.
+
 ## Screenshots
 
 Here are some screenshots of the web client:
@@ -597,6 +610,7 @@ You are welcome to help out!
 [supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L5-L17
 [supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L17
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
+[hyve-demo]: https://hyve.mser.at
 [danbooru]: https://github.com/r888888888/danbooru
 [szurubooru]: https://github.com/rr-/szurubooru
 

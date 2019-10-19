@@ -11,6 +11,7 @@ and this project adheres to
 ### Added
 
 + Added time zone configuration to Docker Compose example setups
++ Added information about the demo installation
 
 ### Changed
 
