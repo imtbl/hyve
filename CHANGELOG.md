@@ -16,6 +16,7 @@ and this project adheres to
 ### Changed
 
 + Updated screenshots
++ Updated dependencies
 
 ### Fixed
 
