@@ -12,6 +12,10 @@ and this project adheres to
 
 + Added time zone configuration to Docker Compose example setups
 
+### Changed
+
++ Updated screenshots
+
 ### Fixed
 
 + Fixed a visual checkbox bug when using the dark theme

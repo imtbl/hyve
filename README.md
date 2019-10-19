@@ -499,6 +499,8 @@ Here are some screenshots of the web client:
 
 ![Changing user data][screenshot-user]
 
+![Using the dark theme][screenshot-dark]
+
 ## FAQ
 
 > I am encountering a _unique constraint_ error when syncing. Why does this
@@ -605,6 +607,7 @@ You are welcome to help out!
 [screenshot-tags]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-tags.png
 [screenshot-settings]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-settings.png
 [screenshot-user]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-user.png
+[screenshot-dark]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-dark.png
 
 [paypal]: https://www.paypal.me/mserajnik
 [paypal-image]: https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png
