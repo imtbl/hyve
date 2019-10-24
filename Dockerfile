@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:12
+FROM mhart/alpine-node:13
 
 ARG HOST_USER_ID=1000
 ARG HOST_GROUP_ID=1000

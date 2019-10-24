@@ -108,7 +108,7 @@ body {
 
     .textarea,
     .input {
-      box-shadow: inset 0 1px 2px rgba($white, 0.1);
+      box-shadow: inset 0 0.0625em 0.125em rgba($white, 0.05);
 
       &::placeholder {
         color: rgba($dark-theme-grey-darker, 0.3);
@@ -367,14 +367,26 @@ body {
       }
     }
 
+    .panel {
+      &.is-primary {
+        .panel-heading {
+          background-color: $dark-theme-primary;
+          color: $white;
+        }
+      }
+
+      > .panel-block {
+        &:last-child {
+          border-bottom-style: solid;
+          border-bottom-width: 1px;
+        }
+      }
+    }
+
     .panel-heading,
     .panel-tabs,
     .panel-block {
       border-color: $dark-theme-grey-lighter;
-
-      &:first-child {
-        border-top: 1px solid $dark-theme-grey-lighter;
-      }
     }
 
     .panel-heading {
@@ -383,6 +395,11 @@ body {
     }
 
     .panel-block {
+      border-color: $dark-theme-grey-lighter;
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-right-style: solid;
+      border-right-width: 1px;
       color: $dark-theme-grey-darker;
 
       .delete {
@@ -406,6 +423,8 @@ body {
 
         .panel-block {
           &.sortable {
+            border-color: $dark-theme-grey-lighter;
+
             @media (hover) {
               &:hover {
                 background-color: $black-bis;
