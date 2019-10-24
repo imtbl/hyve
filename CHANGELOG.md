@@ -11,6 +11,7 @@ and this project adheres to
 ### Changed
 
 + Updated dependencies
++ Clarified the wording about the supported Node.js versions
 
 ## [2.5.0] - 2019-10-19
 

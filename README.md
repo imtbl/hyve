@@ -124,9 +124,9 @@ user@local:hyve$ yarn && yarn bootstrap
 + [Node.js][node-js] (when running without Docker)
 + [Yarn][yarn] (when running without Docker)
 
-hyve should work with both the current LTS and the latest version of Node.js.
-If you encounter any issues with either of those versions when running without
-Docker, please [let me know][issues].
+hyve should work with both the latest LTS and the latest stable version of
+Node.js. If you encounter any issues with either of those versions when running
+without Docker, please [let me know][issues].
 
 ### Updating
 
