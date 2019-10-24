@@ -49,7 +49,9 @@
           <label :for="`sorting-${option.id}`">{{ option.label }}</label>
         </div>
 
-        <div class="namespace-sorting panel" v-if="sorting === 'namespaces'">
+        <div
+          class="namespace-sorting panel is-primary"
+          v-if="sorting === 'namespaces'">
 
           <p class="panel-heading">
             Namespaces

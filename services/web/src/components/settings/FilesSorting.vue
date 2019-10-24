@@ -32,7 +32,9 @@
       <label :for="`sorting-files-${option.id}`">{{ option.label }}</label>
     </div>
 
-    <div class="namespace-sorting panel" v-if="localSorting === 'namespaces'">
+    <div
+      class="namespace-sorting panel is-primary"
+      v-if="localSorting === 'namespaces'">
 
       <p class="panel-heading">
         Namespaces

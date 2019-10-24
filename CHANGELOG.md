@@ -8,6 +8,13 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.6.0] - 2019-10-24
+
+### Changed
+
++ Updated dependencies
++ Clarified the wording about the supported Node.js versions
+
 ## [2.5.0] - 2019-10-19
 
 ### Added
@@ -126,7 +133,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.5.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.6.0...develop
+[2.6.0]: https://github.com/mserajnik/hyve/compare/2.5.0...2.6.0
 [2.5.0]: https://github.com/mserajnik/hyve/compare/2.4.0...2.5.0
 [2.4.0]: https://github.com/mserajnik/hyve/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/mserajnik/hyve/compare/2.2.1...2.3.0

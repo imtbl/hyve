@@ -4,11 +4,14 @@
 
     .panel-heading {
       border-bottom: 0;
+      font-weight: 600;
       margin-bottom: 0;
     }
 
     .panel-block {
       &.sortable {
+        border-bottom: 1px solid $grey-lightest;
+        border-radius: 0;
         cursor: move;
 
         @media (hover) {
