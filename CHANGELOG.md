@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
++ Updated dependencies
+
 ## [2.6.0] - 2019-10-24
 
 ### Changed

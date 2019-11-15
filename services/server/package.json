@@ -32,7 +32,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-validator": "^6.2.0",
-    "file-type": "^12.3.1",
+    "file-type": "^12.4.0",
     "ip-anonymize": "^0.1.0",
     "morgan": "^1.9.1",
     "object-hash": "^2.0.0",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "ava": "^2.4.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
