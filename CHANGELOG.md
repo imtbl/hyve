@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
++ Improved the visual transition when changing the file on the file detail view
+
 ## [2.7.0] - 2019-11-16
 
 ### Changed

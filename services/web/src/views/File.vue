@@ -5,13 +5,13 @@
 
     <div class="container-fluid" v-if="!error.name">
 
-      <section class="section" v-if="isLoading">
+      <section class="section" v-if="isLoading && !file">
         <span class="icon is-large has-text-primary">
           <font-awesome-icon icon="spinner" class="fa-pulse fa-2x" />
         </span>
       </section>
 
-      <section class="file-detail section" v-if="!isLoading && file">
+      <section class="file-detail section" v-if="file">
 
         <media :query="{ maxWidth: 1087 }">
           <controls
@@ -170,7 +170,8 @@ export default {
     },
     ...mapActions({
       setLastDetailId: 'files/setLastDetailId',
-      fetchDetail: 'files/fetchDetail'
+      fetchDetail: 'files/fetchDetail',
+      clearDetail: 'files/clearDetail'
     })
   },
   watch: {
@@ -178,6 +179,7 @@ export default {
   },
   mounted: function () {
     if (this.$route.params.id !== this.lastDetailId) {
+      this.clearDetail()
       this.loadFile()
     }
   },
