@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.8.0] - 2019-11-30
+
 ### Added
 
 + Added a setting to make looping videos optional
@@ -148,7 +150,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.7.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.8.0...develop
+[2.8.0]: https://github.com/mserajnik/hyve/compare/2.7.0...2.8.0
 [2.7.0]: https://github.com/mserajnik/hyve/compare/2.6.0...2.7.0
 [2.6.0]: https://github.com/mserajnik/hyve/compare/2.5.0...2.6.0
 [2.5.0]: https://github.com/mserajnik/hyve/compare/2.4.0...2.5.0
