@@ -15,6 +15,12 @@
 
     </div>
 
+    <div class="level-center" v-if="isLoading">
+      <span class="icon is-large has-text-primary">
+        <font-awesome-icon icon="spinner" class="fa-pulse fa-2x" />
+      </span>
+    </div>
+
     <div
       class="level-right"
       v-if="file && (navigation.previous || navigation.next)">
@@ -99,6 +105,7 @@ export default {
     },
     ...mapState({
       files: state => state.files.items,
+      isLoading: state => state.files.isLoading,
       lastFilesQuery: state => state.files.lastQuery
     })
   },

@@ -68,6 +68,7 @@ export const SET_MIME_TYPES = 'setMimeTypes'
 // Settings
 export const SET_THEME = 'setTheme'
 export const SET_RESTRICT_MEDIA_SIZE = 'setRestrictMediaSize'
+export const SET_LOOP_VIDEOS = 'setLoopVideos'
 export const SET_COLORS = 'setColors'
 export const SET_FILES_SORTING = 'setFilesSorting'
 export const SET_FILES_SORTING_DIRECTION = 'setFilesSortingDirection'

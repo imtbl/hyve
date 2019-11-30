@@ -12,7 +12,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/info`, {
@@ -23,7 +23,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/users`, {
@@ -37,7 +37,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.put(`${config.apiUrl}/users`,
@@ -49,7 +49,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.delete(`${config.apiUrl}/users`, {
@@ -64,7 +64,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.delete(`${config.apiUrl}/tokens`, {
@@ -76,7 +76,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/tags${query}`, {
@@ -87,7 +87,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/most-used-tags`, {
@@ -100,7 +100,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.post(`${config.apiUrl}/autocomplete-tag`,
@@ -120,7 +120,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/namespaces`, {
@@ -131,7 +131,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/files${query}`, {
@@ -142,7 +142,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/files/${id}`, {
@@ -153,7 +153,7 @@ export default {
     const headers = {}
 
     if (token) {
-      headers['Authorization'] = `Bearer ${token}`
+      headers.Authorization = `Bearer ${token}`
     }
 
     return axios.get(`${config.apiUrl}/mime-types`, {

@@ -3,10 +3,10 @@
     <video
       :poster="posterUrl"
       id="video-player"
-      :class="{ 'is-restricted-to-viewport': restrictMediaSize }">
+      :class="{ 'is-restricted-to-viewport': restrictMediaSize }"
+      :loop="loopVideos"
       playsinline
-      controls
-      loop>
+      controls>
       <source :src="url" :type="mime">
     </video>
   </div>
@@ -39,7 +39,8 @@ export default {
   },
   computed: {
     ...mapState({
-      restrictMediaSize: state => state.settings.restrictMediaSize
+      restrictMediaSize: state => state.settings.restrictMediaSize,
+      loopVideos: state => state.settings.loopVideos
     })
   },
   mounted: function () {

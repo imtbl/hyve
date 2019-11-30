@@ -1,5 +1,5 @@
 <template>
-  <div class="settings-media-size has-margin-bottom">
+  <div class="settings-media-size">
     <div class="field">
       <input
         type="checkbox"

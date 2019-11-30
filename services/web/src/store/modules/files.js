@@ -275,7 +275,6 @@ export default {
     fetchDetail (context, payload) {
       context.dispatch('error/flush', false, { root: true })
 
-      context.commit(UNSET_DETAIL_ITEM)
       context.commit(SET_FILES_LOADING)
 
       return api.fetchFile(payload, context.rootState.auth.token)
@@ -308,6 +307,9 @@ export default {
         .finally(() => {
           context.commit(UNSET_FILES_LOADING)
         })
+    },
+    clearDetail ({ commit }) {
+      commit(UNSET_DETAIL_ITEM)
     },
     setLastDetailId ({ commit }, payload) {
       commit(SET_LAST_DETAIL_ID, payload)
