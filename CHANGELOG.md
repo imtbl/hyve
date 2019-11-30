@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.8.1] - 2019-12-01
+
 ### Fixed
 
 + Fixed changing the file on the file detail view causing the actual media
@@ -155,7 +157,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.8.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.8.1...develop
+[2.8.1]: https://github.com/mserajnik/hyve/compare/2.8.0...2.8.1
 [2.8.0]: https://github.com/mserajnik/hyve/compare/2.7.0...2.8.0
 [2.7.0]: https://github.com/mserajnik/hyve/compare/2.6.0...2.7.0
 [2.6.0]: https://github.com/mserajnik/hyve/compare/2.5.0...2.6.0
