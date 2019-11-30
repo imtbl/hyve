@@ -15,6 +15,7 @@ and this project adheres to
 ### Changed
 
 + Improved the visual transition when changing the file on the file detail view
++ Updated dependencies
 
 ## [2.7.0] - 2019-11-16
 

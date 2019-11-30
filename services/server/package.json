@@ -31,7 +31,7 @@
     "distributions": "^2.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.2.0",
+    "express-validator": "^6.3.0",
     "file-type": "^12.4.0",
     "ip-anonymize": "^0.1.0",
     "morgan": "^1.9.1",
@@ -41,13 +41,13 @@
   },
   "devDependencies": {
     "ava": "^2.4.0",
-    "eslint": "^6.6.0",
+    "eslint": "^6.7.2",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "fs-extra": "^8.1.0",
-    "nodemon": "^1.19.4"
+    "nodemon": "^2.0.1"
   }
 }
