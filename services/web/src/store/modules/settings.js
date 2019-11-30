@@ -1,6 +1,7 @@
 import {
   SET_THEME,
   SET_RESTRICT_MEDIA_SIZE,
+  SET_LOOP_VIDEOS,
   SET_COLORS,
   SET_FILES_SORTING,
   SET_FILES_SORTING_DIRECTION,
@@ -16,6 +17,7 @@ export default {
   state: {
     theme: 'default',
     restrictMediaSize: false,
+    loopVideos: false,
     colors: [],
     filesSorting: 'id',
     filesSortingDirection: 'default',
@@ -29,6 +31,9 @@ export default {
     },
     [SET_RESTRICT_MEDIA_SIZE] (state, payload) {
       state.restrictMediaSize = payload
+    },
+    [SET_LOOP_VIDEOS] (state, payload) {
+      state.loopVideos = payload
     },
     [SET_COLORS] (state, payload) {
       state.colors = payload
@@ -59,6 +64,9 @@ export default {
       const storedRestrictMediaSize = localStorage.getItem(
         `hyve-restrict-media-size${userId}`
       )
+      const storedLoopVideos = localStorage.getItem(
+        `hyve-loop-videos${userId}`
+      )
       const storedColors = localStorage.getItem(`hyve-colors${userId}`)
       const storedFilesSorting = localStorage.getItem(
         `hyve-files-sorting${userId}`
@@ -84,6 +92,9 @@ export default {
             : undefined,
           restrictMediaSize: storedRestrictMediaSize
             ? JSON.parse(storedRestrictMediaSize)
+            : undefined,
+          loopVideos: storedLoopVideos
+            ? JSON.parse(storedLoopVideos)
             : undefined,
           colors: storedColors ? JSON.parse(storedColors) : undefined,
           filesSorting: storedFilesSorting
@@ -112,6 +123,7 @@ export default {
       const {
         theme = 'default',
         restrictMediaSize = false,
+        loopVideos = false,
         colors = config.defaultNamespaceColors,
         filesSorting = 'id',
         filesSortingDirection = 'default',
@@ -132,6 +144,11 @@ export default {
       context.commit(SET_RESTRICT_MEDIA_SIZE, restrictMediaSize)
       localStorage.setItem(
         `hyve-restrict-media-size${userId}`, JSON.stringify(restrictMediaSize)
+      )
+
+      context.commit(SET_LOOP_VIDEOS, loopVideos)
+      localStorage.setItem(
+        `hyve-loop-videos${userId}`, JSON.stringify(loopVideos)
       )
 
       context.commit(SET_COLORS, colors)

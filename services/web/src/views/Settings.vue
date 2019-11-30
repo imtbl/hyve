@@ -33,10 +33,12 @@
                   <theme :theme.sync="theme" />
 
                   <h2 class="has-paragraph-size has-text-primary">
-                    Media size
+                    Media
                   </h2>
 
                   <media-size :restrictMediaSize.sync="restrictMediaSize" />
+
+                  <video-loop :loopVideos.sync="loopVideos" />
 
                   <h2 class="has-paragraph-size has-text-primary">
                     Tag colors
@@ -109,6 +111,7 @@ import config from '@/config'
 
 import Theme from '@/components/settings/Theme'
 import MediaSize from '@/components/settings/MediaSize'
+import VideoLoop from '@/components/settings/VideoLoop'
 import Colors from '@/components/settings/Colors'
 import FilesSorting from '@/components/settings/FilesSorting'
 import TagsSorting from '@/components/settings/TagsSorting'
@@ -119,6 +122,7 @@ export default {
     return {
       theme: this.$store.state.settings.theme,
       restrictMediaSize: this.$store.state.settings.restrictMediaSize,
+      loopVideos: this.$store.state.settings.loopVideos,
       colors: Object.assign([], this.$store.getters['settings/currentColors']),
       filesSorting: this.$store.state.settings.filesSorting,
       filesSortingDirection: this.$store.state.settings.filesSortingDirection,
@@ -141,6 +145,7 @@ export default {
       this.storeSettings({
         theme: this.theme,
         restrictMediaSize: this.restrictMediaSize,
+        loopVideos: this.loopVideos,
         colors: config.defaultNamespaceColors.filter(
           defaultColor => !this.colors.find(
             color => defaultColor.name === color.name
@@ -167,6 +172,7 @@ export default {
     FontAwesomeIcon,
     Theme,
     MediaSize,
+    VideoLoop,
     Colors,
     FilesSorting,
     TagsSorting

@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added a setting to make looping videos optional
+
 ### Changed
 
 + Improved the visual transition when changing the file on the file detail view
