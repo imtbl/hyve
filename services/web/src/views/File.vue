@@ -175,7 +175,7 @@ export default {
     })
   },
   watch: {
-    '$route': 'changeFile'
+    $route: 'changeFile'
   },
   mounted: function () {
     if (this.$route.params.id !== this.lastDetailId) {

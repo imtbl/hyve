@@ -451,12 +451,12 @@ export default {
         })
     },
     deauthorize (context, payload) {
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         cookies.remove('token')
         cookies.remove('mediaToken')
 
         if (context.state.token) {
-          await api.deauthorize({ all: payload }, context.state.token)
+          api.deauthorize({ all: payload }, context.state.token)
             .then(() => {
               context.commit(DEAUTHORIZE)
               context.commit(UNSET_USER)
