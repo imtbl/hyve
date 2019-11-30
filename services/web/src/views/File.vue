@@ -24,12 +24,14 @@
           <div class="column">
 
             <file-image
+              :key="file.id"
               :url="preparedMediaUrl"
               :width="file.width"
               :height="file.height"
               v-if="type === 'image'" />
 
             <file-video
+              :key="file.id"
               :url="preparedMediaUrl"
               :posterUrl="preparedThumbnailUrl"
               :mime="file.mime"

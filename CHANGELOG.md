@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fixed changing the file on the file detail view causing the actual media
+  element to lag behind and update too late
+
 ## [2.8.0] - 2019-11-30
 
 ### Added
