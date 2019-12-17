@@ -40,6 +40,7 @@ services:
       - HYVE_AUTHENTICATION_DB_PATH=/data/authentication.db
       - HYVE_CONTENT_DB_PATH=/data/content.db
       - HYVE_HYDRUS_FILES_PATH=/data/client_files
+      - HYVE_HYDRUS_THUMBNAILS_PATH=
       - HYVE_HYDRUS_FILES_MODE=client
       - HYVE_NUMBER_OF_WORKERS=
       - HYVE_DB_CHECKPOINT_INTERVAL=3600
