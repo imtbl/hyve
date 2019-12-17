@@ -24,6 +24,9 @@ function getFilePathWithExtension (directory, hash) {
 }
 
 async function fileExists (type, hash) {
+  const basePath = type === 'thumbnail' && config.hydrusFilesMode === 'client'
+    ? config.hydrusThumbnailsPath
+    : config.hydrusFilesPath
   const directory = config.hydrusFilesMode === 'client'
     ? type === 'thumbnail'
       ? `t${hash.substring(0, 2)}`
@@ -31,16 +34,12 @@ async function fileExists (type, hash) {
     : hash.substring(0, 2)
   const extension = type === 'thumbnail' ? '.thumbnail' : ''
 
-  let filePath = path.join(
-    config.hydrusFilesPath, directory, `${hash}${extension}`
-  )
-
-  if (type !== 'thumbnail' && config.hydrusFilesMode === 'client') {
-    filePath = await getFilePathWithExtension(
+  const filePath = type !== 'thumbnail' && config.hydrusFilesMode === 'client'
+    ? await getFilePathWithExtension(
       path.join(config.hydrusFilesPath, directory),
       hash
     )
-  }
+    : path.join(basePath, directory, `${hash}${extension}`)
 
   return new Promise((resolve, reject) => {
     fs.access(filePath, err => {
@@ -54,6 +53,9 @@ async function fileExists (type, hash) {
 }
 
 async function getFileData (type, hash) {
+  const basePath = type === 'thumbnail' && config.hydrusFilesMode === 'client'
+    ? config.hydrusThumbnailsPath
+    : config.hydrusFilesPath
   const directory = config.hydrusFilesMode === 'client'
     ? type === 'thumbnail'
       ? `t${hash.substring(0, 2)}`
@@ -61,16 +63,12 @@ async function getFileData (type, hash) {
     : hash.substring(0, 2)
   const extension = type === 'thumbnail' ? '.thumbnail' : ''
 
-  let filePath = path.join(
-    config.hydrusFilesPath, directory, `${hash}${extension}`
-  )
-
-  if (type !== 'thumbnail' && config.hydrusFilesMode === 'client') {
-    filePath = await getFilePathWithExtension(
+  const filePath = type !== 'thumbnail' && config.hydrusFilesMode === 'client'
+    ? await getFilePathWithExtension(
       path.join(config.hydrusFilesPath, directory),
       hash
     )
-  }
+    : path.join(basePath, directory, `${hash}${extension}`)
 
   const fileInfo = fileType(
     await readChunk(filePath, 0, fileType.minimumBytes)

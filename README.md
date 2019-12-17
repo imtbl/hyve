@@ -370,6 +370,9 @@ to work correctly.
 + `HYVE_HYDRUS_FILES_PATH=`: sets the path to the hydrus client or server files
   directory (called `client_files` or `server_files`). __Absolute path__
   __required.__
++ `HYVE_HYDRUS_THUMBNAILS_PATH=`: overrides the path to the hydrus client
+  thumbnails directory (falls back to `HYVE_HYDRUS_FILES_PATH`). This setting
+  is ignored when connected to hydrus server. __Absolute path required.__
 + `HYVE_HYDRUS_FILES_MODE=`: lets hyve know the media directory structure and
   file naming. Must be `client` when connecting hyve to hydrus client and
   `server` when connecting to hydrus server. If left empty it will default to

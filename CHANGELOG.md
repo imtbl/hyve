@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added the ability to use a custom thumbnails path when connected to hydrus
+  client
+
 ## [2.8.1] - 2019-12-01
 
 ### Fixed

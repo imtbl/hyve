@@ -23,6 +23,8 @@ module.exports = {
   authenticationDbPath: authenticationDbPath,
   contentDbPath: contentDbPath,
   hydrusFilesPath: process.env.HYVE_HYDRUS_FILES_PATH,
+  hydrusThumbnailsPath: process.env.HYVE_HYDRUS_THUMBNAILS_PATH
+    || process.env.HYVE_HYDRUS_FILES_PATH,
   hydrusFilesMode:
     ['client', 'server'].includes(process.env.HYVE_HYDRUS_FILES_MODE)
       ? process.env.HYVE_HYDRUS_FILES_MODE
