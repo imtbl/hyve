@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.9.0] - 2019-12-18
+
 ### Added
 
 + Added the ability to use a custom thumbnails path when connected to hydrus
@@ -166,7 +168,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.8.1...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.9.0...develop
+[2.9.0]: https://github.com/mserajnik/hyve/compare/2.8.1...2.9.0
 [2.8.1]: https://github.com/mserajnik/hyve/compare/2.8.0...2.8.1
 [2.8.0]: https://github.com/mserajnik/hyve/compare/2.7.0...2.8.0
 [2.7.0]: https://github.com/mserajnik/hyve/compare/2.6.0...2.7.0
