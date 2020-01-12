@@ -12,6 +12,10 @@ and this project adheres to
 
 + Added the ability to exclude files with certain tags when syncing
 
+### Changed
+
++ Simplified the Docker UID/GID handling
+
 ## [2.9.0] - 2019-12-18
 
 ### Added

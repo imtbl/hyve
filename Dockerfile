@@ -1,22 +1,14 @@
 FROM mhart/alpine-node:13
 
-ARG HOST_USER_ID=1000
-ARG HOST_GROUP_ID=1000
+ARG USER_ID=1000
+ARG GROUP_ID=1000
 
 ENV \
-  HOST_USER_ID=$HOST_USER_ID \
-  HOST_GROUP_ID=$HOST_GROUP_ID \
+  USER_ID=$USER_ID \
+  GROUP_ID=$GROUP_ID \
   SUPERCRONIC_URL=https://github.com/aptible/supercronic/releases/download/v0.1.9/supercronic-linux-amd64 \
   SUPERCRONIC=supercronic-linux-amd64 \
   SUPERCRONIC_SHA1SUM=5ddf8ea26b56d4a7ff6faecdd8966610d5cb9d85
-
-RUN \
-  if [ $(getent group ${HOST_GROUP_ID}) ]; then \
-    adduser -D -u ${HOST_USER_ID} hydrus; \
-  else \
-    addgroup -g ${HOST_GROUP_ID} hydrus && \
-    adduser -D -u ${HOST_USER_ID} -G hydrus hydrus; \
-  fi
 
 WORKDIR /usr/src/app
 
@@ -39,13 +31,19 @@ RUN \
     build-base \
     curl \
     python && \
-  chown -R hydrus:hydrus /usr/src/app && \
-  mkdir /data && chown -R hydrus:hydrus /data
+  chown -R ${USER_ID}:${GROUP_ID} /usr/src/app && \
+  mkdir /data && chown -R ${USER_ID}:${GROUP_ID} /data
 
-COPY docker-entrypoint.sh /usr/local/bin/start
-RUN chmod +x /usr/local/bin/start
+COPY docker-cmd-sync-client.sh /usr/local/bin/sync-client
+COPY docker-cmd-sync-server.sh /usr/local/bin/sync-server
+COPY docker-cmd-server.sh /usr/local/bin/server
+COPY docker-cmd-web.sh /usr/local/bin/web
+RUN \
+  chmod +x /usr/local/bin/sync-client && \
+  chmod +x /usr/local/bin/sync-server && \
+  chmod +x /usr/local/bin/server && \
+  chmod +x /usr/local/bin/web
 
-USER hydrus
+USER ${USER_ID}:${GROUP_ID}
 
-ENTRYPOINT ["/usr/local/bin/start"]
 CMD ["server"]
