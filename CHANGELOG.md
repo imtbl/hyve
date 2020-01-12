@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.10.0] - 2020-01-12
+
 ### Added
 
 + Added the ability to exclude files with certain tags when syncing
@@ -177,7 +179,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.9.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.10.0...develop
+[2.10.0]: https://github.com/mserajnik/hyve/compare/2.9.0...2.10.0
 [2.9.0]: https://github.com/mserajnik/hyve/compare/2.8.1...2.9.0
 [2.8.1]: https://github.com/mserajnik/hyve/compare/2.8.0...2.8.1
 [2.8.0]: https://github.com/mserajnik/hyve/compare/2.7.0...2.8.0
