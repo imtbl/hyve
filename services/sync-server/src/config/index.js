@@ -37,5 +37,11 @@ module.exports = {
     `hydrus_master_db.repository_hash_id_map_${hydrusFileRepository}`,
   supportedMimeTypes: process.env.HYVE_HYDRUS_SUPPORTED_MIME_TYPES
     .split(',')
-    .filter(mimeType => (parseInt(mimeType) in availableMimeTypes))
+    .filter(mimeType => (parseInt(mimeType) in availableMimeTypes)),
+  excludedTags: process.env.HYVE_HYDRUS_EXCLUDED_TAGS &&
+    process.env.HYVE_HYDRUS_EXCLUDED_TAGS.trim() !== ''
+      ? process.env.HYVE_HYDRUS_EXCLUDED_TAGS.split('###').map(
+        tag => tag.trim()
+      )
+      : []
 }

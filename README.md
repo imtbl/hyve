@@ -95,15 +95,10 @@ from [Docker Hub][docker-hub]:
 user@local:~$ docker pull mserajnik/hyve
 ```
 
-Alternatively, you can also build the image yourself. This might even be
-necessary if you are on Linux and plan to mount the data via bind mount instead
-of using a volume, as the user that is used inside the container has UID `1000`
-and GID `1000` by default. This causes the ownership of the data on your host
-machine to also being set to UID `1000` and GID `1000` (which, depending on
-the distro you are running, might not be ideal).
-
-You can make a build providing the arguments `HOST_USER_ID` and `HOST_GROUP_ID`
-to change these defaults.
+Alternatively, you can also build the image yourself. The user that is used
+inside the container has UID `1000` and GID `1000` by default. You can adjust
+this (e.g., to match your host UID/GID) by providing the arguments `USER_ID`
+and `GROUP_ID` when making a build.
 
 ### Installing without Docker
 
@@ -316,6 +311,8 @@ to work correctly.
   of the MIME types hyve should sync from hydrus server. See
   [here][supported-mime-types-client] for the complete list of MIME types you
   can choose from.
++ `HYVE_HYDRUS_EXCLUDED_TAGS=`: tags that are added here separated with `###`
+  will cause all files having any of these tags to be excluded from the sync.
 + `HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *`: the cron schedule for running the sync
   inside Docker. Irrelevant if the sync service is run outside of Docker.
 
@@ -341,6 +338,8 @@ to work correctly.
   of the MIME types hyve should sync from hydrus server. See
   [here][supported-mime-types-server] for the complete list of MIME types you
   can choose from.
++ `HYVE_HYDRUS_EXCLUDED_TAGS=`: tags that are added here separated with `###`
+  will cause all files having any of these tags to be excluded from the sync.
 + `HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *`: the cron schedule for running the sync
   inside Docker. Irrelevant if the sync service is run outside of Docker.
 

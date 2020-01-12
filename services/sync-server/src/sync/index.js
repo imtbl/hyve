@@ -38,6 +38,11 @@ function run () {
   fillNewMappingsTable()
   profiler.log('Fill new mappings table: {dt}\n')
 
+  if (config.excludedTags.length) {
+    removeExcludedFiles()
+    profiler.log('Remove excluded files: {dt}\n')
+  }
+
   fillNewMimeTypesTable()
   profiler.log('Fill new MIME types table: {dt}\n')
 
@@ -369,6 +374,43 @@ function fillNewMappingsTable () {
         ${config.hydrusTableFilesInfo}.mime IN (
           ${config.supportedMimeTypes}
         )`
+  ).run()
+}
+
+function removeExcludedFiles () {
+  const tags = [...new Set(config.excludedTags)]
+
+  db.hyve.prepare(
+    `DELETE
+    FROM
+      files_new
+    WHERE
+      files_new.tags_id IN (
+        SELECT file_tags_id FROM mappings_new WHERE tag_id IN (
+          SELECT id FROM tags_new
+          WHERE name IN (${',?'.repeat(tags.length).replace(',', '')})
+        )
+        GROUP BY file_tags_id
+      )`
+  ).run(tags)
+
+  db.hyve.prepare(
+    `DELETE
+    FROM
+      tags_new
+    WHERE
+      id IN (
+        SELECT
+          id
+        FROM
+          tags_new
+        LEFT JOIN
+          mappings_new
+          ON
+            mappings_new.tag_id = tags_new.id
+        WHERE
+          mappings_new.tag_id IS NULL
+      )`
   ).run()
 }
 
