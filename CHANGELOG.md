@@ -15,6 +15,7 @@ and this project adheres to
 ### Changed
 
 + Simplified the Docker UID/GID handling
++ Updated dependencies
 
 ## [2.9.0] - 2019-12-18
 

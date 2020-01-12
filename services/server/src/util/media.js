@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const fileType = require('file-type')
+const FileType = require('file-type')
 const readChunk = require('read-chunk')
 
 const config = require('../config')
@@ -70,8 +70,8 @@ async function getFileData (type, hash) {
     )
     : path.join(basePath, directory, `${hash}${extension}`)
 
-  const fileInfo = fileType(
-    await readChunk(filePath, 0, fileType.minimumBytes)
+  const fileInfo = await FileType.fromBuffer(
+    await readChunk(filePath, 0, FileType.minimumBytes)
   )
 
   return {
