@@ -316,6 +316,8 @@ to work correctly.
   of the MIME types hyve should sync from hydrus server. See
   [here][supported-mime-types-client] for the complete list of MIME types you
   can choose from.
++ `HYVE_HYDRUS_EXCLUDED_TAGS=`: tags that are added here separated with `###`
+  will cause all files having any of these tags to be excluded from the sync.
 + `HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *`: the cron schedule for running the sync
   inside Docker. Irrelevant if the sync service is run outside of Docker.
 
@@ -341,6 +343,8 @@ to work correctly.
   of the MIME types hyve should sync from hydrus server. See
   [here][supported-mime-types-server] for the complete list of MIME types you
   can choose from.
++ `HYVE_HYDRUS_EXCLUDED_TAGS=`: tags that are added here separated with `###`
+  will cause all files having any of these tags to be excluded from the sync.
 + `HYVE_DOCKER_CRON_SCHEDULE=0 4 * * *`: the cron schedule for running the sync
   inside Docker. Irrelevant if the sync service is run outside of Docker.
 

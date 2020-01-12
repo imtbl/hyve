@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added the ability to exclude files with certain tags when syncing
+
 ## [2.9.0] - 2019-12-18
 
 ### Added
