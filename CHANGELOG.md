@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fixed broken media serving after dependency update
+
 ## [2.10.0] - 2020-01-12
 
 ### Added

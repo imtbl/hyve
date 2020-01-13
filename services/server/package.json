@@ -36,7 +36,6 @@
     "ip-anonymize": "^0.1.0",
     "morgan": "^1.9.1",
     "object-hash": "^2.0.1",
-    "read-chunk": "^3.2.0",
     "upash": "^1.0.2"
   },
   "devDependencies": {
