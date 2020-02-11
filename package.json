@@ -1,6 +1,6 @@
 {
   "name": "hyve",
-  "version": "2.10.1",
+  "version": "2.11.0",
   "description": "Expose and consume your hydrus media via HTTP API",
   "keywords": [
     "hydrus",
