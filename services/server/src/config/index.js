@@ -59,6 +59,7 @@ module.exports = {
     23: 'image/apng',
     25: 'video/mpeg',
     26: 'video/quicktime',
-    27: 'video/x-msvideo'
+    27: 'video/x-msvideo',
+    33: 'image/webp'
   }
 }

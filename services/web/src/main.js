@@ -98,7 +98,8 @@ Vue.filter('addFileExtension', (name, mime) => {
     'image/apng': 'apng',
     'video/mpeg': 'mpeg',
     'video/quicktime': 'mov',
-    'video/x-msvideo': 'avi'
+    'video/x-msvideo': 'avi',
+    'image/webp': 'webp'
   }
 
   return `${name}.${extensions[mime]}`

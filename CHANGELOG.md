@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
++ Expanded the MIME type support
+
 ## [2.10.1] - 2020-01-13
 
 ### Fixed

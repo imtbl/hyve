@@ -143,9 +143,14 @@ export default {
   },
   methods: {
     isImage: function (mime) {
-      return ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'].includes(
-        mime
-      )
+      return [
+        'image/jpeg',
+        'image/png',
+        'image/apng',
+        'image/gif',
+        'image/bmp',
+        'image/webp'
+      ].includes(mime)
     },
     prepareMediaUrl: function (url) {
       return prepareMediaUrl(url)
