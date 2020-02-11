@@ -11,6 +11,7 @@ and this project adheres to
 ### Changed
 
 + Expanded the MIME type support
++ Updated dependencies
 
 ## [2.10.1] - 2020-01-13
 
