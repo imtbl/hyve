@@ -1,6 +1,6 @@
 {
   "name": "@hyve/server",
-  "version": "2.10.1",
+  "version": "2.11.0",
   "author": "Michael Serajnik <ms@mserajnik.at>",
   "license": "MIT",
   "private": true,
@@ -8,13 +8,10 @@
     "files": [
       "tests/**/*.js"
     ],
-    "sources": [
-      "**/*.js"
-    ],
     "failFast": true,
     "failWithoutAssertions": true,
     "tap": false,
-    "compileEnhancements": true
+    "babel": true
   },
   "scripts": {
     "start": "node ./bin/www",
@@ -31,18 +28,19 @@
     "distributions": "^2.1.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-validator": "^6.3.1",
-    "file-type": "^13.0.3",
+    "express-validator": "^6.4.0",
+    "file-type": "^14.1.1",
     "ip-anonymize": "^0.1.0",
     "morgan": "^1.9.1",
-    "object-hash": "^2.0.1",
+    "object-hash": "^2.0.2",
     "upash": "^1.0.2"
   },
   "devDependencies": {
-    "ava": "^2.4.0",
+    "@ava/babel": "^1.0.1",
+    "ava": "^3.3.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",

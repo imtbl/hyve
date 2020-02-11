@@ -108,7 +108,14 @@ export default {
   computed: {
     type: function () {
       if (
-        ['image/jpeg', 'image/png', 'image/gif', 'image/bmp'].includes(
+        [
+          'image/jpeg',
+          'image/png',
+          'image/apng',
+          'image/gif',
+          'image/bmp',
+          'image/webp'
+        ].includes(
           this.file.mime
         )
       ) {

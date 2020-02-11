@@ -307,8 +307,8 @@ to work correctly.
   database (called `client.caches.db`). __Absolute path required.__
 + `HYVE_HYDRUS_INCLUDE_INBOX=false`: setting this to `true` includes files that
   are in the inbox in the sync.
-+ `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27`: the IDs
-  of the MIME types hyve should sync from hydrus server. See
++ `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27,33`: the
+  IDs of the MIME types hyve should sync from hydrus server. See
   [here][supported-mime-types-client] for the complete list of MIME types you
   can choose from.
 + `HYVE_HYDRUS_EXCLUDED_TAGS=`: tags that are added here separated with `###`
@@ -334,8 +334,8 @@ to work correctly.
   hyve should use. This is generally `1 + n`, where `n` is the *n*th repository
   (e.g., for the first repository, `1 + 1` => `2`). Both creating tag and file
   repositories increases `n`.
-+ `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27`: the IDs
-  of the MIME types hyve should sync from hydrus server. See
++ `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27,33`: the
+  IDs of the MIME types hyve should sync from hydrus server. See
   [here][supported-mime-types-server] for the complete list of MIME types you
   can choose from.
 + `HYVE_HYDRUS_EXCLUDED_TAGS=`: tags that are added here separated with `###`
@@ -609,8 +609,8 @@ You are welcome to help out!
 [hydrus-server-docker]: https://github.com/mserajnik/hydrus-server-docker
 [hydrus-docker]: https://github.com/Suika/hydrus-docker
 [tz-database-time-zones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-[supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L5-L17
-[supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L17
+[supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L2-L15
+[supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L18
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
 [hyve-demo]: https://hyve.mser.at
 [danbooru]: https://github.com/r888888888/danbooru
