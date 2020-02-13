@@ -4,6 +4,7 @@
       :poster="posterUrl"
       id="video-player"
       :class="{ 'is-restricted-to-viewport': restrictMediaSize }"
+      :autoplay="autoplayVideos"
       :loop="loopVideos"
       playsinline
       controls>
@@ -40,6 +41,7 @@ export default {
   computed: {
     ...mapState({
       restrictMediaSize: state => state.settings.restrictMediaSize,
+      autoplayVideos: state => state.settings.autoplayVideos,
       loopVideos: state => state.settings.loopVideos
     })
   },

@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added a setting to optionally make videos loop
+
 ## [2.11.0] - 2020-02-11
 
 ### Changed

@@ -38,6 +38,8 @@
 
                   <media-size :restrictMediaSize.sync="restrictMediaSize" />
 
+                  <video-autoplay :autoplayVideos.sync="autoplayVideos" />
+
                   <video-loop :loopVideos.sync="loopVideos" />
 
                   <h2 class="has-paragraph-size has-text-primary">
@@ -111,6 +113,7 @@ import config from '@/config'
 
 import Theme from '@/components/settings/Theme'
 import MediaSize from '@/components/settings/MediaSize'
+import VideoAutoplay from '@/components/settings/VideoAutoplay'
 import VideoLoop from '@/components/settings/VideoLoop'
 import Colors from '@/components/settings/Colors'
 import FilesSorting from '@/components/settings/FilesSorting'
@@ -122,6 +125,7 @@ export default {
     return {
       theme: this.$store.state.settings.theme,
       restrictMediaSize: this.$store.state.settings.restrictMediaSize,
+      autoplayVideos: this.$store.state.settings.autoplayVideos,
       loopVideos: this.$store.state.settings.loopVideos,
       colors: Object.assign([], this.$store.getters['settings/currentColors']),
       filesSorting: this.$store.state.settings.filesSorting,
@@ -145,6 +149,7 @@ export default {
       this.storeSettings({
         theme: this.theme,
         restrictMediaSize: this.restrictMediaSize,
+        autoplayVideos: this.autoplayVideos,
         loopVideos: this.loopVideos,
         colors: config.defaultNamespaceColors.filter(
           defaultColor => !this.colors.find(
@@ -172,6 +177,7 @@ export default {
     FontAwesomeIcon,
     Theme,
     MediaSize,
+    VideoAutoplay,
     VideoLoop,
     Colors,
     FilesSorting,

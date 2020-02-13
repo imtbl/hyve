@@ -1,6 +1,7 @@
 import {
   SET_THEME,
   SET_RESTRICT_MEDIA_SIZE,
+  SET_AUTOPLAY_VIDEOS,
   SET_LOOP_VIDEOS,
   SET_COLORS,
   SET_FILES_SORTING,
@@ -17,6 +18,7 @@ export default {
   state: {
     theme: 'default',
     restrictMediaSize: false,
+    autoplayVideos: false,
     loopVideos: false,
     colors: [],
     filesSorting: 'id',
@@ -31,6 +33,9 @@ export default {
     },
     [SET_RESTRICT_MEDIA_SIZE] (state, payload) {
       state.restrictMediaSize = payload
+    },
+    [SET_AUTOPLAY_VIDEOS] (state, payload) {
+      state.autoplayVideos = payload
     },
     [SET_LOOP_VIDEOS] (state, payload) {
       state.loopVideos = payload
@@ -64,6 +69,9 @@ export default {
       const storedRestrictMediaSize = localStorage.getItem(
         `hyve-restrict-media-size${userId}`
       )
+      const storedAutoplayVideos = localStorage.getItem(
+        `hyve-autoplay-videos${userId}`
+      )
       const storedLoopVideos = localStorage.getItem(
         `hyve-loop-videos${userId}`
       )
@@ -92,6 +100,9 @@ export default {
             : undefined,
           restrictMediaSize: storedRestrictMediaSize
             ? JSON.parse(storedRestrictMediaSize)
+            : undefined,
+          autoplayVideos: storedAutoplayVideos
+            ? JSON.parse(storedAutoplayVideos)
             : undefined,
           loopVideos: storedLoopVideos
             ? JSON.parse(storedLoopVideos)
@@ -123,6 +134,7 @@ export default {
       const {
         theme = 'default',
         restrictMediaSize = false,
+        autoplayVideos = false,
         loopVideos = false,
         colors = config.defaultNamespaceColors,
         filesSorting = 'id',
@@ -144,6 +156,11 @@ export default {
       context.commit(SET_RESTRICT_MEDIA_SIZE, restrictMediaSize)
       localStorage.setItem(
         `hyve-restrict-media-size${userId}`, JSON.stringify(restrictMediaSize)
+      )
+
+      context.commit(SET_AUTOPLAY_VIDEOS, autoplayVideos)
+      localStorage.setItem(
+        `hyve-autoplay-videos${userId}`, JSON.stringify(autoplayVideos)
       )
 
       context.commit(SET_LOOP_VIDEOS, loopVideos)
