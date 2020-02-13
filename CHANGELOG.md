@@ -12,7 +12,7 @@ and this project adheres to
 
 ### Added
 
-+ Added a setting to optionally make videos loop
++ Added a setting to optionally make videos autoplay
 
 ## [2.11.0] - 2020-02-11
 
