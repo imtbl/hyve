@@ -8,11 +8,17 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.13.0] - 2020-03-17
+
+### Changed
+
++ Updated dependencies
+
 ## [2.12.0] - 2020-02-13
 
 ### Added
 
-+ Added a setting to optionally make videos loop
++ Added a setting to optionally make videos autoplay
 
 ## [2.11.0] - 2020-02-11
 
@@ -198,7 +204,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.12.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.13.0...develop
+[2.13.0]: https://github.com/mserajnik/hyve/compare/2.12.0...2.13.0
 [2.12.0]: https://github.com/mserajnik/hyve/compare/2.11.0...2.12.0
 [2.11.0]: https://github.com/mserajnik/hyve/compare/2.10.1...2.11.0
 [2.10.1]: https://github.com/mserajnik/hyve/compare/2.10.0...2.10.1
