@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.14.0] - 2020-04-16
+
 ### Changed
 
 + Updated dependencies
@@ -208,7 +210,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.13.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.14.0...develop
+[2.14.0]: https://github.com/mserajnik/hyve/compare/2.13.0...2.14.0
 [2.13.0]: https://github.com/mserajnik/hyve/compare/2.12.0...2.13.0
 [2.12.0]: https://github.com/mserajnik/hyve/compare/2.11.0...2.12.0
 [2.11.0]: https://github.com/mserajnik/hyve/compare/2.10.1...2.11.0
