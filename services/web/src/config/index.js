@@ -21,7 +21,7 @@ const generateNamespaceColors = environmentVariable => {
 }
 
 export default {
-  version: '2.13.0',
+  version: '2.14.0',
   title: process.env.VUE_APP_HYVE_TITLE,
   subtitle: process.env.VUE_APP_HYVE_SUBTITLE,
   useNormalLetterCase:

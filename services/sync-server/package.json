@@ -1,6 +1,6 @@
 {
   "name": "@hyve/sync-server",
-  "version": "2.13.0",
+  "version": "2.14.0",
   "author": "Michael Serajnik <ms@mserajnik.at>",
   "license": "MIT",
   "private": true,
@@ -26,13 +26,13 @@
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
-    "ava": "^3.5.0",
+    "ava": "^3.7.0",
     "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "fs-extra": "^8.1.0"
+    "fs-extra": "^9.0.0"
   }
 }
