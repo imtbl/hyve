@@ -4,7 +4,10 @@
   "author": "Michael Serajnik <ms@mserajnik.at>",
   "license": "MIT",
   "private": true,
+  "snyk": true,
   "scripts": {
+    "prepare": "yarn snyk-protect",
+    "snyk-protect": "snyk protect",
     "sync": "node ./bin/sync"
   },
   "engines": {
@@ -12,7 +15,8 @@
   },
   "dependencies": {
     "better-sqlite3": "^7.0.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "snyk": "^1.316.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
