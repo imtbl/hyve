@@ -1,18 +1,22 @@
 {
   "name": "@hyve/sync-client",
-  "version": "2.14.0",
+  "version": "2.15.0",
   "author": "Michael Serajnik <ms@mserajnik.at>",
   "license": "MIT",
   "private": true,
+  "snyk": true,
   "scripts": {
+    "prepare": "yarn snyk-protect",
+    "snyk-protect": "snyk protect",
     "sync": "node ./bin/sync"
   },
   "engines": {
-    "node": ">=12.0.0 <14.0.0"
+    "node": ">=12.0.0 <15.0.0"
   },
   "dependencies": {
-    "better-sqlite3": "^6.0.1",
-    "dotenv": "^8.2.0"
+    "better-sqlite3": "^7.0.1",
+    "dotenv": "^8.2.0",
+    "snyk": "^1.316.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
