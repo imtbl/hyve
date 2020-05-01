@@ -44,7 +44,7 @@ As a rough overview, hyve currently has the following features:
     devices
   + Direct support for common image and video formats on the web; non-supported
     files can be downloaded and viewed locally
-  + Built-in user registration, login and and actions like changing username or
+  + Built-in user registration, login and actions like changing username or
     password or deleting the user altogether
   + The ability to save options like tag colors and default sorting methods on
     a per-client basis, allowing you to have different settings in each browser
