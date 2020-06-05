@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.15.1] - 2020-06-05
+
 ### Fixed
 
 + Added automatic lock file removal when running with Docker to prevent stale
@@ -221,7 +223,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/mserajnik/hyve/compare/2.15.0...develop
+[Unreleased]: https://github.com/mserajnik/hyve/compare/2.15.1...develop
+[2.15.1]: https://github.com/mserajnik/hyve/compare/2.15.0...2.15.1
 [2.15.0]: https://github.com/mserajnik/hyve/compare/2.14.0...2.15.0
 [2.14.0]: https://github.com/mserajnik/hyve/compare/2.13.0...2.14.0
 [2.13.0]: https://github.com/mserajnik/hyve/compare/2.12.0...2.13.0
