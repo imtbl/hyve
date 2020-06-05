@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Added automatic lock file removal when running with Docker to prevent stale
+  ones from causing syncs to abort
+
 ## [2.15.0] - 2020-05-01
 
 ### Changed

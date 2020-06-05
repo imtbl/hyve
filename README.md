@@ -187,6 +187,16 @@ If you plan to expose the HTTP API outside your local network, it is _heavily_
 recommended to use HTTPS. To do this, you will likely want to set up a reverse
 proxy (I recommend [nginx][nginx]).
 
+hyve uses a lock file called `.sync-lock` to prevent additional syncs from
+running while one is already in progress. This file is located in the same
+directory as hyve's content database. In some instances (e.g., shutdown during
+a sync), this file might not be removed (causing it to become _stale_). In that
+case, you may have to delete it manually before attempting to run the next
+sync. When running with Docker, the lock file (should it exist at that point)
+will automatically get removed during sync container startup for your
+convenience (keep this in mind if you are sharing the same hyve content
+database between multiple instances).
+
 ### Running with Docker
 
 To make running with Docker as easy as possible, a working

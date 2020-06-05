@@ -15,6 +15,7 @@ cp .crontab.docker .crontab
 envsubst < .env.docker > .env
 
 touch $HYVE_CONTENT_DB_PATH
+rm -f $(dirname "$HYVE_CONTENT_DB_PATH")/.sync-lock
 
 sed -i "s~HYVE_DOCKER_CRON_SCHEDULE~$HYVE_DOCKER_CRON_SCHEDULE~g" .crontab
 
