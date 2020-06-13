@@ -8,6 +8,8 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.16.0] - 2020-06-14
+
 ### Changed
 
 + Maintenance release, no feature changes
@@ -227,7 +229,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/imtbl/hyve/compare/2.15.1...develop
+[Unreleased]: https://github.com/imtbl/hyve/compare/2.16.0...develop
+[2.16.0]: https://github.com/imtbl/hyve/compare/2.15.1...2.16.0
 [2.15.1]: https://github.com/imtbl/hyve/compare/2.15.0...2.15.1
 [2.15.0]: https://github.com/imtbl/hyve/compare/2.14.0...2.15.0
 [2.14.0]: https://github.com/imtbl/hyve/compare/2.13.0...2.14.0
