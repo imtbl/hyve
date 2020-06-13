@@ -13,10 +13,7 @@
     "tap": false,
     "babel": true
   },
-  "snyk": true,
   "scripts": {
-    "prepare": "yarn snyk-protect",
-    "snyk-protect": "snyk protect",
     "sync": "node ./bin/sync",
     "test": "ava --verbose"
   },
@@ -25,8 +22,7 @@
   },
   "dependencies": {
     "better-sqlite3": "^7.0.1",
-    "dotenv": "^8.2.0",
-    "snyk": "^1.316.2"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",

@@ -13,11 +13,6 @@
       src="https://img.shields.io/docker/cloud/automated/mserajnik/hyve.svg"
       alt="Docker Hub build">
   </a>
-  <a href="https://snyk.io/test/github/mserajnik/hyve">
-    <img
-      src="https://snyk.io/test/github/mserajnik/hyve/badge.svg"
-      alt="Known vulnerabilities">
-  </a>
   <a href="https://standardjs.com">
     <img
       src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"
