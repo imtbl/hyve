@@ -1,16 +1,16 @@
 <h1>
   <img
-    src="https://github.com/mserajnik/hyve/raw/master/media/logo.png"
+    src="https://github.com/imtbl/hyve/raw/master/media/logo.png"
     alt="hyve logo"
     width="128">
   <br>
   hyve
-  <a href="https://travis-ci.com/mserajnik/hyve">
-    <img src="https://travis-ci.com/mserajnik/hyve.svg" alt="Build status">
+  <a href="https://travis-ci.com/imtbl/hyve">
+    <img src="https://travis-ci.com/imtbl/hyve.svg" alt="Build status">
   </a>
-  <a href="https://hub.docker.com/r/mserajnik/hyve/">
+  <a href="https://hub.docker.com/r/mtbl/hyve/">
     <img
-      src="https://img.shields.io/docker/cloud/automated/mserajnik/hyve.svg"
+      src="https://img.shields.io/docker/cloud/automated/mtbl/hyve.svg"
       alt="Docker Hub build">
   </a>
   <a href="https://standardjs.com">
@@ -87,7 +87,7 @@ To install hyve for running with Docker, you can simply pull the prebuilt image
 from [Docker Hub][docker-hub]:
 
 ```zsh
-user@local:~$ docker pull mserajnik/hyve
+user@local:~$ docker pull imtbl/hyve
 ```
 
 Alternatively, you can also build the image yourself. The user that is used
@@ -101,7 +101,7 @@ To install without Docker, you can simply clone the repository and install
 dependencies:
 
 ```zsh
-user@local:~$ git clone https://github.com/mserajnik/hyve.git
+user@local:~$ git clone https://github.com/imtbl/hyve.git
 user@local:~$ cd hyve
 user@local:hyve$ yarn && yarn bootstrap
 ```
@@ -133,7 +133,7 @@ versions.
 Simply pull the latest Docker image to update:
 
 ```zsh
-user@local:~$ docker pull mserajnik/hyve
+user@local:~$ docker pull imtbl/hyve
 ```
 
 #### Updating without Docker
@@ -429,7 +429,7 @@ to work correctly.
 + `VUE_APP_HYVE_TITLE=hyve`: sets the title of your installation. It is used
   throughout the whole web client, making it possible to add some personal
   flavor/branding.
-+ `VUE_APP_HYVE_SUBTITLE=A Vue-based frontend for <a href="https://github.com/mserajnik/hyve" target="_blank" rel="noopener">hyve</a>`:
++ `VUE_APP_HYVE_SUBTITLE=A Vue-based frontend for <a href="https://github.com/imtbl/hyve" target="_blank" rel="noopener">hyve</a>`:
   if not empty, sets a subtitle that is displayed on the home view. Allows the
   usage of HTML (e.g., to display links).
 + `VUE_APP_HYVE_DESCRIPTION=A Vue-based frontend for hyve`: sets the content of
@@ -574,22 +574,9 @@ Maybe. If you want to see a specific feature that you think would be a good fit
 for hyve, please [open an issue][issues]. In general, I prefer to add features
 that are not specific to either hydrus client or hydrus server.
 
-## Donate
-
-If you like hyve and want to buy me a coffee, feel free to donate via PayPal:
-
-[![Donate via PayPal][paypal-image]][paypal]
-
-Alternatively, you can also send me BTC:
-
-![Donate BTC][btc-image]  
-`13jRyroNn8QF4mbGZxKS6mR3PsxjYTsGsu`
-
-Donations are unnecessary, but very much appreciated. :)
-
 ## Maintainer
 
-[mserajnik][maintainer]
+[imtbl][maintainer]
 
 ## Contribute
 
@@ -599,40 +586,36 @@ You are welcome to help out!
 
 ## License
 
-[MIT](LICENSE.md) © Michael Serajnik
+[MIT](LICENSE.md) © imtbl
 
 [booru]: https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards
 [hydrus]: http://hydrusnetwork.github.io/hydrus
 [docker]: https://www.docker.com/
-[docker-hub]: https://hub.docker.com/r/mserajnik/hyve/
+[docker-hub]: https://hub.docker.com/r/mtbl/hyve/
 [node-js]: https://nodejs.org/en/
 [yarn]: https://yarnpkg.com/
 [semantic-versioning]: https://semver.org/
 [hydrus-server-help]: https://hydrusnetwork.github.io/hydrus/help/server.html
 [nginx]: https://www.nginx.com/
 [docker-compose]: https://docs.docker.com/compose/
-[hydrus-server-docker]: https://github.com/mserajnik/hydrus-server-docker
+[hydrus-server-docker]: https://github.com/imtbl/hydrus-server-docker
 [hydrus-docker]: https://github.com/Suika/hydrus-docker
 [tz-database-time-zones]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-[supported-mime-types-client]: https://github.com/mserajnik/hyve/blob/master/services/sync-client/src/config/index.js#L2-L15
-[supported-mime-types-server]: https://github.com/mserajnik/hyve/blob/master/services/sync-server/src/config/index.js#L5-L18
+[supported-mime-types-client]: https://github.com/imtbl/hyve/blob/master/services/sync-client/src/config/index.js#L2-L15
+[supported-mime-types-server]: https://github.com/imtbl/hyve/blob/master/services/sync-server/src/config/index.js#L5-L18
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
 [hyve-demo]: https://hyve.mser.at
 [danbooru]: https://github.com/r888888888/danbooru
 [szurubooru]: https://github.com/rr-/szurubooru
 
-[screenshot-frontpage]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-frontpage.png
-[screenshot-search]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-search.png
-[screenshot-sorting]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-sorting.png
-[screenshot-detail]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-detail.png
-[screenshot-tags]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-tags.png
-[screenshot-settings]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-settings.png
-[screenshot-user]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-user.png
-[screenshot-dark]: https://github.com/mserajnik/hyve/raw/master/media/screenshot-dark.png
+[screenshot-frontpage]: https://github.com/imtbl/hyve/raw/master/media/screenshot-frontpage.png
+[screenshot-search]: https://github.com/imtbl/hyve/raw/master/media/screenshot-search.png
+[screenshot-sorting]: https://github.com/imtbl/hyve/raw/master/media/screenshot-sorting.png
+[screenshot-detail]: https://github.com/imtbl/hyve/raw/master/media/screenshot-detail.png
+[screenshot-tags]: https://github.com/imtbl/hyve/raw/master/media/screenshot-tags.png
+[screenshot-settings]: https://github.com/imtbl/hyve/raw/master/media/screenshot-settings.png
+[screenshot-user]: https://github.com/imtbl/hyve/raw/master/media/screenshot-user.png
+[screenshot-dark]: https://github.com/imtbl/hyve/raw/master/media/screenshot-dark.png
 
-[paypal]: https://www.paypal.me/mserajnik
-[paypal-image]: https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png
-[btc-image]: https://mserajnik.at/external/btc.png
-
-[maintainer]: https://github.com/mserajnik
-[issues]: https://github.com/mserajnik/hyve/issues/new
+[maintainer]: https://github.com/imtbl
+[issues]: https://github.com/imtbl/hyve/issues/new

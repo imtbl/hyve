@@ -13,12 +13,12 @@
     "bulma",
     "webpack"
   ],
-  "author": "Michael Serajnik <ms@mserajnik.at>",
+  "author": "imtbl <imtbl@mser.at>",
   "license": "MIT",
   "private": true,
-  "repository": "https://mserajnik@github.com/mserajnik/hyve.git",
+  "repository": "https://imtbl@github.com/imtbl/hyve.git",
   "bugs": {
-    "url": "https://github.com/mserajnik/hyve/issues"
+    "url": "https://github.com/imtbl/hyve/issues"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
