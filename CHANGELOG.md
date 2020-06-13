@@ -8,6 +8,12 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [2.16.1] - 2020-06-14
+
+### Fixed
+
++ Fix wrong Docker repository mentions
+
 ## [2.16.0] - 2020-06-14
 
 ### Changed
@@ -229,7 +235,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/imtbl/hyve/compare/2.16.0...develop
+[Unreleased]: https://github.com/imtbl/hyve/compare/2.16.1...develop
+[2.16.1]: https://github.com/imtbl/hyve/compare/2.16.0...2.16.1
 [2.16.0]: https://github.com/imtbl/hyve/compare/2.15.1...2.16.0
 [2.15.1]: https://github.com/imtbl/hyve/compare/2.15.0...2.15.1
 [2.15.0]: https://github.com/imtbl/hyve/compare/2.14.0...2.15.0
