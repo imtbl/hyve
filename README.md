@@ -87,7 +87,7 @@ To install hyve for running with Docker, you can simply pull the prebuilt image
 from [Docker Hub][docker-hub]:
 
 ```zsh
-user@local:~$ docker pull imtbl/hyve
+user@local:~$ docker pull mtbl/hyve
 ```
 
 Alternatively, you can also build the image yourself. The user that is used
@@ -133,7 +133,7 @@ versions.
 Simply pull the latest Docker image to update:
 
 ```zsh
-user@local:~$ docker pull imtbl/hyve
+user@local:~$ docker pull mtbl/hyve
 ```
 
 #### Updating without Docker

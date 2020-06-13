@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fix wrong Docker repository mentions
+
 ## [2.16.0] - 2020-06-14
 
 ### Changed
