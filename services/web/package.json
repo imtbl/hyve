@@ -1,13 +1,10 @@
 {
   "name": "@hyve/web",
-  "version": "2.15.1",
-  "author": "Michael Serajnik <ms@mserajnik.at>",
+  "version": "2.16.0",
+  "author": "imtbl <imtbl@mser.at>",
   "license": "MIT",
   "private": true,
-  "snyk": true,
   "scripts": {
-    "prepare": "yarn snyk-protect",
-    "snyk-protect": "snyk protect",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --modern",
     "start": "http-server -p 8080 ./dist",
@@ -29,7 +26,6 @@
     "lodash": "^4.17.15",
     "plyr": "~3.5.10",
     "qs": "^6.9.3",
-    "snyk": "^1.316.2",
     "v-click-outside": "^3.0.1",
     "v-hotkey": "^0.8.0",
     "vue": "^2.6.11",

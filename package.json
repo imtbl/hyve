@@ -1,6 +1,6 @@
 {
   "name": "hyve",
-  "version": "2.15.1",
+  "version": "2.16.0",
   "description": "Expose and consume your hydrus media via HTTP API",
   "keywords": [
     "hydrus",
@@ -13,26 +13,20 @@
     "bulma",
     "webpack"
   ],
-  "author": "Michael Serajnik <ms@mserajnik.at>",
+  "author": "imtbl <imtbl@mser.at>",
   "license": "MIT",
   "private": true,
-  "repository": "https://mserajnik@github.com/mserajnik/hyve.git",
+  "repository": "https://imtbl@github.com/imtbl/hyve.git",
   "bugs": {
-    "url": "https://github.com/mserajnik/hyve/issues"
+    "url": "https://github.com/imtbl/hyve/issues"
   },
-  "snyk": true,
   "scripts": {
-    "prepare": "yarn snyk-protect",
-    "snyk-protect": "snyk protect",
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
     "test": "lerna run test"
   },
   "engines": {
     "node": ">=12.0.0 <15.0.0"
-  },
-  "dependencies": {
-    "snyk": "^1.316.2"
   },
   "devDependencies": {
     "lerna": "^3.20.2"

@@ -1,7 +1,7 @@
 {
   "name": "@hyve/server",
-  "version": "2.15.1",
-  "author": "Michael Serajnik <ms@mserajnik.at>",
+  "version": "2.16.0",
+  "author": "imtbl <imtbl@mser.at>",
   "license": "MIT",
   "private": true,
   "ava": {
@@ -13,10 +13,7 @@
     "tap": false,
     "babel": true
   },
-  "snyk": true,
   "scripts": {
-    "prepare": "yarn snyk-protect",
-    "snyk-protect": "snyk protect",
     "start": "node ./bin/www",
     "start-dev": "nodemon --ignore './node_modules/' ./bin/www",
     "migrate": "node ./storage/migrate.js",
@@ -36,7 +33,6 @@
     "ip-anonymize": "^0.1.0",
     "morgan": "^1.10.0",
     "object-hash": "^2.0.3",
-    "snyk": "^1.316.2",
     "upash": "^1.0.2"
   },
   "devDependencies": {
