@@ -58,6 +58,7 @@ __it simply provides a different way to view them.__
   + [Updating](#updating)
     + [Updating with Docker](#updating-with-docker)
     + [Updating without Docker](#updating-without-docker)
+    + [Upgrading from `2.x.x` to `3.x.x`](#upgrading-from-2xx-to-3xx)
     + [Upgrading from `1.x.x` to `2.x.x`](#upgrading-from-1xx-to-2xx)
 + [Usage](#usage)
   + [Running with Docker](#running-with-docker)
@@ -71,7 +72,6 @@ __it simply provides a different way to view them.__
 + [Demo](#demo)
 + [Screenshots](#screenshots)
 + [FAQ](#faq)
-+ [Donate](#donate)
 + [Maintainer](#maintainer)
 + [Contribute](#contribute)
 + [License](#license)
@@ -146,6 +146,11 @@ user@local:hyve$ yarn && yarn bootstrap
 user@local:hyve$ cd services/server
 user@local:hyve/services/server$ yarn migrate
 ```
+
+#### Upgrading from `2.x.x` to `3.x.x`
+
+`3.0.0` has introduced no breaking API changes and merely reflects the switch
+to a new license (AGPLv3).
 
 #### Upgrading from `1.x.x` to `2.x.x`
 
@@ -586,7 +591,7 @@ You are welcome to help out!
 
 ## License
 
-[MIT](LICENSE.md) © imtbl
+[AGPLv3](LICENSE) © imtbl
 
 [booru]: https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards
 [hydrus]: http://hydrusnetwork.github.io/hydrus
