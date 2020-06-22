@@ -2,7 +2,7 @@
   "name": "@hyve/server",
   "version": "2.16.1",
   "author": "imtbl <imtbl@mser.at>",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "ava": {
     "files": [

@@ -2,7 +2,7 @@
   "name": "@hyve/sync-client",
   "version": "2.16.1",
   "author": "imtbl <imtbl@mser.at>",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "scripts": {
     "sync": "node ./bin/sync"

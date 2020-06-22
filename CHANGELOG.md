@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Changed
+
++ Switched to AGPLv3
+
 ## [2.16.1] - 2020-06-14
 
 ### Fixed

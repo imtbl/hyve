@@ -586,7 +586,7 @@ You are welcome to help out!
 
 ## License
 
-[MIT](LICENSE.md) © imtbl
+[AGPLv3](LICENSE) © imtbl
 
 [booru]: https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards
 [hydrus]: http://hydrusnetwork.github.io/hydrus

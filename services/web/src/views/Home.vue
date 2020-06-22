@@ -50,6 +50,19 @@
             </span>
           </p>
 
+          <p>
+            <span>
+              <a
+                href="https://github.com/imtbl/hyve"
+                target="_blank"
+                rel="noopener">
+                hyve
+              </a>
+              is free software released under the
+              <span class="is-normal-case">AGPLv3</span>.
+            </span>
+          </p>
+
         </div>
 
       </div>

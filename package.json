@@ -14,7 +14,7 @@
     "webpack"
   ],
   "author": "imtbl <imtbl@mser.at>",
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "repository": "https://imtbl@github.com/imtbl/hyve.git",
   "bugs": {
