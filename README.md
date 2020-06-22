@@ -71,7 +71,6 @@ __it simply provides a different way to view them.__
 + [Demo](#demo)
 + [Screenshots](#screenshots)
 + [FAQ](#faq)
-+ [Donate](#donate)
 + [Maintainer](#maintainer)
 + [Contribute](#contribute)
 + [License](#license)
