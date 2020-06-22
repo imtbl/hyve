@@ -1,6 +1,6 @@
 {
   "name": "@hyve/sync-client",
-  "version": "2.16.1",
+  "version": "3.0.0",
   "author": "imtbl <imtbl@mser.at>",
   "license": "AGPL-3.0-or-later",
   "private": true,
