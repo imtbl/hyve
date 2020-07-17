@@ -23,7 +23,7 @@
     "bulma-extensions": "^6.2.7",
     "core-js": "^3.6.5",
     "js-cookie": "^2.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "plyr": "~3.5.10",
     "qs": "^6.9.3",
     "v-click-outside": "^3.0.1",
