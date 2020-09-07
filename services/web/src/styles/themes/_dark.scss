@@ -455,7 +455,7 @@ body {
 
     .plyr__control {
       &.plyr__tab-focus {
-        box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+        outline-color: $dark-theme-primary;
       }
     }
 
@@ -476,12 +476,7 @@ body {
     }
 
     .plyr__control--overlaid {
-      background: rgba($dark-theme-primary, 0.8);
-
-      &:hover,
-      &:focus {
-        background: $dark-theme-primary;
-      }
+      background: $dark-theme-primary;
     }
 
     .plyr--full-ui input[type='range'] {
@@ -489,15 +484,15 @@ body {
 
       &.plyr__tab-focus {
         &::-webkit-slider-runnable-track {
-          box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+          outline-color: $dark-theme-primary;
         }
 
         &::-moz-range-track {
-          box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+          outline-color: $dark-theme-primary;
         }
 
         &::-ms-track {
-          box-shadow: 0 0 0 5px rgba($dark-theme-primary, 0.5);
+          outline-color: $dark-theme-primary;
         }
       }
     }
