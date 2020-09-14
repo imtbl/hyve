@@ -315,12 +315,14 @@ to work correctly.
   database (called `client.mappings.db`). __Absolute path required.__
 + `HYVE_HYDRUS_CACHES_DB_PATH=`: sets the path to the hydrus client caches
   database (called `client.caches.db`). __Absolute path required.__
-+ `HYVE_HYDRUS_TAG_SERVICE=`: the ID of the hydrus client tag service hyve
-  should use. If not set, hyve will attempt to automatically determine this (by
-  selecting the first local tag service).
-+ `HYVE_HYDRUS_FILE_SERVICE=`: the ID of the hydrus client file service hyve
-  should use. If not set, hyve will attempt to automatically determine this (by
-  selecting the first local file service).
++ `HYVE_HYDRUS_TAG_SERVICE=`: the ID of the hydrus client local tag service
+  (the type of the service needs to be `5`) hyve should use. If not set, hyve
+  will attempt to automatically determine this (by selecting the default local
+  tag service).
++ `HYVE_HYDRUS_FILE_SERVICE=`: the ID of the hydrus client file service (the
+  type of the service needs to be `2`) hyve should use. If not set, hyve will
+  attempt to automatically determine this (by selecting the default local file
+  service).
 + `HYVE_HYDRUS_INCLUDE_INBOX=false`: setting this to `true` includes files that
   are in the inbox in the sync.
 + `HYVE_HYDRUS_SUPPORTED_MIME_TYPES=1,2,3,4,9,14,18,20,21,23,25,26,27,33`: the

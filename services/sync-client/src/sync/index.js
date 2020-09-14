@@ -176,26 +176,22 @@ function dropZombieTables () {
 
 function getServices () {
   return {
-    tag: config.hydrusTagService
-      ? config.hydrusTagService
-      : db.hyve.prepare(
-        `SELECT
-          ${config.hydrusTableServices}.service_id
-        FROM
-          ${config.hydrusTableServices}
-        WHERE
-          ${config.hydrusTableServices}.service_key = X'6C6F63616C2074616773'`
-      ).pluck().get(),
-    file: config.hydrusFileService
-      ? config.hydrusFileService
-      : db.hyve.prepare(
-        `SELECT
-          ${config.hydrusTableServices}.service_id
-        FROM
-          ${config.hydrusTableServices}
-        WHERE
-          ${config.hydrusTableServices}.service_key = X'6C6F63616C2066696C6573'`
-      ).pluck().get(),
+    tag: config.hydrusTagService || db.hyve.prepare(
+      `SELECT
+        ${config.hydrusTableServices}.service_id
+      FROM
+        ${config.hydrusTableServices}
+      WHERE
+        ${config.hydrusTableServices}.service_key = X'6C6F63616C2074616773'`
+    ).pluck().get(),
+    file: config.hydrusFileService || db.hyve.prepare(
+      `SELECT
+        ${config.hydrusTableServices}.service_id
+      FROM
+        ${config.hydrusTableServices}
+      WHERE
+        ${config.hydrusTableServices}.service_key = X'6C6F63616C2066696C6573'`
+    ).pluck().get(),
     ipfs: db.hyve.prepare(
       `SELECT
         ${config.hydrusTableServices}.service_id
