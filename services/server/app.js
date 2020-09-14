@@ -14,7 +14,7 @@ try {
 } catch (err) {
   logger.log(
     'Could not connect to the databases. Make sure that the specified paths ' +
-      'are correct and that the user running hyve has the requires ' +
+      'are correct and that the user running hyve has the required ' +
       `permissions.\n${err}`,
     'error'
   )
