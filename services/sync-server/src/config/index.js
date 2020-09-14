@@ -41,8 +41,8 @@ module.exports = {
     .filter(mimeType => (parseInt(mimeType) in availableMimeTypes)),
   excludedTags: process.env.HYVE_HYDRUS_EXCLUDED_TAGS &&
     process.env.HYVE_HYDRUS_EXCLUDED_TAGS.trim() !== ''
-      ? process.env.HYVE_HYDRUS_EXCLUDED_TAGS.split('###').map(
-        tag => tag.trim()
-      )
-      : []
+    ? process.env.HYVE_HYDRUS_EXCLUDED_TAGS.split('###').map(
+      tag => tag.trim()
+    )
+    : []
 }

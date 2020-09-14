@@ -8,6 +8,11 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Added
+
++ Added the ability to manually specify the tag and file services to use when
+  syncing from hydrus client
+
 ## [3.1.0] - 2020-09-07
 
 ### Changed
