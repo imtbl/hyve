@@ -1,31 +1,26 @@
-const {
-  check,
-  validationResult,
-  sanitizeBody,
-  sanitizeQuery
-} = require('express-validator')
+const { body, query, validationResult } = require('express-validator')
 
 module.exports = {
   get: {
     inputValidationConfig: [
-      sanitizeQuery('page').trim(),
-      check('page')
+      query('page')
+        .trim()
         .exists().withMessage('MissingPageParameterError')
         .isInt({ min: 1 }).withMessage('InvalidPageParameterError'),
-      sanitizeQuery('contains').trim(),
-      check('contains')
+      query('contains')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidContainsParameterError')
         .isLength({ min: 1 }).withMessage('InvalidContainsParameterError'),
-      sanitizeQuery('sort').trim(),
-      check('sort')
+      query('sort')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidSortParameterError')
         .isIn(
           ['id', 'name', 'files', 'contains', 'random']
         ).withMessage('InvalidSortParameterError'),
-      sanitizeQuery('direction').trim(),
-      check('direction')
+      query('direction')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidDirectionParameterError')
         .isIn(['asc', 'desc']).withMessage('InvalidDirectionParameterError')
@@ -45,8 +40,8 @@ module.exports = {
   },
   autocomplete: {
     inputValidationConfig: [
-      sanitizeBody('partialTag').trim(),
-      check('partialTag')
+      body('partialTag')
+        .trim()
         .exists().withMessage('MissingPartialTagFieldError')
         .isString().withMessage('InvalidPartialTagFieldError')
         .isLength({ min: 1 }).withMessage('InvalidPartialTagFieldError')

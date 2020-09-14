@@ -1,4 +1,4 @@
-const { check, validationResult, sanitizeBody } = require('express-validator')
+const { body, validationResult } = require('express-validator')
 const config = require('../config')
 const auth = require('../controllers/authentication')
 
@@ -34,15 +34,15 @@ module.exports = {
   },
   createUser: {
     inputValidationConfig: [
-      sanitizeBody('username').trim(),
-      check('username')
+      body('username')
+        .trim()
         .exists().withMessage('MissingUsernameFieldError')
         .isString().withMessage('InvalidUsernameFieldError')
         .isLength({ min: 1, max: 1024 }).withMessage(
           'InvalidUsernameFieldError'
         ),
-      sanitizeBody('password').trim(),
-      check('password')
+      body('password')
+        .trim()
         .exists().withMessage('MissingPasswordFieldError')
         .isString().withMessage('InvalidPasswordFieldError')
         .isLength({
@@ -74,15 +74,15 @@ module.exports = {
   },
   updateUser: {
     inputValidationConfig: [
-      sanitizeBody('username').trim(),
-      check('username')
+      body('username')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidUsernameFieldError')
         .isLength({ min: 1, max: 1024 }).withMessage(
           'InvalidUsernameFieldError'
         ),
-      sanitizeBody('password').trim(),
-      check('password')
+      body('password')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidPasswordFieldError')
         .isLength({
@@ -91,8 +91,8 @@ module.exports = {
             : 1024,
           max: 1024
         }).withMessage('InvalidPasswordFieldError'),
-      sanitizeBody('currentPassword').trim(),
-      check('currentPassword')
+      body('currentPassword')
+        .trim()
         .exists().withMessage('MissingCurrentPasswordFieldError')
         .isString().withMessage('InvalidCurrentPasswordFieldError')
     ],
@@ -118,8 +118,8 @@ module.exports = {
   },
   deleteUser: {
     inputValidationConfig: [
-      sanitizeBody('password').trim(),
-      check('password')
+      body('password')
+        .trim()
         .exists().withMessage('MissingPasswordFieldError')
         .isString().withMessage('InvalidPasswordFieldError')
     ],
@@ -138,15 +138,15 @@ module.exports = {
   },
   createToken: {
     inputValidationConfig: [
-      sanitizeBody('username').trim(),
-      check('username')
+      body('username')
+        .trim()
         .exists().withMessage('MissingUsernameFieldError')
         .isString().withMessage('InvalidUsernameFieldError'),
-      sanitizeBody('password').trim(),
-      check('password')
+      body('password')
+        .trim()
         .exists().withMessage('MissingPasswordFieldError')
         .isString().withMessage('InvalidPasswordFieldError'),
-      check('long')
+      body('long')
         .optional()
         .isBoolean().withMessage('InvalidLongFieldError')
     ],
@@ -165,7 +165,7 @@ module.exports = {
   },
   deleteToken: {
     inputValidationConfig: [
-      check('all')
+      body('all')
         .optional()
         .isBoolean().withMessage('InvalidAllFieldError')
     ],

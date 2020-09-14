@@ -1,21 +1,15 @@
-const {
-  check,
-  validationResult,
-  sanitizeParam,
-  sanitizeQuery
-} = require('express-validator')
+const { param, query, validationResult } = require('express-validator')
 
 const constraintsHelper = require('../util/constraints')
 
 module.exports = {
   get: {
     inputValidationConfig: [
-      sanitizeQuery('page').trim(),
-      check('page')
+      query('page')
+        .trim()
         .exists().withMessage('MissingPageParameterError')
         .isInt({ min: 1 }).withMessage('InvalidPageParameterError'),
-      sanitizeQuery('tags'),
-      check('tags')
+      query('tags')
         .optional()
         .isArray({ min: 1 }).withMessage('InvalidTagsParameterError')
         .custom(tags => {
@@ -27,8 +21,7 @@ module.exports = {
 
           return true
         }).withMessage('InvalidTagsParameterError'),
-      sanitizeQuery('constraints'),
-      check('constraints')
+      query('constraints')
         .optional()
         .isArray({ min: 1 }).withMessage('InvalidConstraintsParameterError')
         .custom(constraints => {
@@ -40,8 +33,8 @@ module.exports = {
 
           return true
         }).withMessage('InvalidConstraintsParameterError'),
-      sanitizeQuery('sort').trim(),
-      check('sort')
+      query('sort')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidSortParameterError')
         .isIn(
@@ -56,13 +49,12 @@ module.exports = {
             'random'
           ]
         ).withMessage('InvalidSortParameterError'),
-      sanitizeQuery('direction').trim(),
-      check('direction')
+      query('direction')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .isString().withMessage('InvalidDirectionParameterError')
         .isIn(['asc', 'desc']).withMessage('InvalidDirectionParameterError'),
-      sanitizeQuery('namespaces'),
-      check('namespaces')
+      query('namespaces')
         .optional()
         .isArray({ min: 1 }).withMessage('InvalidNamespacesParameterError')
     ],
@@ -88,8 +80,8 @@ module.exports = {
   },
   getSingle: {
     inputValidationConfig: [
-      sanitizeParam('id').trim(),
-      check('id')
+      param('id')
+        .trim()
         .exists().withMessage('MissingIdParameterError')
         .isInt({ min: 1 }).withMessage('InvalidIdParameterError')
     ],
