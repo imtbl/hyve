@@ -13,6 +13,12 @@ and this project adheres to
 + Added the ability to manually specify the tag and file services to use when
   syncing from hydrus client
 
+### Changed
+
++ Improved the insertion of mappings for both client and server sync, which
+  should hopefully prevent foreign key constraint errors in case hydrus data
+  changes during a sync
+
 ## [3.1.0] - 2020-09-07
 
 ### Changed

@@ -381,27 +381,45 @@ function fillNewFilesTable () {
 }
 
 function fillNewMappingsTable () {
-  db.hyve.prepare(
-    `INSERT INTO mappings_new
-      SELECT
-        ${config.hydrusTableCurrentMappings}_${hydrusServices.tag}.hash_id,
-        ${config.hydrusTableCurrentMappings}_${hydrusServices.tag}.tag_id
-      FROM
-        ${config.hydrusTableCurrentMappings}_${hydrusServices.tag}
-      NATURAL JOIN
-        ${config.hydrusTableCurrentFiles}
-      NATURAL JOIN
-        ${config.hydrusTableLocalTagsCache}
-      NATURAL JOIN
-        ${config.hydrusTableFilesInfo}
-      WHERE
-        ${config.hydrusTableCurrentFiles}.service_id = ${hydrusServices.file}
-      AND
-        ${config.hydrusTableFilesInfo}.mime IN (
-          ${config.supportedMimeTypes}
+  const mappings = db.hyve.prepare(
+    `SELECT
+      ${config.hydrusTableCurrentMappings}_${hydrusServices.tag}.hash_id AS hashId,
+      ${config.hydrusTableCurrentMappings}_${hydrusServices.tag}.tag_id AS tagId
+    FROM
+      ${config.hydrusTableCurrentMappings}_${hydrusServices.tag}
+    NATURAL JOIN
+      ${config.hydrusTableCurrentFiles}
+    NATURAL JOIN
+      ${config.hydrusTableLocalTagsCache}
+    NATURAL JOIN
+      ${config.hydrusTableFilesInfo}
+    WHERE
+      ${config.hydrusTableCurrentFiles}.service_id = ${hydrusServices.file}
+    AND
+      ${config.hydrusTableFilesInfo}.mime IN (
+        ${config.supportedMimeTypes}
+      )
+    ${inboxItemsWhereCondition}`
+  )
+
+  db.hyve.unsafeMode(true)
+
+  db.hyve.transaction(mappings => {
+    for (const mapping of mappings.iterate()) {
+      try {
+        db.hyve.prepare(
+          'INSERT INTO mappings_new (file_tags_id, tag_id) VALUES (?, ?)'
+        ).run(mapping.hashId, mapping.tagId)
+      } catch (err) {
+        console.warn(
+          'Could not insert mapping for hash ID/tag ID ' +
+          `${mapping.hashId}/${mapping.tagId}.`
         )
-      ${inboxItemsWhereCondition}`
-  ).run()
+      }
+    }
+  })(mappings)
+
+  db.hyve.unsafeMode(false)
 }
 
 function removeExcludedFiles () {
