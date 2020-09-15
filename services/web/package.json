@@ -5,7 +5,7 @@
   "license": "AGPL-3.0-or-later",
   "private": true,
   "scripts": {
-    "serve-develop": "vue-cli-service serve",
+    "serve-dev": "vue-cli-service serve",
     "build": "vue-cli-service build --modern",
     "start": "serve -l 8080 ./dist",
     "lint": "vue-cli-service lint",
