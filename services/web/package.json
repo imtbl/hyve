@@ -26,7 +26,7 @@
     "lodash": "^4.17.20",
     "plyr": "~3.6.2",
     "qs": "^6.9.4",
-    "v-click-outside": "^3.1.0",
+    "v-click-outside": "^3.1.1",
     "v-hotkey": "^0.8.0",
     "vue": "^2.6.12",
     "vue-headful": "^2.1.0",
@@ -38,14 +38,14 @@
     "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.4",
-    "@vue/cli-plugin-eslint": "^4.5.4",
-    "@vue/cli-plugin-router": "^4.5.4",
-    "@vue/cli-plugin-vuex": "^4.5.4",
-    "@vue/cli-service": "^4.5.4",
+    "@vue/cli-plugin-babel": "^4.5.6",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/cli-plugin-router": "^4.5.6",
+    "@vue/cli-plugin-vuex": "^4.5.6",
+    "@vue/cli-service": "^4.5.6",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.8.1",
+    "eslint": "^7.9.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
@@ -55,7 +55,7 @@
     "sass": "^1.26.10",
     "sass-loader": "^10.0.2",
     "serve": "^11.3.2",
-    "stylelint": "^13.7.0",
+    "stylelint": "^13.7.1",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "vue-template-compiler": "^2.6.12"
   }
