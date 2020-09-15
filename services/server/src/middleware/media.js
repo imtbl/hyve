@@ -1,22 +1,17 @@
-const {
-  check,
-  validationResult,
-  sanitizeParam,
-  sanitizeQuery
-} = require('express-validator')
+const { param, query, validationResult } = require('express-validator')
 
 const config = require('../config')
 
 module.exports = {
   get: {
     inputValidationConfig: [
-      sanitizeParam('mediaHash').trim(),
-      check('mediaHash')
+      param('mediaHash')
+        .trim()
         .exists().withMessage('MissingMediaHashParameterError')
         .isString().withMessage('InvalidMediaHashParameterError')
         .isLength({ min: 1 }).withMessage('InvalidMediaHashParameterError'),
-      sanitizeQuery('token').trim(),
-      check('token')
+      query('token')
+        .trim()
         .optional({ nullable: true, checkFalsy: true })
         .exists().withMessage('MissingMediaTokenError')
         .isString().withMessage('InvalidMediaTokenError')

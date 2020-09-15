@@ -351,30 +351,48 @@ function fillNewFilesTable () {
 }
 
 function fillNewMappingsTable () {
-  db.hyve.prepare(
-    `INSERT INTO mappings_new
-      SELECT
-        ${config.hydrusTableCurrentMappings}.service_hash_id,
-        ${config.hydrusTableCurrentMappings}.service_tag_id
-      FROM
-        ${config.hydrusTableCurrentMappings}
-      NATURAL JOIN
-        ${config.hydrusTableRepositoryHashIdMapTags}
-      NATURAL JOIN
-        ${config.hydrusTableFilesInfo}
-      INNER JOIN
-        ${config.hydrusTableRepositoryHashIdMapFiles}
-        ON ${config.hydrusTableRepositoryHashIdMapFiles}.master_hash_id =
-          ${config.hydrusTableFilesInfo}.master_hash_id
-      INNER JOIN
-        ${config.hydrusTableCurrentFiles}
-        ON ${config.hydrusTableCurrentFiles}.service_hash_id =
-          ${config.hydrusTableRepositoryHashIdMapFiles}.service_hash_id
-      WHERE
-        ${config.hydrusTableFilesInfo}.mime IN (
-          ${config.supportedMimeTypes}
-        )`
-  ).run()
+  const mappings = db.hyve.prepare(
+    `SELECT
+      ${config.hydrusTableCurrentMappings}.service_hash_id AS hashId,
+      ${config.hydrusTableCurrentMappings}.service_tag_id AS tagId
+    FROM
+      ${config.hydrusTableCurrentMappings}
+    NATURAL JOIN
+      ${config.hydrusTableRepositoryHashIdMapTags}
+    NATURAL JOIN
+      ${config.hydrusTableFilesInfo}
+    INNER JOIN
+      ${config.hydrusTableRepositoryHashIdMapFiles}
+      ON ${config.hydrusTableRepositoryHashIdMapFiles}.master_hash_id =
+        ${config.hydrusTableFilesInfo}.master_hash_id
+    INNER JOIN
+      ${config.hydrusTableCurrentFiles}
+      ON ${config.hydrusTableCurrentFiles}.service_hash_id =
+        ${config.hydrusTableRepositoryHashIdMapFiles}.service_hash_id
+    WHERE
+      ${config.hydrusTableFilesInfo}.mime IN (
+        ${config.supportedMimeTypes}
+      )`
+  )
+
+  db.hyve.unsafeMode(true)
+
+  db.hyve.transaction(mappings => {
+    for (const mapping of mappings.iterate()) {
+      try {
+        db.hyve.prepare(
+          'INSERT INTO mappings_new (file_tags_id, tag_id) VALUES (?, ?)'
+        ).run(mapping.hashId, mapping.tagId)
+      } catch (err) {
+        console.warn(
+          'Could not insert mapping for hash ID/tag ID ' +
+          `${mapping.hashId}/${mapping.tagId}.`
+        )
+      }
+    }
+  })(mappings)
+
+  db.hyve.unsafeMode(false)
 }
 
 function removeExcludedFiles () {

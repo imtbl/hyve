@@ -21,6 +21,8 @@ module.exports = {
   hydrusMasterDbPath: process.env.HYVE_HYDRUS_MASTER_DB_PATH,
   hydrusMappingsDbPath: process.env.HYVE_HYDRUS_MAPPINGS_DB_PATH,
   hydrusCachesDbPath: process.env.HYVE_HYDRUS_CACHES_DB_PATH,
+  hydrusTagService: process.env.HYVE_HYDRUS_TAG_SERVICE,
+  hydrusFileService: process.env.HYVE_HYDRUS_FILE_SERVICE,
   hydrusTableServices: 'hydrus_client_db.services',
   hydrusTableCurrentFiles: 'hydrus_client_db.current_files',
   hydrusTableFileInbox: 'hydrus_client_db.file_inbox',
@@ -37,8 +39,8 @@ module.exports = {
     .filter(mimeType => (parseInt(mimeType) in availableMimeTypes)),
   excludedTags: process.env.HYVE_HYDRUS_EXCLUDED_TAGS &&
     process.env.HYVE_HYDRUS_EXCLUDED_TAGS.trim() !== ''
-      ? process.env.HYVE_HYDRUS_EXCLUDED_TAGS.split('###').map(
-        tag => tag.trim()
-      )
-      : []
+    ? process.env.HYVE_HYDRUS_EXCLUDED_TAGS.split('###').map(
+      tag => tag.trim()
+    )
+    : []
 }

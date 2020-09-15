@@ -8,6 +8,19 @@ and this project adheres to
 
 ## [Unreleased]
 
+## [3.2.0] - 2020-09-15
+
+### Added
+
++ Added the ability to manually specify the tag and file services to use when
+  syncing from hydrus client
+
+### Changed
+
++ Improved the insertion of mappings for both client and server sync, which
+  should hopefully prevent foreign key constraint errors in case hydrus data
+  changes during a sync
+
 ## [3.1.0] - 2020-09-07
 
 ### Changed
@@ -247,7 +260,8 @@ and this project adheres to
 
 + Initial release
 
-[Unreleased]: https://github.com/imtbl/hyve/compare/3.1.0...develop
+[Unreleased]: https://github.com/imtbl/hyve/compare/3.2.0...develop
+[3.2.0]: https://github.com/imtbl/hyve/compare/3.1.0...3.2.0
 [3.1.0]: https://github.com/imtbl/hyve/compare/3.0.0...3.1.0
 [3.0.0]: https://github.com/imtbl/hyve/compare/2.16.1...3.0.0
 [2.16.1]: https://github.com/imtbl/hyve/compare/2.16.0...2.16.1
