@@ -13,7 +13,7 @@ if (contentDbPath.startsWith('.')) {
 }
 
 module.exports = {
-  version: '3.2.0',
+  version: '3.3.0',
   apiVersion: 1,
   url: process.env.HYVE_URL,
   port: process.env.HYVE_PORT || 8000,
