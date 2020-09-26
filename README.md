@@ -504,7 +504,7 @@ You can find the HTTP API documentation [here](API.md).
 
 ## Demo
 
-A demo installation is located at [https://hyve.mser.at][hyve-demo].
+A demo installation is located at [https://hyve.stash.moe][hyve-demo].
 
 Registration is enabled (not necessary to access the media, only to check out
 the user settings), so feel free to create as many users as you would like.
@@ -617,7 +617,7 @@ You are welcome to help out!
 [supported-mime-types-client]: https://github.com/imtbl/hyve/blob/master/services/sync-client/src/config/index.js#L2-L15
 [supported-mime-types-server]: https://github.com/imtbl/hyve/blob/master/services/sync-server/src/config/index.js#L5-L18
 [checkpoint]: https://www.sqlite.org/c3ref/wal_checkpoint.html
-[hyve-demo]: https://hyve.mser.at
+[hyve-demo]: https://hyve.stash.moe
 [danbooru]: https://github.com/r888888888/danbooru
 [szurubooru]: https://github.com/rr-/szurubooru
 
