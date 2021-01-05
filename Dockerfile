@@ -19,7 +19,7 @@ RUN \
     build-base \
     curl \
     gettext \
-    python && \
+    python3 && \
   curl -fsSLO "$SUPERCRONIC_URL" && \
   echo "${SUPERCRONIC_SHA1SUM}  ${SUPERCRONIC}" | sha1sum -c - && \
   chmod +x "$SUPERCRONIC" && \
@@ -30,7 +30,7 @@ RUN \
   apk del \
     build-base \
     curl \
-    python && \
+    python3 && \
   chown -R ${USER_ID}:${GROUP_ID} /usr/src/app && \
   mkdir /data && chown -R ${USER_ID}:${GROUP_ID} /data
 

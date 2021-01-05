@@ -8,6 +8,10 @@ and this project adheres to
 
 ## [Unreleased]
 
+### Fixed
+
++ Fixed broken Docker image build
+
 ## [3.4.0] - 2021-01-06
 
 ### Changed
