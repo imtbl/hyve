@@ -22,6 +22,19 @@
 
 > Expose and consume your hydrus media via HTTP API
 
+__Unmaintained:__ hyve is no longer maintained. Due to the limitations and
+annoyances of hydrus server, I would recommend "abusing" a hydrus client
+instance as a server instead (this can also be done on headless machines, e.g.,
+containerized via [suika/hydrus][hydrus-docker]), which allows you to use the
+[hydrus client API][hydrus-client-api]. And instead of running hyve you can
+then access your media over the web via clients like [Hydrus Web][hydrus-web]
+or [Hydroid][hydroid]. hyve still does some things that you (as of January
+2021) can not yet do via client API, so if you do decide to continue using it
+regardless of it being unmaintained, I recommend you fork it and keep the
+dependencies up-to-date (to protect against potential vulnerabilities). And if
+you are interested in taking over the main project you can send me an
+[email][email].
+
 hyve is an application that allows you to serve [hydrus][hydrus] media over an
 HTTP API. It can connect to either hydrus client or server. A web-based,
 [booru][booru]-like client that consumes the API is also included.
@@ -563,9 +576,11 @@ suitable for an HTTP API that is meant to be accessed outside of a LAN. hydrus
 itself does most of the sorting in code _after_ fetching the results, which is
 really not an option when using pagination.
 
-The client API has not been considered since it is still very limited and does
-only feature a fraction of what hyve's API can do. It is also not available for
-hydrus server, which disqualifies it regardless.
+~~The client API has not been considered since it is still very limited and~~
+~~does only feature a fraction of what hyve's API can do.~~ As of January 2021,
+the client API has seen good progress and is certainly a viable option for many
+use cases. But it is not available for hydrus server, which disqualifies it
+regardless.
 
 > Does hyve also make a copy of my media?
 
@@ -601,8 +616,12 @@ You are welcome to help out!
 
 [AGPLv3](LICENSE) © imtbl
 
-[booru]: https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards
+[hydrus-docker]: https://hub.docker.com/r/suika/hydrus
+[hydrus-client-api]: https://hydrusnetwork.github.io/hydrus/help/client_api.html
+[hydrus-web]: https://github.com/floogulinc/hydrus-web
+[hydroid]: https://github.com/thatfuckingbird/hydroid
 [hydrus]: http://hydrusnetwork.github.io/hydrus
+[booru]: https://en.wikipedia.org/wiki/Imageboard#Danbooru-style_boards
 [docker]: https://www.docker.com/
 [docker-hub]: https://hub.docker.com/r/mtbl/hyve/
 [node-js]: https://nodejs.org/en/
@@ -632,3 +651,4 @@ You are welcome to help out!
 
 [maintainer]: https://github.com/imtbl
 [issues]: https://github.com/imtbl/hyve/issues/new
+[email]: mailto:imtbl@mser.at

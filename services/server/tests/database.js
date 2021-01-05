@@ -19,12 +19,12 @@ test.before(t => {
 
   fse.copySync(
     path.resolve(__dirname, 'storage/authentication.db.template'),
-    path.resolve(__dirname, `storage/authentication.db`)
+    path.resolve(__dirname, 'storage/authentication.db')
   )
 
   fse.copySync(
     path.resolve(__dirname, 'storage/content.db.template'),
-    path.resolve(__dirname, `storage/content.db`)
+    path.resolve(__dirname, 'storage/content.db')
   )
 
   migrations.run(process.env.HYVE_AUTHENTICATION_DB_PATH)
@@ -1349,8 +1349,8 @@ test('Database: Get files by tags', t => {
       files: [{
         id: 1,
         hash:
-            '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
-          ipfsHash: null,
+          '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+        ipfsHash: null,
         mime: 'image/png',
         size: 5012,
         width: 500,
@@ -1427,8 +1427,8 @@ test('Database: Get files by tags and excluded tags', t => {
       files: [{
         id: 3,
         hash:
-            '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
-          ipfsHash: null,
+          '31426ccc8101461ad30806840b29432fb88bb84687ef9e002976551c8aa08e42',
+        ipfsHash: null,
         mime: 'image/png',
         size: 6117,
         width: 500,
@@ -1450,8 +1450,8 @@ test('Database: Get files by tags sorted ascending', t => {
       files: [{
         id: 1,
         hash:
-            '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
-          ipfsHash: null,
+          '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+        ipfsHash: null,
         mime: 'image/png',
         size: 5012,
         width: 500,
@@ -2192,9 +2192,8 @@ test('Database: Get file by id', t => {
     files.getById(1),
     {
       id: 1,
-      hash:
-            '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
-          ipfsHash: null,
+      hash: '2acedf8e20512a10fc07cceca8d16923e790369b90acebf9efcd926f50dd5c0c',
+      ipfsHash: null,
       mime: 'image/png',
       size: 5012,
       width: 500,
@@ -2225,10 +2224,10 @@ test('Database: Get total file count', t => {
 test.after.always(t => {
   db.close()
 
-  fse.removeSync(path.resolve(__dirname, `storage/authentication.db`))
-  fse.removeSync(path.resolve(__dirname, `storage/authentication.db-shm`))
-  fse.removeSync(path.resolve(__dirname, `storage/authentication.db-wal`))
-  fse.removeSync(path.resolve(__dirname, `storage/content.db`))
-  fse.removeSync(path.resolve(__dirname, `storage/content.db-shm`))
-  fse.removeSync(path.resolve(__dirname, `storage/content.db-wal`))
+  fse.removeSync(path.resolve(__dirname, 'storage/authentication.db'))
+  fse.removeSync(path.resolve(__dirname, 'storage/authentication.db-shm'))
+  fse.removeSync(path.resolve(__dirname, 'storage/authentication.db-wal'))
+  fse.removeSync(path.resolve(__dirname, 'storage/content.db'))
+  fse.removeSync(path.resolve(__dirname, 'storage/content.db-shm'))
+  fse.removeSync(path.resolve(__dirname, 'storage/content.db-wal'))
 })

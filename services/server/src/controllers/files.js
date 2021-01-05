@@ -8,13 +8,13 @@ module.exports = {
     if (query.tags) {
       return query.constraints
         ? files.getByTagsAndConstraints(
-          query.page,
-          query.tags,
-          query.constraints,
-          query.sort || 'id',
-          query.direction || null,
-          query.namespaces || []
-        )
+            query.page,
+            query.tags,
+            query.constraints,
+            query.sort || 'id',
+            query.direction || null,
+            query.namespaces || []
+          )
         : files.getByTags(
           query.page,
           query.tags,
@@ -26,12 +26,12 @@ module.exports = {
 
     return query.constraints
       ? files.getByConstraints(
-        query.page,
-        query.constraints,
-        query.sort || 'id',
-        query.direction || null,
-        query.namespaces || []
-      )
+          query.page,
+          query.constraints,
+          query.sort || 'id',
+          query.direction || null,
+          query.namespaces || []
+        )
       : files.get(
         query.page,
         query.sort || 'id',

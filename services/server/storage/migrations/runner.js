@@ -34,6 +34,8 @@ module.exports = {
         migration.up = up.replace(/^-- .*?$/gm, '').trim()
         migration.down = down.trim()
       }
+
+      return migration
     })
 
     this.db.prepare(

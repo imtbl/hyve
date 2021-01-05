@@ -40,7 +40,7 @@ module.exports = {
   excludedTags: process.env.HYVE_HYDRUS_EXCLUDED_TAGS &&
     process.env.HYVE_HYDRUS_EXCLUDED_TAGS.trim() !== ''
     ? process.env.HYVE_HYDRUS_EXCLUDED_TAGS.split('###').map(
-      tag => tag.trim()
-    )
+        tag => tag.trim()
+      )
     : []
 }

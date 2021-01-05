@@ -1,6 +1,6 @@
 {
   "name": "hyve",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Expose and consume your hydrus media via HTTP API",
   "keywords": [
     "hydrus",
@@ -26,7 +26,7 @@
     "test": "lerna run test"
   },
   "engines": {
-    "node": ">=12.0.0 <15.0.0"
+    "node": ">=14.0.0 <16.0.0"
   },
   "devDependencies": {
     "lerna": "^3.22.1"

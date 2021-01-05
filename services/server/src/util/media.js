@@ -28,16 +28,16 @@ async function fileExists (type, hash) {
     : config.hydrusFilesPath
   const directory = config.hydrusFilesMode === 'client'
     ? type === 'thumbnail'
-      ? `t${hash.substring(0, 2)}`
-      : `f${hash.substring(0, 2)}`
+        ? `t${hash.substring(0, 2)}`
+        : `f${hash.substring(0, 2)}`
     : hash.substring(0, 2)
   const extension = type === 'thumbnail' ? '.thumbnail' : ''
 
   const filePath = type !== 'thumbnail' && config.hydrusFilesMode === 'client'
     ? await getFilePathWithExtension(
-      path.join(config.hydrusFilesPath, directory),
-      hash
-    )
+        path.join(config.hydrusFilesPath, directory),
+        hash
+      )
     : path.join(basePath, directory, `${hash}${extension}`)
 
   return new Promise((resolve, reject) => {
@@ -57,16 +57,16 @@ async function getFileData (type, hash) {
     : config.hydrusFilesPath
   const directory = config.hydrusFilesMode === 'client'
     ? type === 'thumbnail'
-      ? `t${hash.substring(0, 2)}`
-      : `f${hash.substring(0, 2)}`
+        ? `t${hash.substring(0, 2)}`
+        : `f${hash.substring(0, 2)}`
     : hash.substring(0, 2)
   const extension = type === 'thumbnail' ? '.thumbnail' : ''
 
   const filePath = type !== 'thumbnail' && config.hydrusFilesMode === 'client'
     ? await getFilePathWithExtension(
-      path.join(config.hydrusFilesPath, directory),
-      hash
-    )
+        path.join(config.hydrusFilesPath, directory),
+        hash
+      )
     : path.join(basePath, directory, `${hash}${extension}`)
 
   const fileInfo = await FileType.fromFile(filePath)

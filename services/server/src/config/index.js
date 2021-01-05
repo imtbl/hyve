@@ -13,7 +13,7 @@ if (contentDbPath.startsWith('.')) {
 }
 
 module.exports = {
-  version: '3.3.0',
+  version: '3.4.0',
   apiVersion: 1,
   url: process.env.HYVE_URL,
   port: process.env.HYVE_PORT || 8000,
@@ -23,8 +23,8 @@ module.exports = {
   authenticationDbPath: authenticationDbPath,
   contentDbPath: contentDbPath,
   hydrusFilesPath: process.env.HYVE_HYDRUS_FILES_PATH,
-  hydrusThumbnailsPath: process.env.HYVE_HYDRUS_THUMBNAILS_PATH
-    || process.env.HYVE_HYDRUS_FILES_PATH,
+  hydrusThumbnailsPath: process.env.HYVE_HYDRUS_THUMBNAILS_PATH ||
+    process.env.HYVE_HYDRUS_FILES_PATH,
   hydrusFilesMode:
     ['client', 'server'].includes(process.env.HYVE_HYDRUS_FILES_MODE)
       ? process.env.HYVE_HYDRUS_FILES_MODE
