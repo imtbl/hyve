@@ -34,7 +34,7 @@ module.exports = {
     this.checkpointInterval = setInterval(() => {
       try {
         this.authentication.pragma('wal_checkpoint(TRUNCATE)')
-      } catch (err) {
+      } catch {
         logger.log(
           'Could not checkpoint, will try again in ' +
           `${config.dbCheckpointInterval} seconds.`

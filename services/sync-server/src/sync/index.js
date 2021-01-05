@@ -331,6 +331,8 @@ function fillNewFilesTable () {
       WHERE
         tags_id = :tags_id`
     )
+
+    return namespace
   })
 
   db.hyve.transaction(namespaces => {
@@ -383,7 +385,7 @@ function fillNewMappingsTable () {
         db.hyve.prepare(
           'INSERT INTO mappings_new (file_tags_id, tag_id) VALUES (?, ?)'
         ).run(mapping.hashId, mapping.tagId)
-      } catch (err) {
+      } catch {
         console.warn(
           'Could not insert mapping for hash ID/tag ID ' +
           `${mapping.hashId}/${mapping.tagId}.`
@@ -516,7 +518,7 @@ function cleanUp () {
   try {
     db.hyve.prepare('VACUUM').run()
     db.hyve.pragma('wal_checkpoint(TRUNCATE)')
-  } catch (err) {
+  } catch {
     console.info(
       'Could not clean up after succesful sync, will try again on the ' +
         'next run.'

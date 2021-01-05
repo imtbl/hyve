@@ -24,7 +24,7 @@ router.get('/original/:mediaHash',
 
     try {
       await mediaHelper.fileExists('original', req.params.mediaHash)
-    } catch (err) {
+    } catch {
       return next({
         customStatus: 404,
         customName: 'NotFoundError'
@@ -37,7 +37,7 @@ router.get('/original/:mediaHash',
       fileData = await mediaHelper.getFileData(
         'original', req.params.mediaHash
       )
-    } catch (err) {
+    } catch {
       return next({
         customStatus: 404,
         customName: 'NotFoundError'
@@ -71,7 +71,7 @@ router.get('/thumbnails/:mediaHash',
 
     try {
       await mediaHelper.fileExists('thumbnail', req.params.mediaHash)
-    } catch (err) {
+    } catch {
       return next({
         customStatus: 404,
         customName: 'NotFoundError'
@@ -84,7 +84,7 @@ router.get('/thumbnails/:mediaHash',
       fileData = await mediaHelper.getFileData(
         'thumbnail', req.params.mediaHash
       )
-    } catch (err) {
+    } catch {
       return next({
         customStatus: 404,
         customName: 'NotFoundError'

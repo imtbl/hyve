@@ -21,19 +21,19 @@ export function generateFilesQuery (
   return {
     tags: tags.length
       ? tags
-        .map(tag => tag.trim())
-        .filter(tag => tag.length)
-        .filter((tag, index, tags) => tags.indexOf(tag) === index)
+          .map(tag => tag.trim())
+          .filter(tag => tag.length)
+          .filter((tag, index, tags) => tags.indexOf(tag) === index)
       : [],
     constraints: constraints.length
       ? constraints
-        .map(constraint => constraint.trim())
-        .filter(constraint => constraint.length)
-        .filter(
-          (constraint, index, constraints) => constraints.indexOf(
-            constraint
-          ) === index
-        )
+          .map(constraint => constraint.trim())
+          .filter(constraint => constraint.length)
+          .filter(
+            (constraint, index, constraints) => constraints.indexOf(
+              constraint
+            ) === index
+          )
       : [],
     sort: sort || undefined,
     direction: direction || undefined,

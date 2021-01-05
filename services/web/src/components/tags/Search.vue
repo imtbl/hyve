@@ -198,7 +198,7 @@ export default {
       this.$router.replace({
         path: '/tags',
         query: query
-      }).catch(err => {}) // eslint-disable-line handle-callback-err
+      }).catch(_ => {}) // eslint-disable-line handle-callback-err
 
       return {
         queryString: qs.stringify(query, { addQueryPrefix: true }),

@@ -4,11 +4,11 @@ module.exports = {
   getTags (query) {
     return query.contains
       ? tags.getContaining(
-        query.page,
-        query.contains,
-        query.sort || 'id',
-        query.direction || null
-      )
+          query.page,
+          query.contains,
+          query.sort || 'id',
+          query.direction || null
+        )
       : tags.get(
         query.page,
         query.sort || 'id',

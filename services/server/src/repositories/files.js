@@ -1003,7 +1003,7 @@ module.exports = {
               andConditions[constraint.field].params.push(constraint.value)
 
               break
-            case '~=':
+            case '~=': {
               constraint.value = parseInt(constraint.value)
 
               const deviance = constraintsHelper.getDeviance(constraint.value)
@@ -1019,7 +1019,8 @@ module.exports = {
               )
 
               break
-            case '><':
+            }
+            case '><': {
               const rangeValues = constraint.value.split(',').map(
                 value => parseInt(value)
               )
@@ -1031,6 +1032,7 @@ module.exports = {
               )
               orConditions[constraint.field].params.push(rangeValues[0])
               orConditions[constraint.field].params.push(rangeValues[1])
+            }
           }
 
           break
@@ -1060,7 +1062,7 @@ module.exports = {
               andConditions[constraint.field].params.push(constraint.value)
 
               break
-            case '~=':
+            case '~=': {
               constraint.value = constraintsHelper.getSizeInBytes(
                 constraint.value
               )
@@ -1078,7 +1080,8 @@ module.exports = {
               )
 
               break
-            case '><':
+            }
+            case '><': {
               const rangeValues = constraint.value.split(',').map(
                 value => constraintsHelper.getSizeInBytes(value)
               )
@@ -1090,6 +1093,7 @@ module.exports = {
               )
               orConditions[constraint.field].params.push(rangeValues[0])
               orConditions[constraint.field].params.push(rangeValues[1])
+            }
           }
 
           break

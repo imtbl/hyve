@@ -12,7 +12,7 @@ let sync, db
 test.before(t => {
   fse.copySync(
     path.resolve(__dirname, 'storage/content.db.template'),
-    path.resolve(__dirname, `storage/content.db`)
+    path.resolve(__dirname, 'storage/content.db')
   )
 
   sync = require('../src/sync')
@@ -43,7 +43,7 @@ test.serial('sync: run', t => {
 test.after.always(t => {
   db.close()
 
-  fse.removeSync(path.resolve(__dirname, `storage/content.db`))
-  fse.removeSync(path.resolve(__dirname, `storage/content.db-shm`))
-  fse.removeSync(path.resolve(__dirname, `storage/content.db-wal`))
+  fse.removeSync(path.resolve(__dirname, 'storage/content.db'))
+  fse.removeSync(path.resolve(__dirname, 'storage/content.db-shm'))
+  fse.removeSync(path.resolve(__dirname, 'storage/content.db-wal'))
 })
