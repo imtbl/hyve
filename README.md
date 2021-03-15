@@ -31,9 +31,7 @@ then access your media over the web via clients like [Hydrus Web][hydrus-web]
 or [Hydroid][hydroid]. hyve still does some things that you (as of January
 2021) can not yet do via client API, so if you do decide to continue using it
 regardless of it being unmaintained, I recommend you fork it and keep the
-dependencies up-to-date (to protect against potential vulnerabilities). And if
-you are interested in taking over the main project you can send me an
-[email][email].
+dependencies up-to-date (to protect against potential vulnerabilities).
 
 hyve is an application that allows you to serve [hydrus][hydrus] media over an
 HTTP API. It can connect to either hydrus client or server. A web-based,
@@ -82,7 +80,6 @@ __it simply provides a different way to view them.__
     + [Server configuration](#server-configuration)
     + [Web configuration](#web-configuration)
   + [HTTP API](#http-api)
-+ [Demo](#demo)
 + [Screenshots](#screenshots)
 + [FAQ](#faq)
 + [Maintainer](#maintainer)
@@ -514,18 +511,6 @@ to work correctly.
 ### HTTP API
 
 You can find the HTTP API documentation [here](API.md).
-
-## Demo
-
-A demo installation is located at [https://hyve.stash.moe][hyve-demo].
-
-Registration is enabled (not necessary to access the media, only to check out
-the user settings), so feel free to create as many users as you would like.
-__Created users are deleted at 12am CEST every day.__
-
-If you are the creator of one or more of the media used in this demo
-installation and would like to have your content removed, please
-[open an issue][issues] and I will comply with your request at once.
 
 ## Screenshots
 
